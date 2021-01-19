@@ -21,7 +21,7 @@ class Config
 			// nombre de la aplicación
 			'APP_NAME' => 'Documentación Blue Ghost',
 			// url de la aplicación
-			'URL' => 'http://localhost/Blueghost/',
+			'URL' => 'http://localhost/proyectos/shoeshop/',
 			// datos de conexion
 			'DB' => [
 				// estado de la conexión

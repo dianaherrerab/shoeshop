@@ -80,7 +80,7 @@
 	?>
 	
 	<ul>
-		<li><button>iniciar sesión</button></li>
-		<li><button>registrarse</button></li>
+		<li><button><a href="<?php echo URL; ?>/ClientProfile">mi perfil</a></button></li>
+		<li><button>cerrar sesión</button></li>
 	</ul>
 
