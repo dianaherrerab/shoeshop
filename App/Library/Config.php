@@ -19,7 +19,7 @@ class Config
 			// modo de depuración para alertas de posibles errores de códificación
 			'APP_DEBUG' => true,
 			// nombre de la aplicación
-			'APP_NAME' => 'Documentación Blue Ghost',
+			'APP_NAME' => 'Shoeshop',
 			// url de la aplicación
 			'URL' => 'http://localhost/proyectos/shoeshop/',
 			// datos de conexion
@@ -33,7 +33,7 @@ class Config
 				// contraseña del servidor de base de datos
 				'PASSWORD' => '',
 				// nombre de la base de datos
-				'NAME' => 'framework_blog',
+				'NAME' => 'framework',
 				// cotejamiento de la base de datos
 				'CHARSET' => 'utf-8',
 				// zona horaria de la base de datos

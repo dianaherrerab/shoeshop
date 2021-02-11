@@ -10,6 +10,7 @@ class Categories extends Model
 		parent::__construct();
 		// variable para declarar el nombre de la tabla al cual pertenece
 		$this->table = "categories";
+		// categoryId
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
 		$this->fillable = [ "id", "name", "slug", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver

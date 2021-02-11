@@ -1,7 +1,7 @@
 <?php
 
 // Modelo generado por medio de Blue Ghost
-class Post_tags extends Model
+class State extends Model
 {
 	// función constructor del modelo
 	public function __construct()
@@ -9,9 +9,10 @@ class Post_tags extends Model
 		// llamamos el contructor de la clase padre
 		parent::__construct();
 		// variable para declarar el nombre de la tabla al cual pertenece
-		$this->table = "post_tags";
+		$this->table = "states";
+		// stateId
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
-		$this->fillable = [ "id", "post_id", "tag_id", "created_at" ];
+		$this->fillable = [ "id", "name", "countryId", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
 	}

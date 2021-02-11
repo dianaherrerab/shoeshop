@@ -1,7 +1,7 @@
 <?php
 
 // Modelo generado por medio de Blue Ghost
-class Replies extends Model
+class Categories extends Model
 {
 	// función constructor del modelo
 	public function __construct()
@@ -9,9 +9,10 @@ class Replies extends Model
 		// llamamos el contructor de la clase padre
 		parent::__construct();
 		// variable para declarar el nombre de la tabla al cual pertenece
-		$this->table = "replies";
+		$this->table = "productssize";
+		// productSizesId 
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
-		$this->fillable = [ "id", "comment_id", "name", "email", "photo", "status", "comment", "created_at", "updated_at" ];
+		$this->fillable = [ "id", "quantity", "sizeId", "productId", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
 	}
