@@ -78,9 +78,356 @@
 	echo "<input type='hidden' id='URL' name='URL' value='".URL."' />";
 
 	?>
+<header class="container-fluid p-0">
 	
-	<ul>
-		<li><button>iniciar sesión</button></li>
-		<li><button>registrarse</button></li>
-	</ul>
+	<img src="<?php echo IMG?>/fondo-header.png" class="img-header d-none d-lg-block">
+	<div class="position-absolute col-12 p-0 d-flex row m-0 mt-1">
+		<!-- botones de logueo -->
+		<div class="col-lg-1 pt-1 text-center d-lg-flex flex-column d-none align-items-center">
+			<a class="nav-link p-0" data-toggle="modal" data-target="#exampleModal">
+				<div class="circulo d-flex align-items-center justify-content-center">
+					<i class="fas fa-2x fa-sign-in-alt color-naranja"></i>
+				</div>	
+			</a>
+			<a class="nav-link p-0 mt-lg-3" data-toggle="modal" data-target="#exampleModal2">
+				<div class="circulo d-flex align-items-center justify-content-center">
+					<i class="fas fa-2x fa-edit color-naranja"></i>
+				</div>
+			</a>
+		</div>
+		<!-- fin botones de logueo -->
+<!--Navegación -->
+		<nav class="mb-1 navbar navbar-expand-lg d-none d-lg-block col-lg-10 p-0 align-items-start">
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav col-12 justify-content-around align-items-center font-weight-bold">
+					<a href="" class="p-0"><li class="nav-item active white-text">DAMAS</li></a>
+					<a href="" class="p-0"><li class="nav-item white-text">CABALLEROS</li></a>
+					<img src="<?php echo IMG?>/shoes.png" class="zapato">
+					<a href="" class="p-0"><li class="nav-item color-naranja">NIÑOS</li></a>
+					<a href="" class="p-0"><li class="nav-item color-naranja">DEPORTIVOS</li></a>
+				</ul>
+			</div>
+		</nav>
+<!--/.Navbar -->
+<!-- boton de carrito de compras -->
+		<div class="col-lg-1 pt-1 text-center d-none d-lg-block">
+			<a class="nav-link p-0 d-flex justify-content-center" href="#">
+				<div class="circulo bg-naranja d-flex align-items-center justify-content-center">
+					<i class="fas fa-2x fa-shopping-cart color-naranja white-text"></i>
+				</div>	
+			</a>
+		</div>
+	</div>
+	<!-- Fin boton de carrito de compras -->
+  <div class="posicion-header row">
+    <div class="flex-column col-lg-7 col-12 p-0 text-center padding-arriba">
+      <div class="font-weight-bold col-12 tamaño-letra-header">
+        <span class="color-morado">EL MUNDO A</span> <span class="color-naranja">TUS PIES</span>
+      </div>
+      <p class="col-12 tamaño-letra-parrafo color-gris">Todo lo que deseas, está a tu alcance</p>
+    </div>
+    <div class="col-12 col-lg-5 text-center">
+      <img src="<?php echo IMG?>/img-logo.png" class="img-titulo">
+    </div>
+  </div>
+
+
+	<!-- SideNav slide-out button de registro-->
+	<a href="#" data-activates="slide-out" class="btn bg-naranja p-3 button-collapse d-block d-lg-none position-fixed"><i class="fas fa-bars"></i></a>	
+	<!--Botón desplegable de búsqueda por filtros-->
+	<a href="#" data-activates="slide-out-2" class="btn bg-morado p-3 button-collapse d-block d-lg-none position-fixed margen-arriba"><i class="fas fa-search"></i></a>
+
+</header>
+
+
+
+<!-- Sidebar navigation de registro -->
+  <div id="slide-out" class="side-nav side wide bg-naranja">
+    <ul class="custom-scrollbar">
+      <!-- Logo -->
+      <li class="text-center">
+        <img src="<?php echo IMG?>/shoes.png" class="z-responsive">
+      </li>
+      <!--/. Logo -->
+      <!-- Side navigation links -->
+      <li>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect arrow-r active">
+              <i class="sv-slim-icon fas fa-user-check mr-2"></i>
+                Inicio de sesión
+              <i class="fas fa-angle-down rotate-icon"></i>
+            </a>
+            <div class="collapsible-body">
+              <ul>
+                <li>
+                  <a href="#" class="waves-effect" data-toggle="modal" data-target="#exampleModal">
+                    <span class="sv-normal">Ingresar</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="waves-effect active" data-toggle="modal" data-target="#exampleModal2">
+                    <span class="sv-slim">Registrarme</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="collapsible-header waves-effect arrow-r mt-3">
+              <i class="sv-slim-icon fas fa-shopping-cart mr-2"></i>
+                Carrito de compras
+            </a>
+          </li>
+          <li>
+            <a class="collapsible-header waves-effect arrow-r mt-3">
+              <i class="sv-slim-icon far fa-envelope mr-2"></i>
+                Contacto
+              <i class="fas fa-angle-down rotate-icon"></i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#" class="waves-effect">
+                  <span class="sv-normal">Facebook</span></a>
+                </li>
+                <li><a href="#" class="waves-effect">
+                  <span class="sv-normal">Instagram</span></a>
+                </li>
+                <li><a href="#" class="waves-effect">
+                  <span class="sv-normal">Twitter</span></a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <!--/. Side navigation links -->
+    </ul>
+  </div>
+<!-- Fin Sidebar navigation de registro -->
+
+<!--SideNav de búsquda por filtro-->
+<div id="slide-out-2" class="side-nav side wide bg-morado">
+    <ul class="custom-scrollbar">
+      <!-- Logo -->
+      <li class="text-center">
+        <img src="<?php echo IMG?>/shoes.png" class="z-responsive">
+      </li>
+      <!--/. Logo -->
+      <!-- Side navigation links -->
+      <li>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect arrow-r active">
+              <i class="sv-slim-icon fas fa-search mr-2"></i>
+                Tipos
+              <i class="fas fa-angle-down rotate-icon"></i>
+            </a>
+            <div class="collapsible-body">
+              <ul>
+                <li>
+                  <a href="#" class="waves-effect active">
+                    <span class="sv-slim">Femeninos</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="waves-effect">
+                    <span class="sv-normal">Masculinos</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="waves-effect">
+                    <span class="sv-normal">Niños</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="waves-effect">
+                    <span class="sv-normal">Deportivos</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="collapsible-header waves-effect arrow-r active">
+              <i class="sv-slim-icon fas fa-search mr-2"></i>
+                Marcas
+              <i class="fas fa-angle-down rotate-icon"></i>
+            </a>
+            <div class="collapsible-body">
+              <ul>
+                <li>
+                  <a href="#" class="waves-effect active">
+                    <span class="sv-slim">Adidas</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="waves-effect">
+                    <span class="sv-normal">Nike</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="waves-effect">
+                    <span class="sv-normal">Reebok</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="waves-effect">
+                    <span class="sv-normal">Puma</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="waves-effect">
+                    <span class="sv-normal">Skechers</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="waves-effect">
+                    <span class="sv-normal">New Balance</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="waves-effect">
+                    <span class="sv-normal">Le Coq Sportif</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="waves-effect">
+                    <span class="sv-normal">Converse</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="waves-effect">
+                    <span class="sv-normal">Kappa</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="waves-effect">
+                    <span class="sv-normal">Alpha Tauri</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <!--/. Side navigation links -->
+    </ul>
+  </div>
+<!--Fin SideNav de búsquda por filtro-->
+
+
+
+<!--Modal ingresar-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-naranja">
+        <h5 class="modal-title white-text centrar" id="exampleModalLabel">Ingresar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body px-5 pt-5 pb-0">
+      <input type="email" id="email" name="email" placeholder="Correo" class="bordes-input form-control mb-4">
+      <input type="password" name="pass" placeholder="Contraseña" class="bordes-input form-control mb-4">
+      </div>
+      <div class="modal-footer pt-0 pb-5 px-5 text-center">
+        <button type="button" class="btn bg-morado boton-ingresar font-weight-bold mb-4">Iniciar sesión</button>
+        <a class="color-gris m-0" data-toggle="modal" data-target="#recuperarContra">¿Olvidaste tu contraseña?</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--FIN Modal ingresar-->
+
+<!--Modal: Register Form-->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Modal cascading tabs-->
+      <div class="modal-c-tabs">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs md-tabs tabs-2 bg-naranja m-0 " role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
+              Cliente</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-users mr-1"></i>
+              Empresa</a>
+          </li>
+        </ul>
+
+        <!-- Tab panels -->
+        <div class="tab-content p-0">
+          <!--Panel 7-->
+          <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+            <!--Body-->
+            <div class="modal-body px-5 pt-5 pb-0">
+                <input type="email" id="email" name="email" placeholder="Correo" class="bordes-input form-control mb-4">
+                <input type="password" name="pass" placeholder="Contraseña" class="bordes-input form-control mb-4">
+            </div>
+            <!--Footer-->
+            <div class="modal-footer pt-0 pb-5 px-5 text-center">
+              <button type="button" class="btn bg-morado boton-ingresar font-weight-bold mb-4 mx-0">Crear cuenta</button>
+              <button type="button" class="btn bg-rojo boton-ingresar font-weight-bold mx-0" data-dismiss="modal">Cerrar</button>
+            </div>
+
+          </div>
+          <!--/.Panel 7-->
+
+          <!--Panel 8-->
+          <div class="tab-pane fade" id="panel8" role="tabpanel">
+            <!--Body-->
+            <div class="modal-body px-5 pt-5 pb-0">
+              <input type="text" id="name" name="name" placeholder="Nombre" class="bordes-input form-control mb-4">
+              <input type="email" id="email" name="email" placeholder="Correo" class="bordes-input form-control mb-4">
+              <input type="text" name="nameE" id="nameE" placeholder="Nombre de la empresa" class="bordes-input form-control mb-4">
+            </div>
+            <!--Footer-->
+            <div class="modal-footer pt-0 pb-5 px-5 text-center">
+              <button type="button" class="btn bg-morado boton-ingresar font-weight-bold mb-4 mx-0">Crear cuenta</button>
+              <button type="button" class="btn bg-rojo boton-ingresar font-weight-bold mx-0" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+          <!--/.Panel 8-->
+        </div>
+
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: Register Form-->
+
+<!--Modal recuperar contraseña-->
+<!-- <div class="modal fade" id="recuperarContra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-naranja">
+        <h5 class="modal-title white-text centrar1" id="exampleModalLabel">Recuperar Contraseña</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body px-5 pt-5 pb-0">
+        <p class="color-gris m-0 text-center mb-4">Enviaremos una nueva contraseña a este correo</p>
+        <input type="email" id="email" name="email" placeholder="Correo" class="bordes-input form-control mb-4">
+      <div class="modal-footer pt-0 pb-5 px-0 text-center">
+        <button type="button" class="btn bg-morado boton-ingresar font-weight-bold mb-4">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!--FIN Modal recuperar contraseña-->
+
+
+
+
+		
+	
 

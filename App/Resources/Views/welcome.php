@@ -2,7 +2,7 @@
 	
 	<div class="container">
 		<div class="row" style="height: 100vh;">
-
+				ESTA ES LA VISTA PRINCIPAL
 
 		</div>
 	</div>
