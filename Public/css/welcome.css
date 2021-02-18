@@ -1,0 +1,48 @@
+
+.posicion-welcome{min-height: 80vh;}
+/* tamaño para las imágenes de fondo */
+.fondo-azul, .fondo-gris{width: 100%;}
+/* pocisiones del fondo gris */
+.fondo-gris{top: 900px; z-index: 2;}
+/* posiscion del titulo PRODUCTOS */
+.titulo-productos{top: -50px;}
+.welcome-hr, .filtro-hr{width: 80px; height: 5px; margin: auto; border-radius:5px ;background-color: #ff5b16;}
+.filtro-hr{background-color: #2d4d58; width: 20%;}
+ul {list-style-type: none;}
+/* tamaño de letra de los ul del filtro */
+.tam-letra-ul{font-size: 20px;}
+.a-hover:hover {color: #2d4d58 !important;}
+.borde-filtro{-webkit-border-top-right-radius: 25px; border-top-right-radius: 25px;-webkit-border-bottom-right-radius: 25px; border-bottom-right-radius: 25px;}
+.card-img-top {width: 60%; border-top-left-radius: 0; border-top-right-radius: 0px;}
+.bordes-cards{border-radius: 25px;}
+.btn-vermas{margin:0; text-transform: none; border-radius: 10px; padding: 10px; width: 80%; font-size: 1.1rem; background-color: #ff5b16;}
+/* centrar imagen de los zapatos */
+.centrar-img{margin: auto; text-align: center;}
+/* circulo dela parte del welcome */
+.circulo2{width: 200px; height: 200px; -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%; background-color: #ff5b16; left: 130px; top: -60px; z-index: -1;}
+/* titulo de empresa de calzado */
+.position-div{position: absolute; top: -50px;}
+.zapato-card{width: 100px; margin: auto; text-align: center;}
+/* quitar la sombra de los select e inputs */
+.form-control2:focus{border-color:#2d4d58; box-shadow: 0 0 0 0.1rem transparent;}
+/* cambiar propiedades de los select */
+.custom-select {color: #2d4d58; border: 3px solid #2d4d58; border-radius: 10px;}
+
+
+@media(min-width:576px){
+    .titulo-productos{top: -70px;}
+}
+@media(min-width:768px){
+    .titulo-productos{top: -90px;}
+
+}
+@media(min-width:992px){
+    .titulo-productos{top: -100px;}
+    .position-div{top: -100px;}
+}
+@media(min-width:1200px){
+    .titulo-productos{top: -150px;}
+    .circulo2{left: 175px; top: -60px;}
+    .position-div{top: -120px;}
+    
+}
