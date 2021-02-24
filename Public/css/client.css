@@ -1,0 +1,22 @@
+/* tamaño de letra del título */
+.tam-header-client{font-size: 5vw;}
+.propiedad-zapato{width: 13rem;}
+.circulo-final{width: 150px; height: 150px; -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%; background-color: #ff5b16; left: 130px; top: -60px; z-index: -1;}
+.pd-logo{top:1081px; left: 20rem;}
+ 
+
+
+/* media querys */
+@media(min-width:576px){
+
+}
+@media(min-width:768px){
+    
+}
+@media(min-width:992px){
+    .espacio-titulo{padding-top: 150px !important}
+}
+@media(min-width:1200px){
+    .espacio-titulo{padding-top: 200px !important}
+    
+}

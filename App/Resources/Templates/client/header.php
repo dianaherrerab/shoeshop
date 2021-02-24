@@ -16,6 +16,8 @@
 	<!-- Your custom styles (scroll) -->
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/scroll.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/style.css">
+  	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/welcome.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/client.css">
 	<link rel="icon" type="image/png" href="<?php echo URL; ?>/favicon.png">
 	<!-- etiquetas seo -->
 	<meta http-equiv="content-language" content="es-co">
@@ -78,9 +80,257 @@
 	echo "<input type='hidden' id='URL' name='URL' value='".URL."' />";
 
 	?>
+  <header class="container-fluid p-0 position-relative">
+    <a href="#" data-activates="slide-out" class="btn bg-naranja p-3 button-collapse d-block d-lg-none position-fixed zindex-botones">
+        <i class="fas fa-bars"></i>
+    </a>	
+    <a href="#" data-activates="slide-out-2" class="btn red p-3 button-collapse d-block d-lg-none position-fixed margen-arriba zindex-botones">
+        <i class="fas fa-search"></i>
+    </a>
+    <img src="<?php echo IMG?>/fondo-header.png" class="img-header d-none d-lg-block">
+    <div class="position-absolute col-12 p-0 d-flex row mt-lg-1">
+      <div class="col-lg-1 pt-1 text-center d-lg-flex flex-column d-none align-items-center">
+        <a class="nav-link p-0" href="#">
+          <div class="circulo d-flex align-items-center justify-content-center">
+            <i class="fas fa-2x fa-sign-out-alt color-naranja"></i>
+          </div>	
+        </a>
+        <a class="nav-link p-0 mt-lg-3" href="#">
+          <div class="circulo d-flex align-items-center justify-content-center">
+            <i class="fas fa-2x fa-user-alt color-naranja"></i>
+          </div>
+        </a>
+      </div>
+      <nav class="mb-1 navbar navbar-expand-lg d-none d-lg-block col-lg-10 p-0 align-items-start">
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav col-12 justify-content-around align-items-center font-weight-bold">
+            <li class="nav-item active"><a href="" class="white-text p-0 a-hover">DAMAS</a></li>
+            <li class="nav-item"><a href="" class=" white-text p-0 a-hover">CABALLEROS</a></li>
+            <img src="<?php echo IMG?>/shoes.png" class="zapato">
+            <li class="nav-item"><a href="" class="color-naranja p-0 a-hover">NIÑOS</a></li>
+            <li class="nav-item"><a href="" class="color-naranja p-0 a-hover">DEPORTIVOS</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="col-lg-1 pt-1 text-center d-none d-lg-block">
+        <a class="nav-link p-0 d-flex justify-content-center">
+          <div class="circulo bg-naranja d-flex align-items-center justify-content-center">
+            <i class="fas fa-2x fa-shopping-cart color-naranja white-text"></i>
+          </div>	
+        </a>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center py-5">
+		<div class="container">
+			<div class="row p-0 text-center espacio-titulo">
+				<div class="font-weight-bold col-12 tam-header-client p-0">
+					<span class="color-morado">EL MUNDO </span> <span class="color-naranja">DEL DEPORTE</span>
+				</div>
+				<p class="col-12 tamaño-letra-parrafo color-gris m-0">Todo lo que deseas está a tu alcance</p>
+				<div class="col-12 col-lg-5 my-5 d-flex align-items-center justify-content-center">
+					<img src="<?php echo IMG?>/shoes.png" class="propiedad-zapato">
+				</div>
+				<div class="col-12 col-lg-7 mt-0 mb-5 my-lg-5 d-flex align-items-center">
+					<h6 class="m-0 px-5 px-md-0">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ex fugit recusandae ad, harum voluptatum cum delectus aliquam cumque perspiciatis vitae nostrum. Nam laudantium blanditiis tempora officiis, ipsum iusto! Facere.
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquid harum .
+            lorem
+					</h6>
+				</div>
+        <div class="col-12 col-md-4 mb-3 mb-md-0 p-0 d-flex justify-content-center justify-content-md-start align-items-center">
+          <h5 class="color-morado m-0 p-0 d-flex align-items-center font-weight-bold">
+            <i class="fas fa-2x fa-id-card color-morado pr-3 d-none d-md-block"></i>
+            NIT: 123456789
+          </h5>
+        </div>
+        <div class="col-12 col-md-4 mb-3 mb-md-0 p-0 d-flex justify-content-center align-items-center">
+          <h5 class="color-morado m-0 p-0 d-flex align-items-center font-weight-bold">
+            <i class="fas fa-2x fa-phone-square-alt color-morado pr-3 d-none d-md-block"></i>  
+            TEL: 12345678
+          </h5>
+        </div>
+        <div class="col-12 col-md-4 p-0 d-flex justify-content-center justify-content-md-end align-items-center">
+          <h5 class="color-morado  m-0 p-0 d-flex align-items-center font-weight-bold">
+            <i class="fas fa-2x fa-map-marker-alt color-morado pr-3 d-none d-md-block"></i>
+            Calle 34 BE 55A barrio La UIS
+          </h5>
+        </div>
+			</div>
+		</div>
+    </div>
+
+  </header>
+
+
+
+  <div id="slide-out" class="side-nav side wide bg-naranja">
+      <ul class="custom-scrollbar">
+
+        <li class="text-center">
+          <img src="<?php echo IMG?>/shoes.png" class="z-responsive">
+        </li>
+        <li>
+          <ul class="collapsible collapsible-accordion">
+            <li>
+              <a class="collapsible-header waves-effect arrow-r active">
+                <i class="sv-slim-icon fas fa-user-alt mr-2"></i>
+                  Mi perfil
+              </a>
+            </li>
+            <li>
+              <a class="collapsible-header waves-effect arrow-r mt-3">
+                <i class="sv-slim-icon fas fa-shopping-cart mr-2"></i>
+                  Carrito de compras
+              </a>
+            </li>
+            <li>
+              <a class="collapsible-header waves-effect arrow-r mt-3">
+                <i class="sv-slim-icon far fa-envelope mr-2"></i>
+                  Contacto
+                <i class="fas fa-angle-down rotate-icon"></i></a>
+              <div class="collapsible-body">
+                <ul>
+                  <li><a href="#" class="waves-effect">
+                    <span class="sv-normal">Facebook</span></a>
+                  </li>
+                  <li><a href="#" class="waves-effect">
+                    <span class="sv-normal">Instagram</span></a>
+                  </li>
+                  <li><a href="#" class="waves-effect">
+                    <span class="sv-normal">Twitter</span></a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+			<li>
+              <a class="collapsible-header waves-effect arrow-r mt-5">
+                <i class="sv-slim-icon fas fa-sign-out-alt mr-2"></i>
+                  Cerrar sesión
+              </a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+  </div>
+
+  <div id="slide-out-2" class="side-nav side wide bg-morado">
+      <ul class="custom-scrollbar">
+      
+        <li class="text-center">
+          <img src="<?php echo IMG?>/zapato-azul.png" class="z-responsive">
+        </li>
+        <li>
+          <ul class="collapsible collapsible-accordion">
+            <li>
+              <a class="collapsible-header waves-effect arrow-r active">
+                <i class="sv-slim-icon fas fa-search mr-2"></i>
+                  Tipos
+                <i class="fas fa-angle-down rotate-icon"></i>
+              </a>
+              <div class="collapsible-body">
+                <ul>
+                  <li>
+                    <a href="#" class="waves-effect active">
+                      <span class="sv-slim">Femeninos</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="waves-effect">
+                      <span class="sv-normal">Masculinos</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="waves-effect">
+                      <span class="sv-normal">Niños</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="waves-effect">
+                      <span class="sv-normal">Deportivos</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a class="collapsible-header waves-effect arrow-r active">
+                <i class="sv-slim-icon fas fa-search mr-2"></i>
+                  Marcas
+                <i class="fas fa-angle-down rotate-icon"></i>
+              </a>
+              <div class="collapsible-body">
+                <ul>
+                  <li>
+                    <a href="#" class="waves-effect active">
+                      <span class="sv-slim">Adidas</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="waves-effect">
+                      <span class="sv-normal">Nike</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="waves-effect">
+                      <span class="sv-normal">Reebok</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="waves-effect">
+                      <span class="sv-normal">Puma</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="waves-effect">
+                      <span class="sv-normal">Skechers</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="waves-effect">
+                      <span class="sv-normal">New Balance</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="waves-effect">
+                      <span class="sv-normal">Le Coq Sportif</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="waves-effect">
+                      <span class="sv-normal">Converse</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="waves-effect">
+                      <span class="sv-normal">Kappa</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="waves-effect">
+                      <span class="sv-normal">Alpha Tauri</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+		
 	
-	<ul>
-		<li><button><a href="<?php echo URL; ?>/ClientProfile">mi perfil</a></button></li>
-		<li><button>cerrar sesión</button></li>
-	</ul>
 

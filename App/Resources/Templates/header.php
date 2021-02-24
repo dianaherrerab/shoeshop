@@ -106,7 +106,7 @@
         </div>
       </nav>
       <div class="col-lg-1 pt-1 text-center d-none d-lg-block">
-        <a class="nav-link p-0 d-flex justify-content-center" href="#">
+        <a class="nav-link p-0 d-flex justify-content-center" >
           <div class="circulo bg-naranja d-flex align-items-center justify-content-center">
             <i class="fas fa-2x fa-shopping-cart color-naranja white-text"></i>
           </div>	
