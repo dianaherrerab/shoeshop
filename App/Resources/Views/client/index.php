@@ -239,8 +239,13 @@
 		</div>
 
 
-		<div class="white py-5 d-flex justify-content-center align-items-center">
-			<img class="" src="<?php echo IMG?>/shoes.png">
+		<div class="white py-5">
+			<div class="container">
+				<div class="flex-column text-center">
+					<img class="mb-2" src="<?php echo IMG?>/shoes.png">
+					<p class=" color-gris m-0">Todo lo que deseas está a tu alcance</p>
+				</div>
+			</div>
 		</div>
 	</div>
 

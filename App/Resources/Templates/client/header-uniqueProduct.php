@@ -16,8 +16,9 @@
 	<!-- Your custom styles (scroll) -->
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/scroll.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/style.css">
-  	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/welcome.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/welcome.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/client/index.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/client/header.css">
 	<link rel="icon" type="image/png" href="<?php echo URL; ?>/favicon.png">
 	<!-- etiquetas seo -->
 	<meta http-equiv="content-language" content="es-co">
@@ -122,42 +123,90 @@
     </div>
 
     <div class="d-flex align-items-center justify-content-center py-5">
-		<div class="container">
-			<div class="row p-0 text-center espacio-titulo">
-				<div class="font-weight-bold col-12 tam-header-client p-0">
-					<span class="color-morado">EL MUNDO </span> <span class="color-naranja">DEL DEPORTE</span>
-				</div>
-				<p class="col-12 tamaño-letra-parrafo color-gris m-0">Todo lo que deseas está a tu alcance</p>
-				<div class="col-12 col-lg-5 my-5 d-flex align-items-center justify-content-center">
-					<img src="<?php echo IMG?>/shoes.png" class="propiedad-zapato">
-				</div>
-				<div class="col-12 col-lg-7 mt-0 mb-5 my-lg-5 d-flex align-items-center">
-					<h6 class="m-0 px-5 px-md-0">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ex fugit recusandae ad, harum voluptatum cum delectus aliquam cumque perspiciatis vitae nostrum. Nam laudantium blanditiis tempora officiis, ipsum iusto! Facere.
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquid harum .
-            lorem
-					</h6>
-				</div>
-        <div class="col-12 col-md-4 mb-3 mb-md-0 p-0 d-flex justify-content-center justify-content-md-start align-items-center">
-          <h5 class="color-morado m-0 p-0 d-flex align-items-center font-weight-bold">
-            <i class="fas fa-2x fa-id-card color-morado pr-3 d-none d-md-block"></i>
-            NIT: 123456789
-          </h5>
+      <div class="container">
+        <div class="row p-0 text-center espacio-titulo justify-content-center">
+          <div class="col-8 col-sm-6 p-0 d-flex align-items-center">
+            <div id="carousel-example-1z" class="carousel slide carousel-fade ancho-img" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                  <img class="d-block w-100" src="<?php echo IMG?>/tacones.jpeg"
+                    alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="<?php echo IMG?>/tacones.jpeg"
+                    alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="<?php echo IMG?>/tacones.jpeg"
+                    alt="Third slide">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon bg-naranja" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                <span class="carousel-control-next-icon bg-naranja" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 mt-5 mt-lg-0">
+            <div class="font-weight-bold color-morado letra-zapato">
+              Zapatilla Dama Cuero
+            </div>
+            <div class="color-naranja letra-zapato mb-4">
+              300.000 COP
+            </div>
+            <div class="container">
+              <div class="row justify-content-around">
+                <select class="browser-default custom-select form-control2 col-12 col-md-5 col-lg-12 mb-4 mb-md-5 mb-lg-4">
+                  <option selected>Seleccione una talla</option>
+                  <option value="1">27</option>
+                  <option value="2">34</option>
+                  <option value="3">28</option>
+                </select>
+                <select class="browser-default custom-select form-control2 mb-5 col-12 col-md-5 col-lg-12">
+                  <option selected>Seleccione cantidad</option>
+                  <option value="1">27</option>
+                  <option value="2">34</option>
+                  <option value="3">28</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <a href="" class=" font-weight-bold white-text bg-naranja boton-ingresar2 p-3">Agregar al carrito</a>
+            </div>
+            <div class="color-gris mt-5 text-left">
+              <div>Marca: <span>XXXX</span></div>
+              <div>Material: <span>XXXX</span></div>
+              <div>Tipo de calzado: <span>XXXX</span></div>
+              <div>Género: <span>XXXX</span></div>
+              <div>Color: <span>XXXX</span></div>
+            </div>
+
+          </div>
+          <div class="white mt-5">
+            <div class="flex-column text-left color-gris px-lg-0 px-3">
+              <h5 class="m-0 mb-3 font-weight-bold">
+                DESCRIPCIÓN:
+              </h5>
+              <h6 class="m-0">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni accusamus fuga velit neque, recusandae dicta magnam sit repellendus unde voluptatem eius distinctio illum quo ad aliquid cum modi? Corporis, totam!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quam at velit consequatur. Voluptatem delectus tempore doloribus tempora eligendi? Voluptate perferendis repellat atque assumenda ipsum animi esse, laudantium nihil quis.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit neque laudantium aperiam, adipisci ipsam sapiente exercitationem odit voluptate numquam autem dolorem nobis magni, inventore voluptatibus, rem enim nesciunt doloribus amet.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, facere eveniet! Voluptatem, esse. Odio, ratione optio vel ut id explicabo aspernatur ullam eveniet possimus fuga facilis temporibus cumque necessitatibus ea?
+              </h6>
+            </div>
+            
+          </div>
         </div>
-        <div class="col-12 col-md-4 mb-3 mb-md-0 p-0 d-flex justify-content-center align-items-center">
-          <h5 class="color-morado m-0 p-0 d-flex align-items-center font-weight-bold">
-            <i class="fas fa-2x fa-phone-square-alt color-morado pr-3 d-none d-md-block"></i>  
-            TEL: 12345678
-          </h5>
-        </div>
-        <div class="col-12 col-md-4 p-0 d-flex justify-content-center justify-content-md-end align-items-center">
-          <h5 class="color-morado  m-0 p-0 d-flex align-items-center font-weight-bold">
-            <i class="fas fa-2x fa-map-marker-alt color-morado pr-3 d-none d-md-block"></i>
-            Calle 34 BE 55A barrio La UIS
-          </h5>
-        </div>
-			</div>
-		</div>
+      </div>
     </div>
 
   </header>
