@@ -16,9 +16,9 @@
 	<!-- Your custom styles (scroll) -->
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/scroll.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/style.css">
-  <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/welcome.css">
+  	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/welcome.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/client/index.css">
-  <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/client/unique.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/client/profile.css">
 	<link rel="icon" type="image/png" href="<?php echo URL; ?>/favicon.png">
 	<!-- etiquetas seo -->
 	<meta http-equiv="content-language" content="es-co">
@@ -90,7 +90,7 @@
     </a>
     <img src="<?php echo IMG?>/fondo-header.png" class="img-header d-none d-lg-block">
     <div class="position-absolute pl-2 col-12 p-0 d-flex row mt-lg-1">
-      <div class="col-lg-1 pt-1 pl-5 text-center d-lg-flex flex-column d-none align-items-center">
+      <div class="col-lg-1 pl-5 pt-1 text-center d-lg-flex flex-column d-none align-items-center">
         <a class="nav-link p-0" href="#">
           <div class="circulo d-flex align-items-center justify-content-center">
             <i class="fas fa-2x fa-user-alt color-naranja"></i>
@@ -124,90 +124,76 @@
 
     <div class="d-flex align-items-center justify-content-center py-5">
       <div class="container">
-        <div class="row p-0 text-center espacio-titulo justify-content-center">
-          <div class="col-8 col-sm-6 p-0 d-flex align-items-center">
-            <div id="carousel-example-1z" class="carousel slide carousel-fade ancho-img" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                  <img class="d-block w-100" src="<?php echo IMG?>/tacones.jpeg"
-                    alt="First slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="<?php echo IMG?>/tacones.jpeg"
-                    alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="<?php echo IMG?>/tacones.jpeg"
-                    alt="Third slide">
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon bg-naranja" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                <span class="carousel-control-next-icon bg-naranja" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
+        <div class="p-0 espacio-titulo">
+          <div class="font-weight-bold col-12 letra-info pb-5 color-morado text-center ">
+            Mi información personal
+            <hr class="info-hr bg-naranja">
+          </div>
+          <div>
+            <div class="letra-subti font-weight-bold color-morado m-0 d-flex align-items-center">
+              <i class="fas fa-lg fa-address-card pr-3"></i>
+              Datos personales
             </div>
           </div>
-          <div class="col-12 col-lg-6 mt-5 mt-lg-0">
-            <div class="font-weight-bold color-morado letra-zapato">
-              Zapatilla Dama Cuero
+          <form action="" method="post">
+            <div class="row my-5">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Primer nombre" aria-label="Primer nombre" value="Karen">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Segundo nombre" aria-label="Segundo nombre" value="Daniela">
+              </div>
             </div>
-            <div class="color-naranja letra-zapato mb-4">
-              300.000 COP
+            <div class="row mb-5">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Primer apellido" aria-label="Primer apellido" value="Rodriguez">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Segundo apellido" aria-label="Segundo apellido" value="Martinez">
+              </div>
             </div>
-            <div class="container">
-              <div class="row justify-content-around">
-                <select class="browser-default custom-select form-control2 col-12 col-md-5 col-lg-12 mb-4 mb-md-5 mb-lg-4">
-                  <option selected>Seleccione una talla</option>
-                  <option value="1">27</option>
-                  <option value="2">34</option>
-                  <option value="3">28</option>
+            <div class="row mb-5">
+              <div class="col">
+                <select class="browser-default form-control">
+                  <option selected>Tipo de documento</option>
+                  <option value="1">CC</option>
+                  <option value="2">CE</option>
+                  <option value="3">TI</option>
+                  <option value="4">PA</option>
                 </select>
-                <select class="browser-default custom-select form-control2 mb-5 col-12 col-md-5 col-lg-12">
-                  <option selected>Seleccione cantidad</option>
-                  <option value="1">27</option>
-                  <option value="2">34</option>
-                  <option value="3">28</option>
-                </select>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Número" aria-label="Número" value="123434343">
               </div>
             </div>
             <div>
-              <a href="" class=" font-weight-bold white-text bg-naranja boton-ingresar2 p-3">Agregar al carrito</a>
+              <div class="letra-subti font-weight-bold color-morado m-0 d-flex align-items-center">
+                <i class="fas fa-lg fa-phone-square-alt pr-3"></i>
+                            Datos de contacto
+              </div>
             </div>
-            <div class="color-gris mt-5 text-left">
-              <div>Marca: <span>XXXX</span></div>
-              <div>Material: <span>XXXX</span></div>
-              <div>Tipo de calzado: <span>XXXX</span></div>
-              <div>Género: <span>XXXX</span></div>
-              <div>Color: <span>XXXX</span></div>
+            <div class="row my-5">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Teléfono" aria-label="Tel" value="6576787">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Dirección" aria-label="Dir" value="Cra8 be 3456">
+              </div>
             </div>
-
-          </div>
-          <div class="white mt-5">
-            <div class="flex-column text-left color-gris px-lg-0 px-3">
-              <h5 class="m-0 mb-3 font-weight-bold">
-                DESCRIPCIÓN:
-              </h5>
-              <h6 class="m-0">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni accusamus fuga velit neque, recusandae dicta magnam sit repellendus unde voluptatem eius distinctio illum quo ad aliquid cum modi? Corporis, totam!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quam at velit consequatur. Voluptatem delectus tempore doloribus tempora eligendi? Voluptate perferendis repellat atque assumenda ipsum animi esse, laudantium nihil quis.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit neque laudantium aperiam, adipisci ipsam sapiente exercitationem odit voluptate numquam autem dolorem nobis magni, inventore voluptatibus, rem enim nesciunt doloribus amet.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, facere eveniet! Voluptatem, esse. Odio, ratione optio vel ut id explicabo aspernatur ullam eveniet possimus fuga facilis temporibus cumque necessitatibus ea?
-              </h6>
+            <!-- <div class="text-center">
+              <a href="" class=" font-weight-bold white-text bg-morado boton-ingresar2" data-toggle="modal" data-target="#exampleModal3">Actualizar</a>
+            </div> -->
+            <div class="text-center">
+              <button type="submit" class="font-weight-bold white-text bg-morado boton-guardar">
+                Guardar
+              </button>
             </div>
-            
-          </div>
+          </form>
+          
         </div>
       </div>
     </div>
+
 
   </header>
 
@@ -368,6 +354,8 @@
         </li>
       </ul>
   </div>
+
+
 
 
 

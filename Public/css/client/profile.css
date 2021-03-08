@@ -1,0 +1,28 @@
+.letra-info{font-size: 2rem;}
+.letra-subti{font-size: 1.5rem;}
+.info-hr{width: 120px; height: 5px; margin: auto; border-radius:5px;}
+.form-control3:focus{border-color:transparent; box-shadow: 0 0 0 0.1rem #8b6250;}
+.texto-modal{padding-left:120px;}
+.boton-guardar{width: 200px;margin:0; text-transform: none; border-radius: 10px; padding: 10px; font-size: 1.1rem; cursor:pointer}
+
+
+.borde-hist{border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;}
+.borde-abajo{border-radius: 10px;}
+.boton-historial{margin:0; text-transform: none; padding: 10px; font-size: 0.8rem;}
+.cambiar-color:hover{background-color: #2d4d58;}
+.form-check-input[type=checkbox]+label:before, .form-check-input[type=checkbox]:not(.filled-in)+label:after, label.btn input[type=checkbox]+label:before, label.btn input[type=checkbox]:not(.filled-in)+label:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    z-index: 0;
+    border: 2px solid #ff5b16;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    margin-top: 3px;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+}
