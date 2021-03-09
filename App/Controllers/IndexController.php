@@ -8,6 +8,12 @@ class IndexController extends Controller
 	{
 		// llamamos al constructor del padre
 		parent::__construct();
+		// Importar modelo de usuario
+		$this->UserModel = $this->model("User");
+		// Importar modelo de las categorias
+		$this->CategoryModel = $this->model("Category");
+		// Importar modelo de los usuarios
+        $this->ProductModel = $this->model("Product");
 	}
 
 	// función para mostrar la vista
@@ -16,5 +22,6 @@ class IndexController extends Controller
 		// mostramos la vista
 		$this->view('welcome');
 	}
+
 
 }

@@ -10,7 +10,7 @@ class User extends Model
 		// variable para declarar el nombre de la tabla al cual pertenece
 		$this->table = "users";
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
-		$this->fillable = [ "name", "username", "slug", "password", "role", "photo", "blocked", "_token", "created_at", "updated_at" ];
+		$this->fillable = [ "name", "username", "slug", "password", "role", "blocked", "_token", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [ "password", "_token" ];
 	}
@@ -38,13 +38,13 @@ class User extends Model
 		return "";
 	}
 
-	// función para guardar un usuario
+	// función para buscar un usuario
 	public function all( $input = 'id', $order = 'asc' )
 	{
 		return parent::all( $input, $order );
 	}
 
-	// función para buscar por id
+	// función para guardar un usuario
 	public function store( $request )
 	{
 		return parent::store( $request );

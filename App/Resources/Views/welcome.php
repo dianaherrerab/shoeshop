@@ -1,5 +1,9 @@
 
 <?php require_once RESOURCES."/Templates/header.php"; ?>
+<?php 
+$productos = $this->ProductModel->getProducts( 1 );
+$categorias = $this->CategoryModel->getCategories();
+?>
 
 	<div class="container-fluid position-relative p-0">
 		<img src="<?php echo IMG?>/fondo-azul.png" class="fondo-azul m-0 ">
@@ -31,16 +35,17 @@
 											<span class="sv-normal">Masculinos</span>
 											</a>
 										</li>
-										<li>
-											<a href="#" class="waves-effect color-gris a-hover">
-											<span class="sv-normal">Niños</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="waves-effect  color-gris a-hover">
-											<span class="sv-normal">Deportivos</span>
-											</a>
-										</li>
+									<?php
+										foreach ($categorias as $categoria) {
+										echo '
+											<li>
+												<a href="#" class="waves-effect color-gris a-hover">
+												<span class="sv-normal">'.$categoria['name'].'</span>
+												</a>
+											</li>
+										';
+										}
+									?>
 									</ul>
 								</div>
 							</li>
@@ -109,130 +114,41 @@
 				</div>
 				<div class="container col-12 col-lg-9">
 					<div class="row">
-						<div class="col-12 col-sm-6 col-lg-4 py-4">
-							<div class="card text-center bordes-cards py-3">
-								<img class="card-img-top zapato-card" src="<?php echo IMG?>/shoes.png">
-								<div class="card-body px-1">
-									<h4 class="color-morado font-weight-bold">Zapato</h4>
-									<h4 class="color-naranja font-weight-bold">30.000 COP</h4>
-									<div class="container-fluid">
-										<div class="row">
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>C</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>T</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<a href="" class="white-text btn-vermas p-0 col-3 d-flex align-items-center justify-content-center">
-												<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
-											</a>
+					<?php
+							foreach ($productos as $producto) {
+								echo '
+								<div class="col-12 col-sm-6 col-lg-4 py-4">
+									<div class="card text-center bordes-cards py-3">
+										<img class="card-img-top zapato-card" src="'.IMG.'/bd-products/'.$producto['imagen'].'">
+										<div class="card-body px-1">
+											<h4 class="color-morado font-weight-bold">'.$producto['name'].'</h4>
+											<h4 class="color-naranja font-weight-bold">'.$producto['price'].' COP</h4>
+											<div class="container-fluid">
+												<div class="row">
+													<select class="browser-default custom-select m-auto form-control2 col-4">
+														<option selected>C</option>
+														<option value="1">27</option>
+														<option value="2">34</option>
+														<option value="3">28</option>
+													</select>
+													<select class="browser-default custom-select m-auto form-control2 col-4">
+														<option selected>Talla</option>
+														<option value="1">'.$producto['size'].'</option>
+													</select>
+													<a href="" class="white-text btn-vermas p-0 col-3 d-flex align-items-center justify-content-center">
+														<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
+													</a>
+												</div>
+											</div>
+											<div class="col-12 mt-4">
+												<a href="" class="white-text btn-vermas">Ver más</a>
+											</div>
 										</div>
 									</div>
-									<div class="col-12 mt-4">
-										<a href="" class="white-text btn-vermas">Ver más</a>
-									</div>
 								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6 col-lg-4 py-4">
-							<div class="card text-center bordes-cards py-3">
-								<img class="card-img-top zapato-card" src="<?php echo IMG?>/shoes.png">
-								<div class="card-body px-1">
-									<h4 class="color-morado font-weight-bold">Zapato</h4>
-									<h4 class="color-naranja font-weight-bold">30.000 COP</h4>
-									<div class="container-fluid">
-										<div class="row">
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>C</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>T</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<a href="" class="white-text btn-vermas p-0 col-3 d-flex align-items-center justify-content-center">
-												<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
-											</a>
-										</div>
-									</div>
-									<div class="col-12 mt-4">
-										<a href="" class="white-text btn-vermas">Ver más</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6 col-lg-4 py-4">
-							<div class="card text-center bordes-cards py-3">
-								<img class="card-img-top zapato-card" src="<?php echo IMG?>/shoes.png">
-								<div class="card-body px-1">
-									<h4 class="color-morado font-weight-bold">Zapato</h4>
-									<h4 class="color-naranja font-weight-bold">30.000 COP</h4>
-									<div class="container-fluid">
-										<div class="row">
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>C</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>T</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<a href="" class="white-text btn-vermas p-0 col-3 d-flex align-items-center justify-content-center">
-												<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
-											</a>
-										</div>
-									</div>
-									<div class="col-12 mt-4">
-										<a href="" class="white-text btn-vermas">Ver más</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6 col-lg-4 py-4">
-							<div class="card text-center bordes-cards py-3">
-								<img class="card-img-top zapato-card" src="<?php echo IMG?>/shoes.png">
-								<div class="card-body px-1">
-									<h4 class="color-morado font-weight-bold">Zapato</h4>
-									<h4 class="color-naranja font-weight-bold">30.000 COP</h4>
-									<div class="container-fluid">
-										<div class="row">
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>C</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>T</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<a href="" class="white-text btn-vermas p-0 col-3 d-flex align-items-center justify-content-center">
-												<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
-											</a>
-										</div>
-									</div>
-									<div class="col-12 mt-4">
-										<a href="" class="white-text btn-vermas">Ver más</a>
-									</div>
-								</div>
-							</div>
-						</div>
+								';
+							}
+						?>
 					</div>
 				</div>
 			</div>

@@ -39,7 +39,7 @@ class Auth extends Model
 		$username = parent::__real_escape_string( $username );
 		$password = parent::__real_escape_string( $password );
 		// buscamos si existe el usuario en la base de datos
-		$result = parent::__query( ' SELECT ' . $this->selectInputs() . ' FROM ' . $this->user->table . ' WHERE ' . $this->username . ' = "' . $username .'" ' );;
+		$result = parent::__query( ' SELECT ' . $this->selectInputs() . ' FROM ' . $this->user->table . ' WHERE ' . $this->username . ' = "' . $username .'" ' );
 		// validamos si tenemos un error en la ejecución de la consulta
 		if( !$result['status'] )
 			// retornamos el mensaje de error
@@ -141,6 +141,7 @@ class Auth extends Model
 			'name' => $name,
 			'username' => $username,
 			'slug' => SlugTrait::generate( $username ),
+			'role' => 1,
 			'password' => $password,
 			'created_at' => date('Y-m-d h:i:s')
 		];

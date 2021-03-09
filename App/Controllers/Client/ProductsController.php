@@ -21,4 +21,6 @@ class ProductsController extends Controller
     public function uniqueproduct(){
         $this->view('client/uniqueProduct');
     }
+
+	
 }

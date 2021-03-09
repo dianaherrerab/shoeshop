@@ -304,7 +304,7 @@
       </ul>
   </div>
 
-
+<!-- Modal para iniciar sesion -->
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -316,18 +316,22 @@
           </button>
         </div>
         <div class="modal-body px-5 pt-5 pb-0">
-        <input type="email" id="email" name="email" placeholder="Correo" class="bordes-input form-control mb-4">
-        <input type="password" name="pass" placeholder="Contraseña" class="bordes-input form-control mb-4">
-        </div>
-        <div class="modal-footer pt-0 pb-5 px-5 text-center">
-          <button type="button" class="btn bg-morado boton-ingresar font-weight-bold mb-4">Iniciar sesión</button>
-          <a class="color-gris m-0" data-toggle="modal" data-target="#recuperarContra">¿Olvidaste tu contraseña?</a>
-        </div>
+        <form method="POST" action="<?php echo URL; ?>/auth/access" class="login-form">
+          <input type="email" name="username" id="username" placeholder="Correo" class="bordes-input form-control mb-4">
+          <input type="password" name="password" id="password" placeholder="Contraseña" class="bordes-input form-control mb-4">
+          </div>
+          <div class="modal-footer pt-0 pb-5 px-5 text-center">
+            <button type="button" id="btn-login" class="btn bg-morado boton-ingresar font-weight-bold mb-4">Iniciar sesión</button>
+            <a href="<?php echo URL; ?>/Auth/recover" class="color-gris m-0" data-toggle="modal" data-target="#recuperarContra">¿Olvidaste tu contraseña?</a>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 
+<!-- Fin de modal para iniciar sesion -->
 
+<!-- Modal para registrarse -->
 
   <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog cascading-modal" role="document">
@@ -390,7 +394,9 @@
     </div>
   </div>
 
+<!-- fin Modal para registrarse -->
 
+<!-- Modal para recuperar contraseña -->
 
   <div class="modal fade" id="recuperarContra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

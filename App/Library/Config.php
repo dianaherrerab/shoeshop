@@ -33,7 +33,7 @@ class Config
 				// contraseña del servidor de base de datos
 				'PASSWORD' => '',
 				// nombre de la base de datos
-				'NAME' => 'framework',
+				'NAME' => 'shoeshop',
 				// cotejamiento de la base de datos
 				'CHARSET' => 'utf-8',
 				// zona horaria de la base de datos

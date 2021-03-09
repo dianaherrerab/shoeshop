@@ -54,4 +54,8 @@ class Product extends Model
 		return parent::pagination( $pagina, $value_whr, $input_whr );
 	}
 
+	// Función para obtener todos los productos
+	public function getProducts( $id_store ){
+		return parent::customer("SELECT p.*, i.name as imagen, ps.sizeId as size, ps.quantity FROM " .$this->table ." as p INNER JOIN images as i on i.productId = p.productId INNER JOIN productssize as ps on ps.productId = p.productId WHERE p.storeId = '".$id_store."' AND p.statusProductId = 1");
+	}
 }

@@ -1,7 +1,7 @@
 <?php
 
 // Modelo generado por medio de Blue Ghost
-class Categories extends Model
+class Category extends Model
 {
 	// función constructor del modelo
 	public function __construct()
@@ -54,4 +54,8 @@ class Categories extends Model
 		return parent::pagination( $pagina, $value_whr, $input_whr );
 	}
 
+	// Función para obtener todos las categorias
+	public function getCategories(){
+		return parent::customer("SELECT * FROM ".$this->table."" );
+	}
 }

@@ -63,7 +63,7 @@ $(document).ready(function(){
 			},
 			error: function(xhr) { // if error occured
 			   	toastr.error("Ha ocurrido un error.");
-			    // console.log(xhr.statusText + xhr.responseText);
+			     console.log(xhr.statusText + xhr.responseText);
 			},
 		});
 		return false;
