@@ -16,8 +16,12 @@
 	<!-- Your custom styles (scroll) -->
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/scroll.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/style.css">
-  	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/welcome.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/welcome.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/client/index.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/client/unique.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/client/shoppingCar.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/client/profile.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/client/buy.css">
 	<link rel="icon" type="image/png" href="<?php echo URL; ?>/favicon.png">
 	<!-- etiquetas seo -->
 	<meta http-equiv="content-language" content="es-co">
@@ -121,44 +125,6 @@
       </div>
     </div>
 
-    <div class="d-flex align-items-center justify-content-center py-5">
-		<div class="container">
-			<div class="row p-0 text-center espacio-titulo">
-				<div class="font-weight-bold col-12 tam-header-client p-0">
-					<span class="color-morado">EL MUNDO </span> <span class="color-naranja">DEL DEPORTE</span>
-				</div>
-				<p class="col-12 tamaño-letra-parrafo color-gris m-0">Todo lo que deseas está a tu alcance</p>
-				<div class="col-12 col-lg-5 my-5 d-flex align-items-center justify-content-center">
-					<img src="<?php echo IMG?>/shoes.png" class="propiedad-zapato">
-				</div>
-				<div class="col-12 col-lg-7 mt-0 mb-5 my-lg-5 d-flex align-items-center">
-					<h6 class="m-0 px-5 px-md-0">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ex fugit recusandae ad, harum voluptatum cum delectus aliquam cumque perspiciatis vitae nostrum. Nam laudantium blanditiis tempora officiis, ipsum iusto! Facere.
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquid harum .
-            lorem
-					</h6>
-				</div>
-        <div class="col-12 col-md-4 mb-3 mb-md-0 p-0 d-flex justify-content-center justify-content-md-start align-items-center">
-          <h5 class="color-morado m-0 p-0 d-flex align-items-center font-weight-bold">
-            <i class="fas fa-2x fa-id-card color-morado pr-3 d-none d-md-block"></i>
-            NIT: 123456789
-          </h5>
-        </div>
-        <div class="col-12 col-md-4 mb-3 mb-md-0 p-0 d-flex justify-content-center align-items-center">
-          <h5 class="color-morado m-0 p-0 d-flex align-items-center font-weight-bold">
-            <i class="fas fa-2x fa-phone-square-alt color-morado pr-3 d-none d-md-block"></i>  
-            TEL: 12345678
-          </h5>
-        </div>
-        <div class="col-12 col-md-4 p-0 d-flex justify-content-center justify-content-md-end align-items-center">
-          <h5 class="color-morado  m-0 p-0 d-flex align-items-center font-weight-bold">
-            <i class="fas fa-2x fa-map-marker-alt color-morado pr-3 d-none d-md-block"></i>
-            Calle 34 BE 55A barrio La UIS
-          </h5>
-        </div>
-			</div>
-		</div>
-    </div>
 
   </header>
 

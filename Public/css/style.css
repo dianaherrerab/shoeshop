@@ -3,7 +3,7 @@
 /* quitar la sombra al navbar en el header */
 .navbar { box-shadow: none}
 /* poner fondo al header */
-header{min-height: 30vh;}
+/* header{min-height: 30vh;} */
 /*poner los colores de los ul del header y a sus íconos*/
 .color-naranja{color:#ff5b16}
 .color-morado{color:#2d4d58;}
@@ -81,18 +81,18 @@ footer hr{width: 20%; height: 5px; margin-left: 0px; border-radius:5px ;backgrou
 @media(min-width:576px){
     .tamaño-letra-header{font-size: 40px;}
     .tamaño-letra-parrafo{font-size: 22px;}
-    header{min-height: 40vh;}
+    /* header{min-height: 40vh;} */
 }
 @media(min-width:768px){
     .tamaño-letra-header{font-size: 45px;}
     .tamaño-letra-parrafo{font-size: 28px;}
-    header{min-height: 50vh;}
+    /* header{min-height: 50vh;} */
 }
 @media(min-width:992px){
     .tamaño-letra-header{font-size: 40px;}
     .tamaño-letra-parrafo{font-size: 25px;}
     .padding-arriba{padding-top: 50px !important;}
-    header{min-height: 70vh}
+    /* header{min-height: 70vh} */
     .img-titulo{width: 100%;}
     .posicion-header{left: 10%; right: 5%; margin: 0; top: 80px;}
 }
@@ -101,6 +101,6 @@ footer hr{width: 20%; height: 5px; margin-left: 0px; border-radius:5px ;backgrou
     .tamaño-letra-header{font-size: 58px;}
     .tamaño-letra-parrafo{font-size: 35px;}
     .padding-arriba{padding-top: 150px !important;}
-    header{min-height: 85vh;}
+    /* header{min-height: 85vh;} */
     
 }

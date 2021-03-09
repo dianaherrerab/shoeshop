@@ -1,4 +1,77 @@
-<?php require_once RESOURCES."/Templates/client/header-profile.php"; ?>
+<?php require_once RESOURCES."/Templates/client/header.php"; ?>
+
+<div class="d-flex align-items-center justify-content-center py-5">
+    <div class="container">
+        <div class="p-0 espacio-titulo">
+          <div class="font-weight-bold col-12 letra-info pb-5 color-morado text-center ">
+            Mi información personal
+            <hr class="info-hr bg-naranja">
+          </div>
+          <div>
+            <div class="letra-subti font-weight-bold color-morado m-0 d-flex align-items-center">
+              <i class="fas fa-lg fa-address-card pr-3"></i>
+              Datos personales
+            </div>
+          </div>
+          <form action="" method="post">
+            <div class="row my-5">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Primer nombre" aria-label="Primer nombre" value="Karen">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Segundo nombre" aria-label="Segundo nombre" value="Daniela">
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Primer apellido" aria-label="Primer apellido" value="Rodriguez">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Segundo apellido" aria-label="Segundo apellido" value="Martinez">
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col">
+                <select class="browser-default form-control">
+                  <option selected>Tipo de documento</option>
+                  <option value="1">CC</option>
+                  <option value="2">CE</option>
+                  <option value="3">TI</option>
+                  <option value="4">PA</option>
+                </select>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Número" aria-label="Número" value="123434343">
+              </div>
+            </div>
+            <div>
+              <div class="letra-subti font-weight-bold color-morado m-0 d-flex align-items-center">
+                <i class="fas fa-lg fa-phone-square-alt pr-3"></i>
+                            Datos de contacto
+              </div>
+            </div>
+            <div class="row my-5">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Teléfono" aria-label="Tel" value="6576787">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Dirección" aria-label="Dir" value="Cra8 be 3456">
+              </div>
+            </div>
+            <!-- <div class="text-center">
+              <a href="" class=" font-weight-bold white-text bg-morado boton-ingresar2" data-toggle="modal" data-target="#exampleModal3">Actualizar</a>
+            </div> -->
+            <div class="text-center">
+              <button type="submit" class="font-weight-bold white-text bg-morado boton-guardar">
+                Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+
+
 
 <img src="<?php echo IMG?>/fondo-gris.png" class="fondo-gris m-0">
 
