@@ -13,7 +13,7 @@ ul {list-style-type: none;}
 .tam-letra-ul{font-size: 20px;}
 .a-hover:hover {color: #2d4d58 !important;}
 .borde-filtro{-webkit-border-top-right-radius: 25px; border-top-right-radius: 25px;-webkit-border-bottom-right-radius: 25px; border-bottom-right-radius: 25px;}
-.card-img-top {width: 60%; border-top-left-radius: 0; border-top-right-radius: 0px;}
+.card-imagen{height:120px;border-top-left-radius: 0; border-top-right-radius: 0px; margin: auto; text-align: center;}
 .bordes-cards{border-radius: 25px;}
 .btn-vermas{margin:0; text-transform: none; border-radius: 10px; padding: 10px; width: 80%; font-size: 1.1rem; background-color: #ff5b16;}
 /* centrar imagen de los zapatos */
@@ -22,12 +22,11 @@ ul {list-style-type: none;}
 .circulo2{width: 200px; height: 200px; -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%; background-color: #ff5b16; left: 130px; top: -60px; z-index: -1;}
 /* titulo de empresa de calzado */
 .position-div{position: absolute; top: -50px;}
-.zapato-card{width: 100px; margin: auto; text-align: center;}
 /* quitar la sombra de los select e inputs */
 .form-control2:focus{border-color:#2d4d58; box-shadow: 0 0 0 0.1rem transparent;}
 /* cambiar propiedades de los select */
 .custom-select {color: #2d4d58; border: 3px solid #2d4d58; border-radius: 10px;}
-
+.padding-welcome{padding-top: 6rem; padding-bottom: 5rem;}
 
 @media(min-width:576px){
     .titulo-productos{top: -70px;}

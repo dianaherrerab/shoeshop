@@ -5,7 +5,7 @@ $tienda = $this->StoreModel->find( 1 );
 ?>
 
 
-<div class="d-flex align-items-center justify-content-center py-5">
+	<div class="d-flex align-items-center justify-content-center py-5">
       <div class="container">
         <div class="row p-0 text-center espacio-titulo">
           <div class="font-weight-bold col-12 tam-header-client p-0">

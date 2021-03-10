@@ -82,7 +82,7 @@
   <header class="container-fluid p-0 position-relative">
     <img src="<?php echo IMG?>/fondo-header.png" class="img-header d-none d-lg-block">
     <div class="position-absolute col-12 p-0 d-flex row mt-lg-1">
-      <div class="col-lg-1 pt-1 text-center d-lg-flex flex-column d-none align-items-center">
+      <div class="col-lg-1 pl-5 pt-1 text-center d-lg-flex flex-column d-none align-items-center">
         <a class="nav-link p-0" data-toggle="modal" data-target="#exampleModal">
           <div class="circulo d-flex align-items-center justify-content-center">
             <i class="fas fa-2x fa-sign-in-alt color-naranja"></i>
@@ -114,20 +114,7 @@
       </div>
     </div>
 
-    <div class="posicion-header row align-items-center justify-content-center">
-      <div class="flex-column col-lg-7 col-12 p-0 text-center padding-arriba">
-        <div class="font-weight-bold col-12 tamaño-letra-header p-0">
-          <span class="color-morado">EL MUNDO A</span> <span class="color-naranja">TUS PIES</span>
-        </div>
-        <p class="col-12 tamaño-letra-parrafo color-gris">Todo lo que deseas, está a tu alcance</p>
-        <div class="col-12 text-center mt-xl-5 mt-3">
-          <a href="" class=" font-weight-bold white-text bg-naranja boton-ingresar2" data-toggle="modal" data-target="#exampleModal">Ingresar</a>
-        </div>
-      </div>
-      <div class="col-lg-5 text-center d-none d-lg-block">
-        <img src="<?php echo IMG?>/img-logo.png" class="img-titulo">
-      </div>
-    </div>
+    
 
     <a href="#" data-activates="slide-out" class="btn bg-naranja p-3 button-collapse d-block d-lg-none position-fixed zindex-botones">
       <i class="fas fa-bars"></i>
@@ -304,7 +291,7 @@
       </ul>
   </div>
 
-<!-- Modal para iniciar sesion -->
+
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -316,22 +303,18 @@
           </button>
         </div>
         <div class="modal-body px-5 pt-5 pb-0">
-        <form method="POST" action="<?php echo URL; ?>/auth/access" class="login-form">
-          <input type="email" name="username" id="username" placeholder="Correo" class="bordes-input form-control mb-4">
-          <input type="password" name="password" id="password" placeholder="Contraseña" class="bordes-input form-control mb-4">
-          </div>
-          <div class="modal-footer pt-0 pb-5 px-5 text-center">
-            <button type="button" id="btn-login" class="btn bg-morado boton-ingresar font-weight-bold mb-4">Iniciar sesión</button>
-            <a href="<?php echo URL; ?>/Auth/recover" class="color-gris m-0" data-toggle="modal" data-target="#recuperarContra">¿Olvidaste tu contraseña?</a>
-          </div>
-        </form>
+        <input type="email" id="email" name="email" placeholder="Correo" class="bordes-input form-control mb-4">
+        <input type="password" name="pass" placeholder="Contraseña" class="bordes-input form-control mb-4">
+        </div>
+        <div class="modal-footer pt-0 pb-5 px-5 text-center">
+          <button type="button" class="btn bg-morado boton-ingresar font-weight-bold mb-4">Iniciar sesión</button>
+          <a class="color-gris m-0" data-toggle="modal" data-target="#recuperarContra">¿Olvidaste tu contraseña?</a>
+        </div>
       </div>
     </div>
   </div>
 
-<!-- Fin de modal para iniciar sesion -->
 
-<!-- Modal para registrarse -->
 
   <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog cascading-modal" role="document">
@@ -394,9 +377,7 @@
     </div>
   </div>
 
-<!-- fin Modal para registrarse -->
 
-<!-- Modal para recuperar contraseña -->
 
   <div class="modal fade" id="recuperarContra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
