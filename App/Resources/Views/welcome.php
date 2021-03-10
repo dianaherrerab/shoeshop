@@ -5,6 +5,26 @@ $productos = $this->ProductModel->getProducts( 1 );
 $categorias = $this->CategoryModel->getCategories();
 ?>
 
+
+<div class="container padding-welcome">
+	<div class="row align-items-center justify-content-center">
+		<div class="flex-column col-lg-7 col-12 p-0 text-center padding-arriba">
+			<div class="font-weight-bold col-12 tamaño-letra-header p-0">
+			<span class="color-morado">EL MUNDO A</span> <span class="color-naranja">TUS PIES</span>
+			</div>
+			<p class="col-12 tamaño-letra-parrafo color-gris">Todo lo que deseas, está a tu alcance</p>
+			<div class="col-12 text-center mt-xl-5 mt-3">
+				<a href="" class=" font-weight-bold white-text bg-naranja boton-ingresar2" data-toggle="modal" data-target="#exampleModal">
+					Ingresar
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-5 text-center d-none d-lg-block">
+			<img src="<?php echo IMG?>/img-logo.png" class="img-titulo">
+		</div>
+	</div>
+</div>
+
 	<div class="container-fluid position-relative p-0">
 		<img src="<?php echo IMG?>/fondo-azul.png" class="fondo-azul m-0 ">
 		<div class="container-fluid posicion-welcome position-relative bg-morado m-0">
@@ -27,29 +47,27 @@ $categorias = $this->CategoryModel->getCategories();
 									<ul>
 										<li>
 											<a href="#" class="waves-effect active  color-gris a-hover">
-											<span class="sv-slim">Femeninos</span>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+													<label class="form-check-label" for="materialChecked2"><span class="sv-slim">Femeninos</span></label>
+												</div>
 											</a>
 										</li>
-										<li>
-											<a href="#" class="waves-effect  color-gris a-hover">
-											<span class="sv-normal">Masculinos</span>
-											</a>
-										</li>
-									<?php
-										foreach ($categorias as $categoria) {
-										echo '
-											<li>
-												<a href="#" class="waves-effect color-gris a-hover">
-												<span class="sv-normal">'.$categoria['name'].'</span>
-												</a>
-											</li>
-										';
-										}
-									?>
+										<?php
+											foreach ($categorias as $categoria) {
+											echo '
+												<li>
+													<a href="#" class="waves-effect color-gris a-hover">
+													<span class="sv-normal">'.$categoria['name'].'</span>
+													</a>
+												</li>
+											';
+											}
+										?>
 									</ul>
 								</div>
 							</li>
-							<li>
+							<li class="mb-4">
 								<a class="collapsible-header waves-effect arrow-r a-hover">
 									Marcas
 									<i class="fas fa-angle-down rotate-icon"></i>
@@ -109,33 +127,30 @@ $categorias = $this->CategoryModel->getCategories();
 									</ul>
 								</div>
 							</li>
+							<a href="" class="font-weight-bold white-text bg-naranja boton-ingresar2 px-5">
+								Buscar
+							</a>
 						</ul>
 					</div>
 				</div>
 				<div class="container col-12 col-lg-9">
 					<div class="row">
-					<?php
+						<?php
 							foreach ($productos as $producto) {
 								echo '
 								<div class="col-12 col-sm-6 col-lg-4 py-4">
 									<div class="card text-center bordes-cards py-3">
-										<img class="card-img-top zapato-card" src="'.IMG.'/bd-products/'.$producto['imagen'].'">
+										<img class="card-imagen" src="'.IMG.'/bd-products/'.$producto['imagen'].'">
 										<div class="card-body px-1">
 											<h4 class="color-morado font-weight-bold">'.$producto['name'].'</h4>
 											<h4 class="color-naranja font-weight-bold">'.$producto['price'].' COP</h4>
 											<div class="container-fluid">
-												<div class="row">
-													<select class="browser-default custom-select m-auto form-control2 col-4">
-														<option selected>C</option>
-														<option value="1">27</option>
-														<option value="2">34</option>
-														<option value="3">28</option>
-													</select>
-													<select class="browser-default custom-select m-auto form-control2 col-4">
+												<div class="row justify-content-around">
+													<select class="browser-default custom-select m-auto form-control2 col-5">
 														<option selected>Talla</option>
 														<option value="1">'.$producto['size'].'</option>
 													</select>
-													<a href="" class="white-text btn-vermas p-0 col-3 d-flex align-items-center justify-content-center">
+													<a href="" class="white-text btn-vermas p-0 col-5 d-flex align-items-center justify-content-center">
 														<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
 													</a>
 												</div>
