@@ -1,7 +1,6 @@
 <?php require_once RESOURCES."/Templates/Login/header.php"; ?>
 
 <form method="POST" action="<?php echo URL; ?>/auth/access" class="login-form">
-	<?php echo $this->__csrf_token(); ?>
 	<div class="errors-login"></div>
 	<div class="row my-4 justify-content-center">
 		<div class="col-12 col-md-10">

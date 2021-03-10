@@ -1,13 +1,15 @@
 <?php
 
 // función que carga la vista principal de la pagina
-class ClientController extends Controller
+class IndexController extends Controller
 {
 	// función constructor del controlador
 	public function __construct()
 	{
 		// llamamos al constructor del padre
 		parent::__construct();
+		// Importar modelo de usuario
+		$this->UserModel = $this->model("User");
 	}
 
 	// función para mostrar la vista

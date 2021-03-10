@@ -1,7 +1,7 @@
 <?php
 
 // función que carga la vista principal de la pagina
-class AdminController extends Controller
+class IndexController extends Controller
 {
 	// función constructor del controlador
 	public function __construct()
