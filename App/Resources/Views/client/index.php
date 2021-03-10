@@ -1,4 +1,8 @@
-<?php require_once RESOURCES."/Templates/client/header.php"; ?>
+<?php require_once RESOURCES."/Templates/client/header.php"; 
+$productos = $this->ProductModel->getProducts( 1 );
+$categorias = $this->CategoryModel->getCategories();
+$tienda = $this->StoreModel->find( 1 );
+?>
 
 
 <div class="d-flex align-items-center justify-content-center py-5">
@@ -35,6 +39,11 @@
               <i class="fas fa-2x fa-map-marker-alt color-morado pr-3 d-none d-md-block"></i>
               Calle 34 BE 55A barrio La UIS
             </h5>
+			<?php 
+			foreach($tienda as $clave){
+				echo $clave[name];
+			}
+	  		?>
           </div>
         </div>
       </div>

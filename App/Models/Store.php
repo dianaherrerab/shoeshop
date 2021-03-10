@@ -12,9 +12,11 @@ class Store extends Model
 		$this->table = "stores";
 		// storeId
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
-		$this->fillable = [ "id", "name", "slug", "nit", "image", "description", "cellphone", "userId", "created_at", "updated_at" ];
+		$this->fillable = ["name", "slug", "nit", "image", "description", "cellphone", "address",  "userId", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
+		// variable que contiene la clave primaria
+		$this->primary_key = "storeId";
 	}
 
 	// función para buscar todos los datos
