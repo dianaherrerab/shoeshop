@@ -9,41 +9,34 @@ $tienda = $this->StoreModel->find( 1 );
       <div class="container">
         <div class="row p-0 text-center espacio-titulo">
           <div class="font-weight-bold col-12 tam-header-client p-0">
-            <span class="color-morado">EL MUNDO </span> <span class="color-naranja">DEL DEPORTE</span>
+            <span class="color-morado"> <?php echo $tienda['name'];?> </span>
           </div>
-          <p class="col-12 tamaño-letra-parrafo color-gris m-0">Todo lo que deseas está a tu alcance</p>
+          <p class="col-12 tamaño-letra-parrafo color-gris m-0"><?php echo $tienda['slug'];?></p>
           <div class="col-12 col-lg-5 my-5 d-flex align-items-center justify-content-center">
-            <img src="<?php echo IMG?>/shoes.png" class="propiedad-zapato">
+            <img src="<?php echo IMG.$tienda['image']?>" class="propiedad-zapato">
           </div>
           <div class="col-12 col-lg-7 mt-0 mb-5 my-lg-5 d-flex align-items-center">
             <h6 class="m-0 px-5 px-md-0">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ex fugit recusandae ad, harum voluptatum cum delectus aliquam cumque perspiciatis vitae nostrum. Nam laudantium blanditiis tempora officiis, ipsum iusto! Facere.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquid harum .
-              lorem
+				<?php echo $tienda['description'];?>
             </h6>
           </div>
           <div class="col-12 col-md-4 mb-3 mb-md-0 p-0 d-flex justify-content-center justify-content-md-start align-items-center">
             <h5 class="color-morado m-0 p-0 d-flex align-items-center font-weight-bold">
               <i class="fas fa-2x fa-id-card color-morado pr-3 d-none d-md-block"></i>
-              NIT: 123456789
+              NIT: <?php echo $tienda['nit'];?>
             </h5>
           </div>
           <div class="col-12 col-md-4 mb-3 mb-md-0 p-0 d-flex justify-content-center align-items-center">
             <h5 class="color-morado m-0 p-0 d-flex align-items-center font-weight-bold">
               <i class="fas fa-2x fa-phone-square-alt color-morado pr-3 d-none d-md-block"></i>  
-              TEL: 12345678
+              TEL: <?php echo $tienda['cellphone'];?>
             </h5>
           </div>
           <div class="col-12 col-md-4 p-0 d-flex justify-content-center justify-content-md-end align-items-center">
             <h5 class="color-morado  m-0 p-0 d-flex align-items-center font-weight-bold">
               <i class="fas fa-2x fa-map-marker-alt color-morado pr-3 d-none d-md-block"></i>
-              Calle 34 BE 55A barrio La UIS
+              <?php echo $tienda['address'];?>
             </h5>
-			<?php 
-			foreach($tienda as $clave){
-				echo $clave[name];
-			}
-	  		?>
           </div>
         </div>
       </div>
@@ -85,11 +78,17 @@ $tienda = $this->StoreModel->find( 1 );
 											<span class="sv-normal">Niños</span>
 											</a>
 										</li>
-										<li>
-											<a href="#" class="waves-effect  color-gris a-hover">
-											<span class="sv-normal">Deportivos</span>
-											</a>
-										</li>
+										<?php
+											foreach ($categorias as $categoria) {
+											echo '
+												<li>
+													<a href="#" class="waves-effect color-gris a-hover">
+													<span class="sv-normal">'.$categoria['name'].'</span>
+													</a>
+												</li>
+											';
+											}
+										?>
 									</ul>
 								</div>
 							</li>
@@ -158,130 +157,35 @@ $tienda = $this->StoreModel->find( 1 );
 				</div>
 				<div class="container col-12 col-lg-9">
 					<div class="row">
-						<div class="col-12 col-sm-6 col-lg-4 py-4">
-							<div class="card text-center bordes-cards py-3">
-								<img class="card-img-top zapato-card" src="<?php echo IMG?>/shoes.png">
-								<div class="card-body px-1">
-									<h4 class="color-morado font-weight-bold">Zapato</h4>
-									<h4 class="color-naranja font-weight-bold">30.000 COP</h4>
-									<div class="container-fluid">
-										<div class="row">
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>C</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>T</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<a href="" class="white-text btn-vermas p-0 col-3 d-flex align-items-center justify-content-center">
-												<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
-											</a>
+					<?php
+							foreach ($productos as $producto) {
+								echo '
+								<div class="col-12 col-sm-6 col-lg-4 py-4">
+									<div class="card text-center bordes-cards py-3">
+										<img class="card-imagen" src="'.IMG.'/bd-products/'.$producto['imagen'].'">
+										<div class="card-body px-1">
+											<h4 class="color-morado font-weight-bold">'.$producto['name'].'</h4>
+											<h4 class="color-naranja font-weight-bold">'.$producto['price'].' COP</h4>
+											<div class="container-fluid">
+												<div class="row justify-content-around">
+													<select class="browser-default custom-select m-auto form-control2 col-5">
+														<option selected>Talla</option>
+														<option value="1">'.$producto['size'].'</option>
+													</select>
+													<a href="" class="white-text btn-vermas p-0 col-5 d-flex align-items-center justify-content-center">
+														<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
+													</a>
+												</div>
+											</div>
+											<div class="col-12 mt-4">
+												<a href="" class="white-text btn-vermas">Ver más</a>
+											</div>
 										</div>
 									</div>
-									<div class="col-12 mt-4">
-										<a href="" class="white-text btn-vermas">Ver más</a>
-									</div>
 								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6 col-lg-4 py-4">
-							<div class="card text-center bordes-cards py-3">
-								<img class="card-img-top zapato-card" src="<?php echo IMG?>/shoes.png">
-								<div class="card-body px-1">
-									<h4 class="color-morado font-weight-bold">Zapato</h4>
-									<h4 class="color-naranja font-weight-bold">30.000 COP</h4>
-									<div class="container-fluid">
-										<div class="row">
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>C</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>T</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<a href="" class="white-text btn-vermas p-0 col-3 d-flex align-items-center justify-content-center">
-												<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
-											</a>
-										</div>
-									</div>
-									<div class="col-12 mt-4">
-										<a href="" class="white-text btn-vermas">Ver más</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6 col-lg-4 py-4">
-							<div class="card text-center bordes-cards py-3">
-								<img class="card-img-top zapato-card" src="<?php echo IMG?>/shoes.png">
-								<div class="card-body px-1">
-									<h4 class="color-morado font-weight-bold">Zapato</h4>
-									<h4 class="color-naranja font-weight-bold">30.000 COP</h4>
-									<div class="container-fluid">
-										<div class="row">
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>C</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>T</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<a href="" class="white-text btn-vermas p-0 col-3 d-flex align-items-center justify-content-center">
-												<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
-											</a>
-										</div>
-									</div>
-									<div class="col-12 mt-4">
-										<a href="" class="white-text btn-vermas">Ver más</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6 col-lg-4 py-4">
-							<div class="card text-center bordes-cards py-3">
-								<img class="card-img-top zapato-card" src="<?php echo IMG?>/shoes.png">
-								<div class="card-body px-1">
-									<h4 class="color-morado font-weight-bold">Zapato</h4>
-									<h4 class="color-naranja font-weight-bold">30.000 COP</h4>
-									<div class="container-fluid">
-										<div class="row">
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>C</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<select class="browser-default custom-select m-auto form-control2 col-4">
-												<option selected>T</option>
-												<option value="1">27</option>
-												<option value="2">34</option>
-												<option value="3">28</option>
-											</select>
-											<a href="" class="white-text btn-vermas p-0 col-3 d-flex align-items-center justify-content-center">
-												<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
-											</a>
-										</div>
-									</div>
-									<div class="col-12 mt-4">
-										<a href="" class="white-text btn-vermas">Ver más</a>
-									</div>
-								</div>
-							</div>
-						</div>
+								';
+							}
+						?>
 					</div>
 				</div>
 			</div>

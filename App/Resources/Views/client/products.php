@@ -1,1 +1,0 @@
-productos de una tienda

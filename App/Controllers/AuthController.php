@@ -12,22 +12,22 @@ class AuthController extends Controller
 
 	public function index()
 	{
-		$this->redirect('Auth/login');
+		$this->redirect('/');
 	}
-
+	// Funcion para redirigir al login
 	public function login()
 	{
-		$this->view('Auth/login');
+		$this->view('/');
 	}
-
+	// Funcion para redirigir al registro
 	public function sign_up()
 	{
-		$this->view('Auth/sign_up');
+		$this->view('/');
 	}
-
+	// Funcion para redirigir a recuperar contraseña
 	public function recover()
 	{
-		$this->view('Auth/recover');
+		$this->view('/');
 	}
 
 	// funcion para ejecutar el acceso o el logueo

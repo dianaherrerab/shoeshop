@@ -13,6 +13,8 @@ class User extends Model
 		$this->fillable = [ "name", "username", "slug", "password", "role", "blocked", "_token", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [ "password", "_token" ];
+		// variable que contiene la clave primaria de la tabla
+		$this->primary_key = "id";
 	}
 
 	// función para obtener un dato de la lista

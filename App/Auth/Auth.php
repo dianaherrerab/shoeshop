@@ -12,9 +12,9 @@ class Auth extends Model
 	// campo por el cual se validara el correo ingresado por el usuario para obtener su nueva contraseña
 	private $inpu_recover_pass = "username";
 	// vista a la que se redirige si hay un login exitoso
-	public $viewSuccess = URL."/";
-	// vista a la que se redirige si no hay existe una session cuando se valide con el metodo guest
-	private $viewRedirect = URL."/Auth/login";
+	public $viewSuccess = URL."/Redirect";
+	// vista a la que se redirige si no existe una session cuando se valide con el metodo guest
+	private $viewRedirect = URL."/";
 	// variable que contiene la instancia de usuarios
 	public $user;
 
@@ -141,7 +141,7 @@ class Auth extends Model
 			'name' => $name,
 			'username' => $username,
 			'slug' => SlugTrait::generate( $username ),
-			'role' => 1,
+			'role' => 3,
 			'password' => $password,
 			'created_at' => date('Y-m-d h:i:s')
 		];

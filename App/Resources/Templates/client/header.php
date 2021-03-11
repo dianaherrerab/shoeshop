@@ -92,14 +92,16 @@
         <i class="fas fa-search"></i>
     </a>
     <img src="<?php echo IMG?>/fondo-header.png" class="img-header d-none d-lg-block">
+
+      <!-- Este es el header cuando está grande la pag -->
     <div class="position-absolute pl-2 col-12 p-0 d-flex row mt-lg-1">
       <div class="col-lg-1 pl-5 pt-1 text-center d-lg-flex flex-column d-none align-items-center">
-        <a class="nav-link p-0" href="#">
+        <a class="nav-link p-0" href="<?php echo URL; ?>/client/client/profile">
           <div class="circulo d-flex align-items-center justify-content-center">
-            <i class="fas fa-2x fa-user-alt color-naranja"></i>
+            <i class="fas fa-2x fa-user-alt color-naranja"></i> 
           </div>	
         </a>
-        <a class="nav-link p-0 mt-lg-3" href="#">
+        <a class="nav-link p-0 mt-lg-3" href="<?php echo URL; ?>/Auth/Logout">
           <div class="circulo d-flex align-items-center justify-content-center">
             <i class="fas fa-2x fa-sign-out-alt color-naranja"></i>
           </div>
@@ -117,7 +119,7 @@
         </div>
       </nav>
       <div class="col-lg-1 pt-1 text-center d-none d-lg-block">
-        <a class="nav-link p-0 d-flex justify-content-center">
+        <a href="<?php echo URL; ?>/Client/shoppingcar" class="nav-link p-0 d-flex justify-content-center">
           <div class="circulo bg-naranja d-flex align-items-center justify-content-center">
             <i class="fas fa-2x fa-shopping-cart color-naranja white-text"></i>
           </div>	
@@ -128,7 +130,7 @@
 
   </header>
 
-
+<!-- Header para cuando se hace pequeñita la pagina -->
 
   <div id="slide-out" class="side-nav side wide bg-naranja">
       <ul class="custom-scrollbar">
@@ -139,7 +141,7 @@
         <li>
           <ul class="collapsible collapsible-accordion">
             <li>
-              <a class="collapsible-header waves-effect arrow-r active">
+              <a class="collapsible-header waves-effect arrow-r active" href="<?php echo URL; ?>/client/client/profile" >
                 <i class="sv-slim-icon fas fa-user-alt mr-2"></i>
                   Mi perfil
               </a>
@@ -217,6 +219,18 @@
                       <span class="sv-normal">Deportivos</span>
                     </a>
                   </li>
+                    <?php
+                    $categorias = $this->CategoryModel->getCategories();
+											foreach ($categorias as $categoria) {
+											echo '
+												<li>
+													<a href="#" class="waves-effect">
+													<span class="sv-normal">'.$categoria['name'].'</span>
+													</a>
+												</li>
+											';
+											}
+										?>
                 </ul>
               </div>
             </li>

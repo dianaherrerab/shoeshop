@@ -8,7 +8,7 @@ class RedirectController extends Controller
 		// validamos si existe una sesión
 		if( $this->auth->check() ){
 			// validar el rol del usuario en sesion
-			switch ( $this->auth->user->__get( 'role_id' ) ) {
+			switch ( $this->auth->user->__get( 'role' ) ) {
 				case '1':
 					// Redirecciona a la vista del Superadministrador
 					$this->redirect('Admin');

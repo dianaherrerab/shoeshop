@@ -106,7 +106,7 @@
         </div>
       </nav>
       <div class="col-lg-1 pt-1 text-center d-none d-lg-block">
-        <a class="nav-link p-0 d-flex justify-content-center" >
+        <a href="<?php echo URL; ?>/Client/shoppingcar" class="nav-link p-0 d-flex justify-content-center" >
           <div class="circulo bg-naranja d-flex align-items-center justify-content-center">
             <i class="fas fa-2x fa-shopping-cart color-naranja white-text"></i>
           </div>	
@@ -217,11 +217,18 @@
                       <span class="sv-normal">Niños</span>
                     </a>
                   </li>
-                  <li>
-                    <a href="#" class="waves-effect">
-                      <span class="sv-normal">Deportivos</span>
-                    </a>
-                  </li>
+                    <?php
+                    $categorias = $this->CategoryModel->getCategories();
+											foreach ($categorias as $categoria) {
+											echo '
+												<li>
+													<a href="#" class="waves-effect">
+													<span class="sv-normal">'.$categoria['name'].'</span>
+													</a>
+												</li>
+											';
+											}
+										?>
                 </ul>
               </div>
             </li>
@@ -291,31 +298,38 @@
       </ul>
   </div>
 
-
+<!-- Modal para iniciar sesión -->
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header bg-naranja">
-          <h5 class="modal-title white-text centrar" id="exampleModalLabel">Ingresar</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true" class="white-text">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body px-5 pt-5 pb-0">
-        <input type="email" id="email" name="email" placeholder="Correo" class="bordes-input form-control mb-4">
-        <input type="password" name="pass" placeholder="Contraseña" class="bordes-input form-control mb-4">
-        </div>
-        <div class="modal-footer pt-0 pb-5 px-5 text-center">
-          <button type="button" class="btn bg-morado boton-ingresar font-weight-bold mb-4">Iniciar sesión</button>
-          <a class="color-gris m-0" data-toggle="modal" data-target="#recuperarContra">¿Olvidaste tu contraseña?</a>
-        </div>
+          <div class="modal-header bg-naranja">
+            <h5 class="modal-title white-text centrar" id="exampleModalLabel">Ingresar</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="white-text">&times;</span>
+            </button>
+          </div>
+        <form method="POST" action="<?php echo URL; ?>/auth/access" class="login-form">
+	        <div class="errors-login"></div>
+          <div class="modal-body px-5 pt-5 pb-0">
+            <input type="email" name="username" id="username" placeholder="Correo" class="bordes-input form-control mb-4">
+            <input type="password" name="password" id="password" placeholder="Contraseña" class="bordes-input form-control mb-4">
+          </div>
+          <div class="modal-footer pt-0 pb-5 px-5 text-center">
+            <button id="btn-login" class="btn bg-morado boton-ingresar font-weight-bold mb-4">Iniciar sesión</button>
+            <a class="color-gris m-0" data-toggle="modal" data-target="#recuperarContra">¿Olvidaste tu contraseña?</a>
+          </div>
+        </form>  
       </div>
     </div>
   </div>
 
+<!-- Fin de modal para iniciar sesion -->
 
-
+<!-- Modal para registrarse -->
+<?php
+$this->errors();
+?>
   <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog cascading-modal" role="document">
 
@@ -335,40 +349,42 @@
             </li>
           </ul>
 
-
+          <!-- Tab del cliente -->
           <div class="tab-content p-0">
 
             <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-
-
-              <div class="modal-body px-5 pt-5 pb-0">
-                  <input type="email" id="email" name="email" placeholder="Correo" class="bordes-input form-control mb-4">
-                  <input type="password" name="pass" placeholder="Contraseña" class="bordes-input form-control mb-4">
-              </div>
-
-              <div class="modal-footer pt-0 pb-5 px-5 text-center">
-                <button type="button" class="btn bg-morado boton-ingresar font-weight-bold mb-4 mx-0">Crear cuenta</button>
-                <button type="button" class="btn bg-rojo boton-ingresar font-weight-bold mx-0" data-dismiss="modal">Cerrar</button>
-              </div>
-
+              <form method="POST" action="<?php echo URL; ?>/auth/register" class="register-form" name="register-form">
+                <div class="errors-register"></div>
+                <div class="modal-body px-5 pt-5 pb-0">
+                  <input type="text" name="name" id="name" placeholder="Nombre" class="bordes-input form-control mb-4">
+                  <input type="email" name="username" id="username" placeholder="Correo" class="bordes-input form-control mb-4">
+                  <input type="password" name="password" id="password" placeholder="Contraseña" class="bordes-input form-control mb-4">
+                </div>
+                <div class="modal-footer pt-0 pb-5 px-5 text-center">
+                  <button id="btn-register" class="btn bg-morado boton-ingresar font-weight-bold mb-4 mx-0">Crear cuenta</button>
+                  <button type="button" class="btn bg-rojo boton-ingresar font-weight-bold mx-0" data-dismiss="modal">Cerrar</button>
+                </div>
+              </form>
             </div>
+            <!-- fin de tab del cliente -->
 
-
-
+            <!-- Tab del administradror/empresa -->
             <div class="tab-pane fade" id="panel8" role="tabpanel">
+              <form method="POST" action="<?php echo URL; ?>/auth/register" class="register-form" name="register-form">
+                <div class="errors-register"></div>
+                <div class="modal-body px-5 pt-5 pb-0">
+                  <input type="text" name="name" id="name" placeholder="Nombre" class="bordes-input form-control mb-4">
+                  <input type="email" name="username" id="username" placeholder="Correo" class="bordes-input form-control mb-4">
+                  <input type="text" name="nameE" id="nameE" placeholder="Nombre de la empresa" class="bordes-input form-control mb-4">
+                </div>
 
-              <div class="modal-body px-5 pt-5 pb-0">
-                <input type="text" id="name" name="name" placeholder="Nombre" class="bordes-input form-control mb-4">
-                <input type="email" id="email" name="email" placeholder="Correo" class="bordes-input form-control mb-4">
-                <input type="text" name="nameE" id="nameE" placeholder="Nombre de la empresa" class="bordes-input form-control mb-4">
-              </div>
-
-              <div class="modal-footer pt-0 pb-5 px-5 text-center">
-                <button type="button" class="btn bg-morado boton-ingresar font-weight-bold mb-4 mx-0">Crear cuenta</button>
-                <button type="button" class="btn bg-rojo boton-ingresar font-weight-bold mx-0" data-dismiss="modal">Cerrar</button>
-              </div>
+                <div class="modal-footer pt-0 pb-5 px-5 text-center">
+                  <button type="button" class="btn bg-morado boton-ingresar font-weight-bold mb-4 mx-0">Crear cuenta</button>
+                  <button type="button" class="btn bg-rojo boton-ingresar font-weight-bold mx-0" data-dismiss="modal">Cerrar</button>
+                </div>
+              </form>
             </div>
-
+            <!-- Tab del administradror/empresa -->
           </div>
 
         </div>

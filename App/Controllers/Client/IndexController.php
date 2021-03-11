@@ -8,6 +8,8 @@ class IndexController extends Controller
 	{
 		// llamamos al constructor del padre
 		parent::__construct();
+		// realizamos la peticion al modelo de cerrar sesion
+		//$this->auth->guest();
 		// Importar modelo de usuario
 		$this->UserModel = $this->model("User");
 		// Importar modelo de las categorias
@@ -23,13 +25,6 @@ class IndexController extends Controller
 	{	
 		// mostramos la vista
 		$this->view('client/index');
-	}
-
-	// funcion para mostrar el perfil del cliente
-	public function profile()
-	{
-		// Mostrar la vista
-		$this->view('client/profile');
 	}
 
 }

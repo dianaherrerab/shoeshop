@@ -13,18 +13,21 @@
               Datos personales
             </div>
           </div>
-          <form action="" method="post">
+          <form action="<?php echo URL; ?>/Client/client/Update-profile" class="form-edit">
+            <?php echo $this->__csrf_field(); ?>
+	        <div class="errors-edit"></div>
+	        <input type="hidden" name="user_id" value="<?php echo $this->auth->user->__get('id'); ?>">
             <div class="row my-5">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Primer nombre" aria-label="Primer nombre" value="Karen">
+                <input type="text" class="form-control" placeholder="Primer nombre" aria-label="Primer nombre" value="<?php echo ucwords( $params['user_data']['firstName'] ); ?>">
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Segundo nombre" aria-label="Segundo nombre" value="Daniela">
+                <input type="text" class="form-control" placeholder="Segundo nombre" aria-label="Segundo nombre" value="<?php echo ucwords( $params['user_data']['secondName'] ); ?>">
               </div>
             </div>
             <div class="row mb-5">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Primer apellido" aria-label="Primer apellido" value="Rodriguez">
+                <input type="text" class="form-control" placeholder="Primer apellido" aria-label="Primer apellido" value="<?php echo ucwords( $params['user_data']['lastName'] ); ?>">
               </div>
               <div class="col">
                 <input type="text" class="form-control" placeholder="Segundo apellido" aria-label="Segundo apellido" value="Martinez">
@@ -33,15 +36,14 @@
             <div class="row mb-5">
               <div class="col">
                 <select class="browser-default form-control">
-                  <option selected>Tipo de documento</option>
-                  <option value="1">CC</option>
-                  <option value="2">CE</option>
-                  <option value="3">TI</option>
-                  <option value="4">PA</option>
+                  <option value="" disabled selected="">Tipo de documento</option>
+                  <option value="1" <?php echo ( $params['user_data']['typeDocumentId'] == 1 ) ? 'selected' : ''; ?>>Cedula de ciudadanía</option>
+                  <option value="2" <?php echo ( $params['user_data']['typeDocumentId'] == 2 ) ? 'selected' : ''; ?>>Cedula de extranjería</option>
+                  <option value="3" <?php echo ( $params['user_data']['typeDocumentId'] == 3 ) ? 'selected' : ''; ?> >Pasaporte</option>
                 </select>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Número" aria-label="Número" value="123434343">
+                <input type="text" class="form-control" placeholder="Número" aria-label="Número" value="<?php echo ucwords( $params['user_data']['documentNumber'] ); ?>">
               </div>
             </div>
             <div>
@@ -52,7 +54,7 @@
             </div>
             <div class="row my-5">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Teléfono" aria-label="Tel" value="6576787">
+                <input type="text" class="form-control" placeholder="Teléfono" aria-label="Tel" value="<?php echo ucwords( $params['user_data']['cellphone'] ); ?>">
               </div>
               <div class="col">
                 <input type="text" class="form-control" placeholder="Dirección" aria-label="Dir" value="Cra8 be 3456">

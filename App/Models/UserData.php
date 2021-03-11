@@ -11,9 +11,11 @@ class UserData extends Model
 		// variable para declarar el nombre de la tabla al cual pertenece
 		$this->table = "userdata";
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
-		$this->fillable = [ "id", "firstName", "secondName", "lastName", "documentNumber", "cellphone", "birthDate", "rolId", "typeDocumentId", "created_at", "updated_at" ];
+		$this->fillable = ["firstName", "secondName", "lastName", "documentNumber", "cellphone", "birthDate", "userId", "typeDocumentId", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
+		// variable que contiene la clave primaria de la tabla
+		$this->primary_key = "userDataId";
 	}
 
 	// función para buscar todos los datos
@@ -53,4 +55,15 @@ class UserData extends Model
 		return parent::pagination( $pagina, $value_whr, $input_whr );
 	}
 
+	// función para buscar los datos por userId
+	public function find_by_user_id( $userId )
+	{
+		return parent::customer( ' SELECT * FROM ' . $this->table . ' WHERE userId = "' . $userId . '" ' , true );
+	}
+
+	// función para eliminar un datos de usuario por el userId
+	public function delete_by_user_id( $userId )
+	{
+		return parent::customer(" DELETE FROM " . $this->table . " WHERE userId = '" . $userId . "' ");
+	}
 }

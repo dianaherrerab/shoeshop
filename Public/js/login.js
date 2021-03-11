@@ -11,7 +11,7 @@ $(document).ready(function(){
 			data: form.serialize(),
 			beforeSend: function() {
 				show_loader( form );
-				toastr.info("Registandome...");
+				toastr.info("Registrandome...");
 			},
 			success: function(data) {
 				data = data.split('|');
@@ -28,7 +28,7 @@ $(document).ready(function(){
 			},
 			error: function(xhr) { // if error occured
 			   	toastr.error("Ha ocurrido un error.");
-			    // console.log(xhr.statusText + xhr.responseText);
+			 	console.log(xhr.statusText + xhr.responseText);
 			},
 		});
 		return false;
