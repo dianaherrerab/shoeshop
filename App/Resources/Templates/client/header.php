@@ -101,7 +101,7 @@
             <i class="fas fa-2x fa-user-alt color-naranja"></i> 
           </div>	
         </a>
-        <a class="nav-link p-0 mt-lg-3" href="<?php echo URL; ?>/Auth/Logout">
+        <a class="nav-link p-0 mt-lg-3" href="<?php echo URL; ?>/Auth/logout">
           <div class="circulo d-flex align-items-center justify-content-center">
             <i class="fas fa-2x fa-sign-out-alt color-naranja"></i>
           </div>
@@ -147,7 +147,7 @@
               </a>
             </li>
             <li>
-              <a class="collapsible-header waves-effect arrow-r mt-3">
+              <a class="collapsible-header waves-effect arrow-r mt-3" href="<?php echo URL; ?>/client/ShoppingCar">
                 <i class="sv-slim-icon fas fa-shopping-cart mr-2"></i>
                   Carrito de compras
               </a>

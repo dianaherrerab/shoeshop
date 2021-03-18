@@ -22,8 +22,12 @@ class ClientController extends Controller
         $this->ProductModel = $this->model("Product");
 		// Importar modelo de la tienda
 		$this->StoreModel = $this->model("Store");
+		// Importar modelo de los detalles de la compra
+		$this->SaleDetailModel = $this->model("SaleDetail");
+		// Importar modelo de las ventas
+		$this->SaleModel = $this->model("Sale");
 		// instanciamos el controlador de datos usuarios de la consola
-		$this->User_dataController = new UserDataController();
+		$this->UserDataController = new UserDataController();
 		// instanciamos el controlador de ubicaciones de usuario
 		//$this->LocationController = new LocationController();
 	}
@@ -35,20 +39,65 @@ class ClientController extends Controller
 		$this->view('client/index');
 	}
 
+	// función para almacenar un registro
+	public function store()
+	{
+		// validamos que el tipo de envio sea por $_POST
+		$this->methodPost();
+		// realizamos validaciones de inicio
+		$errors = $this->validate( $_POST, [
+			'name|nombre' => 'required',
+			'username|usuario' => 'required|unique:users',
+			'password|contraseña' => 'required',
+		]);
+		// validamos si existen errores
+		if( $errors )
+		{
+			// Mostramos el mensaje de error al usuario
+			echo $this->errors();
+			// evitamos que siga la función
+			return;
+		}
+		// obtenemos el pin del usuario a registrar con rol de estudiante (5) y su contraseña
+		$user = $this->UserController->store( 3, $_POST['name'], $_POST['username'], $_POST['password'] );
+		// generamos los datos del usuario
+		$user_data = [
+			'firstName' => $name,
+		];
+		// validamos si existe un error
+		if( !is_array( $user_data ) )
+		{
+			// eliminamos todos los datos registrados
+			$this->delete_all( $userId );
+			// Mostramos el mensaje de error al usuario
+			echo $user_data;
+		}
+		// asignamos el pin a los datos del usuario
+		$user_data['userId'] = $userId;
+		// realizamos la petición de registro de los datos de user data
+		$response = $this->UserDataController->store( $user_data );
+		// validamos si tenemos un error en la ejecución de la consulta
+		if( !$response )
+			// retornamos el mensaje de error
+			return $response;
+		// lo mandamos a loguearde si todo esta correcto
+		return $this->login( $_POST['username'], $_POST['password'] );
+	}
+
 	// funcion para mostrar el perfil del cliente
 	public function profile()
 	{
 		// buscamos los datos del usuario
 		$user = $this->UserModel->find( $this->auth->user->__get('id') );
 		// obtenemos los datos del usuario en la tabal user_data
-		//print_r($user); exit();
-		$user_data = $this->User_dataController->find_by_user_id( $user['id'] );
-		// obtenemos el nombre de ciudad
-		//$user_data['location'] = $this->LocationController->find_location_name_complete( $user_data['city_id'] );
-		// print_r($user_data); exit();
+		$user_data = $this->UserDataController->find_by_user_id( $user['id'] );
+		// Obtenemos su historial de compras
+		$sales = $this->SaleModel->findByUserId($user['id']);
+		// Organiza los datos a pasar a la vista
 		$params = [
 			'user' => $user,
 			'user_data' => $user_data,
+			'sales' => $sales,
 		];
 		// Mostrar la vista
 		$this->view('client/profile', $params);
@@ -61,11 +110,13 @@ class ClientController extends Controller
 		$this->__post();
 		// validamos que existan los campos
 		$errors = $this->validate( $_POST, [
-			'city_id|<b>ciudad</b>' => 'required',
-			'cellphone|<b>teléfono/celular</b>' => 'required',
-			'identification_type|<b>tipo de documento</b>' => 'required',
-			'identification_number|<b>número de documento</b>' => 'required',
-			'address|<b>dirección</b>' => 'required',
+			'firstName|<b>Primer Nombre</b>' => 'required',
+			'secondName|<b>Segundo Nombre</b>' => 'required',
+			'lastName|<b>Primer Apellido</b>' => 'required',
+			'typeDocumentId|<b>Tipo de documento</b>' => 'required',
+			'documentNumber|<b>Número de documento</b>' => 'required',
+			'cellphone|<b>Teléfono/Celular</b>' => 'required',
+			'address|<b>Dirección</b>' => 'required',
 		] );
 		// validamos si hay errores
 		if( $errors )
@@ -78,11 +129,12 @@ class ClientController extends Controller
 		// capturamos la hora de actualización
 		$_POST['updated_at'] = date('Y-m-d H:i:s');
 		// agregamos el id del userdata
-		$_POST['id'] = $this->User_dataController->find_by_user_id( $this->auth->user->__get('id') )['id'];
+		$_POST['userDataId'] = $this->UserDataController->find_by_user_id( $this->auth->user->__get('id') )['userDataId'];
+		
 		// invertimos la posición del array para que el id quede al inicio
 		$user_data = array_reverse( $_POST );
 		// hacemos la petición de registro
-		$user_data_response = $this->User_dataController->update( $user_data );
+		$user_data_response = $this->UserDataController->update( $user_data );
 		// validamos si el resultado encontrado no es un array
 		if( isset( $user_data_response['status'] ) && !$user_data_response['status'] )
 		{
@@ -98,7 +150,7 @@ class ClientController extends Controller
 			// capturamos el id de usuario
 			$_POST['id'] = $_POST['user_id'];
 			// hacemos la petición de registro
-			$response = $this->userModel->update( $_POST );
+			$response = $this->UserModel->update( $_POST );
 			// validamos si el resultado encontrado no es un array
 			if( isset( $response['status'] ) && !$response['status'] )
 			{
@@ -111,7 +163,7 @@ class ClientController extends Controller
 			}
 			else
 				// retornamos mensaje de exito
-				echo "true";
+				echo "true1";
 		}
 	}
 

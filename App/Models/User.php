@@ -76,6 +76,12 @@ class User extends Model
 		return parent::customer( " SELECT * FROM ". $this->table ." WHERE slug = '".$slug."' ", true );
 	}
 
+	// función para buscar un usuario por el slug
+	public function findByCreated_at( $created_at )
+	{
+		return parent::customer( " SELECT * FROM ". $this->table ." WHERE created_at = '".$created_at."' ", true );
+	}
+
 	// función para listar los registros
 	public function listing( $pagina = 1, $input_whr = 'name', $value_whr = null )
 	{

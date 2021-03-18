@@ -1,10 +1,4 @@
-
 <?php require_once RESOURCES."/Templates/header.php"; ?>
-<?php 
-$productos = $this->ProductModel->getProducts( 1 );
-$categorias = $this->CategoryModel->getCategories();
-?>
-
 
 <div class="container padding-welcome">
 	<div class="row align-items-center justify-content-center">
@@ -37,106 +31,83 @@ $categorias = $this->CategoryModel->getCategories();
 					<div class="borde-filtro position-absolute white py-5 col-12">
 						<h5 class="font-weight-bold text-center color-naranja">FILTROS</h5>
 						<hr class="filtro-hr mb-4">
-						<ul class="collapsible collapsible-accordion tam-letra-ul font-weight-bold">
-							<li>
-								<a class="collapsible-header waves-effect arrow-r active">
-									Tipos
-									<i class="fas fa-angle-down rotate-icon"></i>
-								</a>
-								<div class="collapsible-body">
-									<ul>
-										<li>
-											<a href="#" class="waves-effect active  color-gris a-hover">
-												<div class="form-check">
-													<input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-													<label class="form-check-label" for="materialChecked2"><span class="sv-slim">Femeninos</span></label>
-												</div>
-											</a>
-										</li>
-										<?php
-											foreach ($categorias as $categoria) {
-											echo '
-												<li>
-													<a href="#" class="waves-effect color-gris a-hover">
-													<span class="sv-normal">'.$categoria['name'].'</span>
-													</a>
-												</li>
-											';
-											}
-										?>
-									</ul>
-								</div>
-							</li>
-							<li class="mb-4">
-								<a class="collapsible-header waves-effect arrow-r a-hover">
-									Marcas
-									<i class="fas fa-angle-down rotate-icon"></i>
-								</a>
-								<div class="collapsible-body">
-									<ul>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-slim">Adidas</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Nike</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Reebok</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Puma</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Skechers</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">New Balance</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Le Coq Sportif</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Converse</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Kappa</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Alpha Tauri</span>
-										</a>
-									</li>
-									</ul>
-								</div>
-							</li>
-							<a href="" class="font-weight-bold white-text bg-naranja boton-ingresar2 px-5">
-								Buscar
-							</a>
-						</ul>
+						<form class="form-search" method="get" action="<?php echo URL; ?>/Client/Index/Pagination" data-url-change="<?php echo URL; ?>/Client/Index/Listing" >
+							<ul class="collapsible collapsible-accordion tam-letra-ul font-weight-bold">
+								<li>
+									<a class="collapsible-header waves-effect arrow-r active">
+										Tipos
+										<i class="fas fa-angle-down rotate-icon"></i>
+									</a>
+									<div class="collapsible-body">
+										<ul>
+											<li>
+												<a href="#" class="waves-effect active  color-gris a-hover">
+													<div class="form-check">
+														<input type="checkbox" class="form-check-input" id="femenino" name="input_whr" value="categoryId" checked>
+														<label class="form-check-label" for="femenino" id="value_whr" name="value_whr" value=1><span class="sv-slim">Femeninos</span></label>
+													</div>
+												</a>
+											</li>
+											<li>
+												<a href="#" class="waves-effect active  color-gris a-hover">
+													<div class="form-check">
+														<input type="checkbox" class="form-check-input" id="masculino" name="input_whr" value="categoryId">
+														<label class="form-check-label" for="masculino" id="value_whr" name="value_whr" value=2><span class="sv-slim">Masculinos</span></label>
+													</div>
+												</a>
+											</li>
+											<?php
+												foreach ($params['categories'] as $categoria) {
+												echo '
+													<li>
+														<a href="#" class="waves-effect color-gris a-hover">
+															<div class="form-check">
+																<input type="checkbox" class="form-check-input" id="'.$categoria['categoryId'].'" >
+																<label class="form-check-label" for="'.$categoria['categoryId'].'"><span class="sv-slim">'.$categoria['name'].'</span></label>
+															</div>
+														</a>
+													</li>
+												';
+												}
+											?>
+										</ul>
+									</div>
+								</li>
+								<li class="mb-4">
+									<a class="collapsible-header waves-effect arrow-r a-hover">
+										Marcas
+										<i class="fas fa-angle-down rotate-icon"></i>
+									</a>
+									<div class="collapsible-body">
+										<ul>
+											<?php
+												foreach ($params['brands'] as $brand) {
+												echo '
+													<li>
+														<a href="#" class="waves-effect color-gris a-hover">
+															<div class="form-check">
+																<input type="checkbox" class="form-check-input" id="'.$brand['id'].'" >
+																<label class="form-check-label" for="'.$brand['id'].'"><span class="sv-slim">'.$brand['name'].'</span></label>
+															</div>
+														</a>
+													</li>
+												';
+												}
+											?>
+										</ul>
+									</div>
+								</li>
+								<button type="submit" class="font-weight-bold white-text bg-naranja boton-ingresar2 px-5">
+									Buscar
+								</button>
+							</ul>
+						</form>						
 					</div>
 				</div>
 				<div class="container col-12 col-lg-9">
 					<div class="row">
 						<?php
-							foreach ($productos as $producto) {
+							foreach ($params['products'] as $producto) {
 								echo '
 								<div class="col-12 col-sm-6 col-lg-4 py-4">
 									<div class="card text-center bordes-cards py-3">
@@ -147,16 +118,19 @@ $categorias = $this->CategoryModel->getCategories();
 											<div class="container-fluid">
 												<div class="row justify-content-around">
 													<select class="browser-default custom-select m-auto form-control2 col-5">
-														<option selected>Talla</option>
-														<option value="1">'.$producto['size'].'</option>
-													</select>
-													<a href="" class="white-text btn-vermas p-0 col-5 d-flex align-items-center justify-content-center">
+														<option selected>Talla</option>';
+														$sizes = $this->ProductSizeModel->find_size($producto['productId']);
+														foreach ($sizes as $size){
+															echo '<option value="1">'.$size['sizeId'].'</option>';
+														}
+											echo '  </select>
+													<a data-url="'.URL.'Client/ShoppingCar/agregar_productos" data-id="'.$producto['productId'].'" data-cantidad="1" class="add_shopping_cart white-text btn-vermas p-0 col-5 d-flex align-items-center justify-content-center">
 														<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
 													</a>
 												</div>
 											</div>
 											<div class="col-12 mt-4">
-												<a href="" class="white-text btn-vermas">Ver más</a>
+												<a href="'.URL.'client/product/uniqueproduct/'.$producto['slug'].'" class="white-text btn-vermas">Ver más</a>
 											</div>
 										</div>
 									</div>
@@ -190,12 +164,14 @@ $categorias = $this->CategoryModel->getCategories();
 						<h6 class="color-morado mb-5">
 							Con nosotros podrás gestionar tu rol empresarial 
 						</h6>
-						<input type="text" id="name" name="name" placeholder="Nombre" class="bordes-welcome mb-4 bg-gris">
-						<input type="email" id="email" name="email" placeholder="Correo" class="bordes-welcome mb-4 bg-gris">
-						<input type="text" name="nameE" id="nameE" placeholder="Nombre de la empresa" class="bordes-welcome bg-gris mb-5">
-						<button type="button" class="btn bg-naranja boton-ingresar font-weight-bold mx-0 mb-5">
-							Enviar
-						</button>
+						<form method="POST" action="<?php echo URL; ?>/auth/register" class="register-form" name="register-form>
+							<input type="text" id="name" name="name" placeholder="Nombre" class="bordes-welcome mb-4 bg-gris">
+							<input type="email" name="username" id="username" placeholder="Correo" class="bordes-welcome mb-4 bg-gris">
+							<input type="text" name="nameE" id="nameE" placeholder="Nombre de la empresa" class="bordes-welcome bg-gris mb-5">
+							<button type="button" class="btn bg-naranja boton-ingresar font-weight-bold mx-0 mb-5">
+								Enviar
+							</button>
+						</form>		
 					</div>
 				</div>
 			</div>

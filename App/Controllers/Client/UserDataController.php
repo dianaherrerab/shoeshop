@@ -16,7 +16,7 @@ class UserDataController extends Controller
 	public function index()
 	{	
 		// mostramos la vista
-		$this->view('Client/');
+		$this->view('client/index');
 	}
 
 	// función para almacenar los datos
@@ -37,14 +37,25 @@ class UserDataController extends Controller
 	public function update( $request )
 	{
 		// retornamos los datos encontrados
-		$response = $this->userDataModel->update( $request );
+		$result = $this->userDataModel->update( $request );
 		// validamos si tenemos un error
-		if( !$response['status'] )
-			// retornamos el error
-			return $response;
+		// if( !$response['status'] )
+		// 	// retornamos el error
+		// 	return $response;
+		// else
+		// 	// retornamos los datos
+		// 	return $response['data'];
+		// Validamos si existe un error
+		if( !$result )
+		{
+			// Agregamos el mensaje a la variable para ser mostrada
+			array_push( $this->errors, $result );
+			// Mostramos el mensaje de error al usuario
+			echo $this->errors();
+		}
 		else
-			// retornamos los datos
-			return $response['data'];
+			// Mostramos el mensaje de éxito al usuario
+			echo "true";
 	}
 
 	// función para buscar el id del userdata

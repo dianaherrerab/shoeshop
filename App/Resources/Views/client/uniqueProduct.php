@@ -1,5 +1,6 @@
-<?php require_once RESOURCES."/Templates/client/header.php"; ?>
+<?php require_once RESOURCES."/Templates/client/header.php"; 
 
+?>
 
 <div class="d-flex align-items-center justify-content-center py-5">
       <div class="container">
@@ -13,7 +14,7 @@
               </ol>
               <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                  <img class="d-block w-100" src="<?php echo IMG?>/tacones.jpeg"
+                  <img class="d-block w-100" src="<?php echo IMG.'/bd-products'.$params['product']['image']; ?>"
                     alt="First slide">
                 </div>
                 <div class="carousel-item">
@@ -37,10 +38,10 @@
           </div>
           <div class="col-12 col-lg-6 mt-5 mt-lg-0">
             <div class="font-weight-bold color-morado letra-zapato">
-              Zapatilla Dama Cuero
+              <?php echo $params['product']['name']; ?>
             </div>
             <div class="color-naranja letra-zapato mb-4">
-              300.000 COP
+			<?php echo $params['product']['price']; ?> COP
             </div>
             <div class="container">
               <div class="row justify-content-around">
@@ -62,11 +63,11 @@
               <a href="" class=" font-weight-bold white-text bg-naranja boton-ingresar2 p-3">Agregar al carrito</a>
             </div>
             <div class="color-gris mt-5 text-left">
-              <div>Marca: <span>XXXX</span></div>
-              <div>Material: <span>XXXX</span></div>
-              <div>Tipo de calzado: <span>XXXX</span></div>
-              <div>Género: <span>XXXX</span></div>
-              <div>Color: <span>XXXX</span></div>
+              <div>Marca: <span><?php echo $params['product']['brand']; ?></span></div>
+              <div>Material: <span><?php echo $params['product']['material']; ?></span></div>
+              <div>Tipo de calzado: <span><?php echo $params['product']['category']; ?></span></div>
+              <div>Género: <span><?php echo $params['product']['gender']; ?></span></div>
+              <div>Color: <span><?php echo $params['product']['color']; ?></span></div>
             </div>
 
           </div>
@@ -76,10 +77,7 @@
                 DESCRIPCIÓN:
               </h5>
               <h6 class="m-0">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni accusamus fuga velit neque, recusandae dicta magnam sit repellendus unde voluptatem eius distinctio illum quo ad aliquid cum modi? Corporis, totam!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quam at velit consequatur. Voluptatem delectus tempore doloribus tempora eligendi? Voluptate perferendis repellat atque assumenda ipsum animi esse, laudantium nihil quis.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit neque laudantium aperiam, adipisci ipsam sapiente exercitationem odit voluptate numquam autem dolorem nobis magni, inventore voluptatibus, rem enim nesciunt doloribus amet.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, facere eveniet! Voluptatem, esse. Odio, ratione optio vel ut id explicabo aspernatur ullam eveniet possimus fuga facilis temporibus cumque necessitatibus ea?
+			  <?php echo $params['product']['description']; ?>
               </h6>
             </div> 
           </div>

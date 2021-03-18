@@ -10,11 +10,12 @@ class Sale extends Model
 		parent::__construct();
 		// variable para declarar el nombre de la tabla al cual pertenece
 		$this->table = "sales";
-		// saleId
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
-		$this->fillable = [ "id", "date", "totalPrice", "userId", "storeId", "statusId", "created_at", "updated_at" ];
+		$this->fillable = ["date", "totalPrice", "userId", "storeId", "statusSaleId", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
+		// clave primaria
+		$this->primary_key = 'saleId';
 	}
 
 	// función para buscar todos los datos
@@ -54,4 +55,14 @@ class Sale extends Model
 		return parent::pagination( $pagina, $value_whr, $input_whr );
 	}
 
+	// función para buscar un usuario por el slug
+	public function findByUserId( $userId )
+	{
+		return parent::customer( " SELECT s.*, t.name as store, st.name as status FROM ". $this->table ." as s INNER JOIN stores as t on t.storeId=s.storeId INNER JOIN statussale as st on st.statusSaleId=s.statusSaleId WHERE s.userId = '".$userId."' " );
+	}
+
+	public function find_by_fecha_ped( $created_at )
+	{
+		return parent::customer("SELECT * FROM " .$this->table ." WHERE created_at = '".$created_at."'");
+	}
 }

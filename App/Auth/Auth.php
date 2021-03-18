@@ -116,6 +116,7 @@ class Auth extends Model
 		// validamos si existe una sesion
 		if( isset( $_SESSION[ $this->user->primary_key ] ) )
 		{
+			
 			// eliminamos la variable de seguirdad
 			unset( $_SESSION['_token'] );
 			// desasemos la sesión

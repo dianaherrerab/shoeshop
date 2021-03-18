@@ -56,4 +56,9 @@ class Store extends Model
 		return parent::pagination( $pagina, $value_whr, $input_whr );
 	}
 
+	// funcion para encontrar la tienda por el id del producto
+	public function findByProduct( $productId ){
+		return parent::costumer(" SELECT * FROM ".$this->table." as s INNER JOIN product as p ON s.productId=p.productId WHERE p.storeId = '".$productId."' ");
+	}
+
 }

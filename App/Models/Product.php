@@ -12,9 +12,11 @@ class Product extends Model
 		$this->table = "products";
 		// productId
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
-		$this->fillable = [ "id", "name", "slug", "material", "price", "description", "color", "brand", "categoryId", "genderId", "statusProductId", "storeId", "created_at", "updated_at" ];
+		$this->fillable = ["name", "slug", "material", "price", "description", "color", "brand", "categoryId", "genderId", "statusProductId", "storeId", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
+		// variable que contiene clave primaria
+		$this->primary_key = "productId";
 	}
 
 	// función para buscar todos los datos
@@ -56,6 +58,24 @@ class Product extends Model
 
 	// Función para obtener todos los productos
 	public function getProducts( $id_store ){
-		return parent::customer("SELECT p.*, i.name as imagen, ps.sizeId as size, ps.quantity FROM " .$this->table ." as p INNER JOIN images as i on i.productId = p.productId INNER JOIN productssize as ps on ps.productId = p.productId WHERE p.storeId = '".$id_store."' AND p.statusProductId = 1");
+		return parent::customer("SELECT p.*, i.name as imagen FROM " .$this->table ." as p INNER JOIN images as i on i.productId = p.productId WHERE p.storeId = '".$id_store."' AND p.statusProductId = 1");
 	}
+
+	// función para buscar un producto por el slug
+	public function find_by_slug( $slug )
+	{
+		return parent::customer( " SELECT * FROM ". $this->table ." WHERE slug = '".$slug."' ", true );
+	}
+
+	// función para buscar un producto por el slug
+	public function find_all_by_slug( $slug )
+	{
+		return parent::customer( " SELECT p.*, i.name as imagen, ps.sizeId as size, ps.quantity, g.name as gender, c.name as category FROM " .$this->table ." as p INNER JOIN images as i on i.productId = p.productId INNER JOIN productssize as ps on ps.productId = p.productId INNER JOIN genders as g on g.genderId=p.genderId INNER JOIN categories as c on c.categoryId=p.categoryId WHERE p.slug = '".$slug."' AND p.statusProductId = 1" );
+	}
+
+	// funcion para obtener todos los productos con imagen y tallas por Id
+	public function findImagenAndSize( $productId ){
+		return parent::customer("SELECT p.*, i.name as imagen, ps.sizeId as size, ps.quantity FROM " .$this->table ." as p INNER JOIN images as i on i.productId = p.productId INNER JOIN productssize as ps on ps.productId = p.productId WHERE p.productId = '".$productId."' AND p.statusProductId = 1");
+	}
+
 }

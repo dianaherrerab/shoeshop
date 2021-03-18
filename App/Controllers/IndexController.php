@@ -1,26 +1,42 @@
 <?php
 
-// función que carga la vista principal de la pagina
+// Función que carga la vista principal de la pagina
 class IndexController extends Controller
 {
-	// función constructor del controlador
+	// Función constructor del controlador
 	public function __construct()
 	{
-		// llamamos al constructor del padre
+		// Llamada al constructor del padre
 		parent::__construct();
-		// Importar modelo de usuario
+		// Importa modelo de usuarios
 		$this->UserModel = $this->model("User");
-		// Importar modelo de las categorias
+		// Importa modelo de las categorias
 		$this->CategoryModel = $this->model("Category");
-		// Importar modelo de los usuarios
+		// Importa modelo de las marcas
+		$this->BrandModel = $this->model("Brand");
+		// Importa modelo de los productos
         $this->ProductModel = $this->model("Product");
+		// Importa modelo de las tallas de los productos
+		$this->ProductSizeModel = $this->model("ProductSize");
 	}
 
-	// función para mostrar la vista
+	// Función para mostrar la vista
 	public function index()
 	{	
-		// mostramos la vista
-		$this->view('welcome');
+		// Obtiene todos los productos de una tienda 
+		$products = $this->ProductModel->getProducts( 1 );
+		// Obtiene todas las categorias de la tienda
+		$categories = $this->CategoryModel->getCategories();
+		// Obtiene todas las marcas 
+		$brands = $this->BrandModel->all();
+		// Organiza el arreglo con los datos a pasar a la vista
+		$params = [
+			'products' => $products,
+			'categories' => $categories,
+			'brands' => $brands
+		];
+		// Muestra la vista
+		$this->view('welcome', $params);
 	}
 
 

@@ -10,11 +10,12 @@ class SaleDetail extends Model
 		parent::__construct();
 		// variable para declarar el nombre de la tabla al cual pertenece
 		$this->table = "saledetails";
-		// saleDetailsId
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
-		$this->fillable = [ "id", "price", "saleId", "productId", "userAddressId", "created_at", "updated_at" ];
+		$this->fillable = ["price", "saleId", "productId", "size" , "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
+		// clave primaria
+		$this->primary_key = 'saleDetailsId';
 	}
 
 	// función para buscar todos los datos
@@ -27,6 +28,7 @@ class SaleDetail extends Model
 	public function store( $request )
 	{
 		return parent::store( $request );
+		
 	}
 
 	// función para actualizar una tupla
@@ -52,6 +54,12 @@ class SaleDetail extends Model
 	{
 		// ejecutamos la consulta
 		return parent::pagination( $pagina, $value_whr, $input_whr );
+	}
+
+	// función para buscar un usuario por el slug
+	public function find_all( $saleId )
+	{
+		return parent::customer( " SELECT s.*, p.name FROM ". $this->table ." as s INNER JOIN products as p on s.productId=p.productId WHERE s.saleId = '".$saleId."'  ");
 	}
 
 }

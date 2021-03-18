@@ -2,6 +2,7 @@
 $productos = $this->ProductModel->getProducts( 1 );
 $categorias = $this->CategoryModel->getCategories();
 $tienda = $this->StoreModel->find( 1 );
+
 ?>
 
 
@@ -169,16 +170,19 @@ $tienda = $this->StoreModel->find( 1 );
 											<div class="container-fluid">
 												<div class="row justify-content-around">
 													<select class="browser-default custom-select m-auto form-control2 col-5">
-														<option selected>Talla</option>
-														<option value="1">'.$producto['size'].'</option>
-													</select>
-													<a href="" class="white-text btn-vermas p-0 col-5 d-flex align-items-center justify-content-center">
+														<option selected>Talla</option> ';
+														$sizes = $this->ProductSizeModel->find_size($producto['productId']);
+														foreach ($sizes as $size){
+															echo '<option value="'.$size['sizeId'].'">'.$size['sizeId'].'</option>';
+														}
+												echo'</select>
+													<a data-url="'.URL.'Client/ShoppingCar/agregar_productos" data-id="'.$producto['productId'].'" data-cantidad="1" class="add_shopping_cart white-text btn-vermas p-0 col-5 d-flex align-items-center justify-content-center">
 														<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
 													</a>
 												</div>
 											</div>
 											<div class="col-12 mt-4">
-												<a href="" class="white-text btn-vermas">Ver más</a>
+												<a href="'.URL.'client/product/uniqueproduct/'.$producto['slug'].'" class="white-text btn-vermas">Ver más</a>
 											</div>
 										</div>
 									</div>
