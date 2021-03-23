@@ -1,0 +1,22 @@
+.medidas-zapatos{ width: 300px;}
+.altura-header{height: 90px;}
+.borde-dropdown{border: 1px solid #ff5b16;}
+nav .dropdown-menu a:active{background-color: #A2A2A2 !important;}
+.azul-oscuro{background-color: #052f3d;}
+.letra-aside{font-size: 18px; font-weight: bold;}
+.linea-aside{height: 1px; background-color: white; border: 1px; width: 100%;}
+.letra-aside:hover{background-color:#ff5b16 !important}
+aside, article{height: calc(100vh - 90px);}
+.ancho-img-aside{width: 250px;}
+article{overflow-y: auto;}
+.hr-cards{height: 8px; background-color: #052f3d; width: 100%;}
+
+.form-control1{border-color:transparent; box-shadow: 0 0 0 0.1rem #2d4d58;}
+.boton-editar{width: 200px;margin:0; text-transform: none; border-radius: 10px; padding: 10px; font-size: 1.1rem; cursor:pointer}
+
+.table-bordered td, .table-bordered th, .table thead th, .table-bordered {
+    border: 2px solid #052f3d; 
+}
+
+.altura-galeria{height: auto;}
+.posicion-icono{top: 0px; right: 3rem;}

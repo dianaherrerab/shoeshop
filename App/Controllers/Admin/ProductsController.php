@@ -17,4 +17,17 @@ class ProductsController extends Controller
 		$this->view('admin/product/index');
 	}
 
+	// función para mostrar la vista de editar
+	public function edit()
+	{	
+		// mostramos la vista
+		$this->view('admin/product/edit');
+	}
+	// función para mostrar la vista de crear
+	public function create()
+	{	
+		// mostramos la vista
+		$this->view('admin/product/create');
+	}
+
 }
