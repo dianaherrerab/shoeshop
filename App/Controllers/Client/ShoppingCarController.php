@@ -1,46 +1,47 @@
 <?php
-// importamos el controlador de datos usuarios de la consola
+
+// Importa el controlador de datos usuarios de la consola
 require_once APP.'/Controllers/Client/UserDataController.php';
 
+// Clase para gestionar la información del carrito de compras
 class ShoppingCarController extends Controller
 {
-
+	// Función constructor del controlador
 	public function __construct()
 	{
-		// llamamos al constructor del padre
+		// Llama al constructor del padre
 		parent::__construct();
-		// realizamos la peticion al modelo de cerrar sesion
+		// Comprueba si existe una sesión
 		$this->auth->guest();
-		// Importar modelo de los productos
-        //$this->ProductModel = $this->model("Product");
-		// validamos si existe un carrito
+		// Valida si existe un carrito
 		$this->validar_carrito();
-		// Importar modelo de usuario
+		// Importa modelo de usuario
 		$this->UserModel = $this->model("User");
-		// Importar modelo de las categorias
+		// Importa modelo de las categorias
 		$this->CategoryModel = $this->model("Category");
-		// Importar modelo de los productos
+		// Importa modelo de los productos
         $this->ProductModel = $this->model("Product");
-		// Importar modelo de la tienda
+		// Importa modelo de la tienda
 		$this->StoreModel = $this->model("Store");
-		// instanciamos el controlador de datos usuarios de la consola
+		// Instancia el controlador de datos usuarios
 		$this->UserDataController = new UserDataController();
 	}
 
-	// Funcion para carrito
+	// Funcion para crear y mostrar el carrito de compras
 	public function index()
 	{
-		// creamos un array vacio
+		// Array para almacenar los productos del carrito
 		$products = [];
 		$total = 0;
-		
-		// recorremos los productos del carrito
+		// Recorre los productos del carrito
 		foreach ( $_SESSION['cart']['products'] as $product ) 
 		{
-			// obtenemos los datos del producto
+			// Obtiene los datos del producto
 			$product_found = mysqli_fetch_assoc( $this->ProductModel->findImagenAndSize( $product['productId'] ));
+			// Obtiene el subtotal de la venta 
 			$subtotal = ( $product['cantidad'] * $product_found['price'] );
 			$total += $subtotal;
+			// Organiza el arreglo que contiene los datos del producto a agregar
 			$product_to_add = [
 				'id' => $product['productId'],
 				'nombre' => $product_found['name'],
@@ -50,21 +51,21 @@ class ShoppingCarController extends Controller
 				'color' => $product_found['color'],
 				'subtotal' => $subtotal,
 			];
-			// agregamos el array de los datos del producto al array de productos del carrito
+			// Agrega el array de los datos del producto al array de productos del carrito
 			array_push( $products , $product_to_add );
 		}
 		print_r($products);
-		// mostramos que contiene el carrito
+		// Dirige a la vista del carrito de compras con los datos correspondiente
 		$this->view('client/shoppingCar', ['products' => $products, 'total' => $total]);
 	}
 
-	// función para validar un carrito
+	// Función para validar el carrito
 	public function validar_carrito()
 	{
-		//validamos si existe un carrito
+		// Valida si existe un carrito
 		if( !isset( $_SESSION['cart'] ) )
 		{
-			//si no existe se crea un carrito
+			//Si no existe, se crea uno
 			$_SESSION['cart'] = [
 				'id' => 1,
 				'products' => []
@@ -72,33 +73,34 @@ class ShoppingCarController extends Controller
 		}
 	}
 
+	// Funcion para agregar productos al carrito
 	public function agregar_productos()
 	{		
-		// agregamos el array de los datos del producto al array de productos del carrito
+		// Agrega el array de los datos del producto al array de productos del carrito
 		array_push( $_SESSION['cart']['products'] , $_POST );
-		// retornamos que se agrego
+		// Retorna exitoso
 		echo "true";
 	}
 
-	// funcipon para eliminar un producto del carrito
+	// Funcion para eliminar un producto del carrito
 	public function eliminar_productos()
 	{
-		// obtenemos el id
+		// Guarda el id del producto
 		$id = $_POST['id'];
-		// declaramos la posicion como nula
+		// Declara la posicion como nula
 		$i = NULL;
-		// recorremos los productos
+		// Recorre los productos
 		foreach ( $_SESSION['cart']['products'] as $position => $product ) 
 		{
-			// validamos si el producto existe
+			// Valida si el producto existe
 			if( $product['id'] == $id )
-				// obtenemos la posición
+				// Obtiene la posición
 				$i = $position;
 		}
-		// validamos que la posición no sea nula
+		// Valida que la posición no sea nula
 		if( !is_null( $i ) )
 		{
-			// eliminamos el producto
+			// Elimina el producto
 			unset( $_SESSION['cart']['products'][$i] );
 			echo "true";
 		}
@@ -106,19 +108,17 @@ class ShoppingCarController extends Controller
 			echo "Producto no encontrado.";
 	}
 
-    // funcion para mostrar la remision de una compra
+    // Funcion para mostrar la remision de una compra
 	public function datosCompra()
 	{
-		// buscamos los datos del usuario
+		// Busca los datos del usuario
 		$user = $this->UserModel->find( $this->auth->user->__get('id') );
-		// obtenemos los datos del usuario en la tabal user_data
+		// Obtiene los datos del usuario
 		$user_data = $this->UserDataController->find_by_user_id( $user['id'] );
-		// Obtiene la tienda a la que pertenecen los productos
-
-		// creamos un array vacio
+		// Crea un array vacio
 		$products = [];
 		$total = 0;
-		// recorremos los productos del carrito
+		// Recorre los productos del carrito
 		foreach ( $_SESSION['cart']['products'] as $product ) 
 		{
 			// obtenemos los datos del producto
@@ -133,7 +133,7 @@ class ShoppingCarController extends Controller
 				'color' => $product_found['color'],
 				'subtotal' => $subtotal,
 			];
-			// agregamos el array de los datos del producto al array de productos del carrito
+			// Agrega el array de los datos del producto al array de productos del carrito
 			array_push( $products , $product_to_add );
 		}
 		// Organiza el arreglo con los datos a pasar a la vista

@@ -106,7 +106,7 @@
         </div>
       </nav>
       <div class="col-lg-1 pt-1 text-center d-none d-lg-block">
-        <a href="<?php echo URL; ?>/Client/shoppingcar" class="nav-link p-0 d-flex justify-content-center" >
+        <a data-toggle="modal" data-target="#exampleModal" class="nav-link p-0 d-flex justify-content-center" >
           <div class="circulo bg-naranja d-flex align-items-center justify-content-center">
             <i class="fas fa-2x fa-shopping-cart color-naranja white-text"></i>
           </div>	
@@ -156,7 +156,7 @@
               </div>
             </li>
             <li>
-              <a class="collapsible-header waves-effect arrow-r mt-3">
+              <a class="collapsible-header waves-effect arrow-r mt-3" data-toggle="modal" data-target="#exampleModal">
                 <i class="sv-slim-icon fas fa-shopping-cart mr-2"></i>
                   Carrito de compras
               </a>
@@ -353,7 +353,7 @@ $this->errors();
           <div class="tab-content p-0">
 
             <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-              <form method="POST" action="<?php echo URL; ?>/auth/register" class="register-form" name="register-form">
+              <form method="POST" action="<?php echo URL; ?>/Client/Client/store" class="register-form" name="register-form">
                 <div class="errors-register"></div>
                 <div class="modal-body px-5 pt-5 pb-0">
                   <input type="text" name="name" id="name" placeholder="Nombre" class="bordes-input form-control mb-4">
@@ -368,9 +368,9 @@ $this->errors();
             </div>
             <!-- fin de tab del cliente -->
 
-            <!-- Tab del administradror/empresa -->
+            <!-- Tab del administrador/empresa -->
             <div class="tab-pane fade" id="panel8" role="tabpanel">
-              <form method="POST" action="<?php echo URL; ?>/auth/register" class="register-form" name="register-form">
+              <form method="POST" action="<?php echo URL; ?>/Admin/Store/store" class="register-form" name="register-form">
                 <div class="errors-register"></div>
                 <div class="modal-body px-5 pt-5 pb-0">
                   <input type="text" name="name" id="name" placeholder="Nombre" class="bordes-input form-control mb-4">
@@ -379,7 +379,7 @@ $this->errors();
                 </div>
 
                 <div class="modal-footer pt-0 pb-5 px-5 text-center">
-                  <button type="button" class="btn bg-morado boton-ingresar font-weight-bold mb-4 mx-0">Crear cuenta</button>
+                  <button id="btn-register" class="btn bg-morado boton-ingresar font-weight-bold mb-4 mx-0">Crear cuenta</button>
                   <button type="button" class="btn bg-rojo boton-ingresar font-weight-bold mx-0" data-dismiss="modal">Cerrar</button>
                 </div>
               </form>

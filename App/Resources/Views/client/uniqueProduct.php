@@ -13,18 +13,27 @@
                 <li data-target="#carousel-example-1z" data-slide-to="2"></li>
               </ol>
               <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                  <img class="d-block w-100" src="<?php echo IMG.'/bd-products'.$params['product']['image']; ?>"
-                    alt="First slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="<?php echo IMG?>/tacones.jpeg"
-                    alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="<?php echo IMG?>/tacones.jpeg"
-                    alt="Third slide">
-                </div>
+			  	<?php 
+				  $cont = 0;
+				  foreach ($params['images'] as $image) {
+					  if ($cont == 0) {
+						echo '
+						<div class="carousel-item active">
+						<img class="d-block w-100" src="'.IMG.'/bd-products/'.$image['name'].'" 
+						alt="First slide">
+						</div>
+						';
+						$cont++;
+					  }else{
+						echo '
+						<div class="carousel-item">
+						<img class="d-block w-100" src="'.IMG.'/bd-products/'.$image['name'].'" 
+						alt="First slide">
+						</div>
+						';	
+					  }
+				  }
+				?>
               </div>
               <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon bg-naranja" aria-hidden="true"></span>
@@ -45,22 +54,23 @@
             </div>
             <div class="container">
               <div class="row justify-content-around">
-                <select class="browser-default custom-select form-control2 col-12 col-md-5 col-lg-12 mb-4 mb-md-5 mb-lg-4">
-                  <option selected>Seleccione una talla</option>
-                  <option value="1">27</option>
-                  <option value="2">34</option>
-                  <option value="3">28</option>
+                <select class="select-size browser-default custom-select form-control2 col-12 col-md-5 col-lg-12 mb-4 mb-md-5 mb-lg-4" 
+				 data-quantity="quantity" data-url="<?php echo URL; ?>/Client/ProductSize/find_quantity_by_size">
+                  <option value="" selected>Seleccione una talla</option>
+                  		<?php 
+						foreach ( $params['sizes'] as $size ) 
+						{
+							echo '<option value="'.$size['productSizesId'].'">'.$size['sizeId'].'</option>';
+						}
+						?>
                 </select>
-                <select class="browser-default custom-select form-control2 mb-5 col-12 col-md-5 col-lg-12">
+                <select class="browser-default custom-select form-control2 mb-5 col-12 col-md-5 col-lg-12" id="quantity">
                   <option selected>Seleccione cantidad</option>
-                  <option value="1">27</option>
-                  <option value="2">34</option>
-                  <option value="3">28</option>
                 </select>
               </div>
             </div>
             <div>
-              <a href="" class=" font-weight-bold white-text bg-naranja boton-ingresar2 p-3">Agregar al carrito</a>
+              <a data-url="<?php echo URL; ?>'Client/ShoppingCar/agregar_productos" data-id="'.$params['product']['productId'].'" data-cantidad="1" class="add_shopping_cart font-weight-bold white-text bg-naranja boton-ingresar2 p-3">Agregar al carrito</a>
             </div>
             <div class="color-gris mt-5 text-left">
               <div>Marca: <span><?php echo $params['product']['brand']; ?></span></div>

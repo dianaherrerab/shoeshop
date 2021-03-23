@@ -58,13 +58,13 @@ class Product extends Model
 
 	// Función para obtener todos los productos
 	public function getProducts( $id_store ){
-		return parent::customer("SELECT p.*, i.name as imagen FROM " .$this->table ." as p INNER JOIN images as i on i.productId = p.productId WHERE p.storeId = '".$id_store."' AND p.statusProductId = 1");
+		return parent::customer("SELECT p.*, i.name as imagen FROM " .$this->table ." as p INNER JOIN images as i on i.productId = p.productId WHERE p.storeId = '".$id_store."' AND p.statusProductId = 1 AND i.portada = 1");
 	}
 
 	// función para buscar un producto por el slug
 	public function find_by_slug( $slug )
 	{
-		return parent::customer( " SELECT * FROM ". $this->table ." WHERE slug = '".$slug."' ", true );
+		return parent::customer( " SELECT p.*, c.name as category, g.name as gender FROM ". $this->table ." as p INNER JOIN categories as c on c.categoryId=p.categoryId INNER JOIN genders as g ON g.genderId=p.genderId WHERE p.slug = '".$slug."' " , true );
 	}
 
 	// función para buscar un producto por el slug
@@ -77,5 +77,7 @@ class Product extends Model
 	public function findImagenAndSize( $productId ){
 		return parent::customer("SELECT p.*, i.name as imagen, ps.sizeId as size, ps.quantity FROM " .$this->table ." as p INNER JOIN images as i on i.productId = p.productId INNER JOIN productssize as ps on ps.productId = p.productId WHERE p.productId = '".$productId."' AND p.statusProductId = 1");
 	}
+
+	
 
 }

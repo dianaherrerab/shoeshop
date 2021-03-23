@@ -64,29 +64,18 @@ $tienda = $this->StoreModel->find( 1 );
 								</a>
 								<div class="collapsible-body">
 									<ul>
-										<li>
-											<a href="#" class="waves-effect active  color-gris a-hover">
-											<span class="sv-slim">Femeninos</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="waves-effect  color-gris a-hover">
-											<span class="sv-normal">Masculinos</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="waves-effect color-gris a-hover">
-											<span class="sv-normal">Niños</span>
-											</a>
-										</li>
+										
 										<?php
 											foreach ($categorias as $categoria) {
 											echo '
-												<li>
-													<a href="#" class="waves-effect color-gris a-hover">
-													<span class="sv-normal">'.$categoria['name'].'</span>
-													</a>
-												</li>
+											<li>
+											<a href="#" class="waves-effect color-gris a-hover">
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="'.$categoria['categoryId'].'" >
+													<label class="form-check-label" for="'.$categoria['categoryId'].'"><span class="sv-slim">'.$categoria['name'].'</span></label>
+												</div>
+											</a>
+										</li>
 											';
 											}
 										?>
@@ -100,59 +89,26 @@ $tienda = $this->StoreModel->find( 1 );
 								</a>
 								<div class="collapsible-body">
 									<ul>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-slim">Adidas</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Nike</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Reebok</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Puma</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Skechers</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">New Balance</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Le Coq Sportif</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Converse</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Kappa</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Alpha Tauri</span>
-										</a>
-									</li>
+										<?php
+											foreach ($params['brands'] as $brand) {
+												echo '
+													<li>
+														<a href="#" class="waves-effect color-gris a-hover">
+															<div class="form-check">
+																<input type="checkbox" class="form-check-input" id="'.$brand['id'].'" >
+																<label class="form-check-label" for="'.$brand['id'].'"><span class="sv-slim">'.$brand['name'].'</span></label>
+															</div>
+														</a>
+													</li>
+												';
+												}
+										?>
 									</ul>
 								</div>
 							</li>
+							<button type="submit" class="font-weight-bold white-text bg-naranja boton-ingresar2 px-5">
+									Buscar
+							</button>
 						</ul>
 					</div>
 				</div>

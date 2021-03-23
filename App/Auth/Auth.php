@@ -339,6 +339,15 @@ class Auth extends Model
 		}
 	}
 
+	// funcion para arreglar una cadena para evitar el sql injection
+	public function protectVars( $str )
+	{
+		// escapamos los caracteres raros
+		$str = parent::__real_escape_string( $str );
+		// retornamos este valir
+		return $str;
+	}
+
 	// funcion para crear una contraseña aleatoria
 	// $size: es el tamaño de la contraseña por defecto son 15 caracteres
 	public function generar_password_complejo( $size = 15, $with_special_characters = 'with' )

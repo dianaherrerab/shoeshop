@@ -41,6 +41,7 @@
     <script type="text/javascript" src="<?php echo JS; ?>/carrito.js"></script>
     <script type="text/javascript" src="<?php echo JS; ?>/form.js"></script>
     <script type="text/javascript" src="<?php echo JS; ?>/pagination.js"></script>
+    <script type="text/javascript" src="<?php echo JS; ?>/cantidad.js"></script>
     <script type="text/javascript">
         new WOW().init();
 

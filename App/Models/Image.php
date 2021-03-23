@@ -12,7 +12,7 @@ class Image extends Model
 		$this->table = "images";
 		// imagesId
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
-		$this->fillable = [ "id", "name", "slug", "productId", "created_at", "updated_at" ];
+		$this->fillable = [ "imagesId", "name", "portada", "productId", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
 	}
@@ -52,6 +52,11 @@ class Image extends Model
 	{
 		// ejecutamos la consulta
 		return parent::pagination( $pagina, $value_whr, $input_whr );
+	}
+
+	// Funcion para obtener todas las imagenes del producto
+	public function find_images_by_id( $productId ){
+		return parent::customer( " SELECT * FROM " .$this->table ." WHERE productId = '".$productId."'  " );
 	}
 
 }
