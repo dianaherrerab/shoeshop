@@ -2,6 +2,8 @@
 
 // Importa el controlador de datos usuarios de la consola
 require_once APP.'/Controllers/Client/UserDataController.php';
+// Importa el controlador de las tallas de los productos
+require_once APP.'/Controllers/Client/ProductSizeController.php';
 
 // Clase para gestionar la información del carrito de compras
 class ShoppingCarController extends Controller
@@ -23,8 +25,10 @@ class ShoppingCarController extends Controller
         $this->ProductModel = $this->model("Product");
 		// Importa modelo de la tienda
 		$this->StoreModel = $this->model("Store");
-		// Instancia el controlador de datos usuarios
+		// Instancia el controlador de datos del usuario
 		$this->UserDataController = new UserDataController();
+		// Instancia el controlador de la cantidad de productos por talla
+		$this->ProductSizeController = new ProductSizeController();
 	}
 
 	// Funcion para crear y mostrar el carrito de compras
@@ -46,9 +50,11 @@ class ShoppingCarController extends Controller
 				'id' => $product['productId'],
 				'nombre' => $product_found['name'],
 				'cantidad' => $product['cantidad'],
+				'talla' => $product['size'],
 				'precio' => $product_found['price'],
 				'imagen' => $product_found['imagen'],
 				'color' => $product_found['color'],
+				'cantidad-disponible' => $product_found['quantity'],
 				'subtotal' => $subtotal,
 			];
 			// Agrega el array de los datos del producto al array de productos del carrito
@@ -140,7 +146,8 @@ class ShoppingCarController extends Controller
 		$params = [
 			'user' => $user,
 			'user_data' => $user_data,
-			'products' => $products
+			'products' => $products,
+			'total' => $total
 		];
 		$this->view('client/buy', $params);
 	}

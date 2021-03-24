@@ -75,7 +75,7 @@ class Product extends Model
 
 	// funcion para obtener todos los productos con imagen y tallas por Id
 	public function findImagenAndSize( $productId ){
-		return parent::customer("SELECT p.*, i.name as imagen, ps.sizeId as size, ps.quantity FROM " .$this->table ." as p INNER JOIN images as i on i.productId = p.productId INNER JOIN productssize as ps on ps.productId = p.productId WHERE p.productId = '".$productId."' AND p.statusProductId = 1");
+		return parent::customer("SELECT p.*, i.name as imagen, ps.quantity FROM " .$this->table ." as p INNER JOIN images as i on i.productId = p.productId INNER JOIN productssize as ps on ps.productId = p.productId WHERE p.productId = '".$productId."' AND p.statusProductId = 1 AND i.portada=1");
 	}
 
 	

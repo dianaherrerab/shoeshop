@@ -20,7 +20,7 @@
             <div class="card-body p-0"> 
                 <div class="letra-subti borde-hist font-weight-bold white-text m-0 d-flex align-items-center azul-oscuro p-3">
                     <i class="fas fa-lg fa-address-card pr-3"></i>
-                    <h5 class="m-0">Listado de clientes</h5>
+                    <h5 class="m-0">Listado de ventas</h5>
                 </div>
                 <div class=" table-responsive text-nowrap">
                     <table id="dtBasicExample" class="table" width="100%">
@@ -50,29 +50,20 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            <tr class="color-gris">
-                                <td>01</td>
-                                <td>22/03/21</td>
-                                <td>
-                                    Karen Daniela Rodríguez Martínez
-                                </td>
-                                <td class="text-left">
-                                    <div>Zapatillas</div>
-                                    <div>Zapatos Nike</div>
-                                    <div>Sandalias Dani</div>
-                                </td>
-                                <td>
-                                    458.999
-                                </td>
-                                <td>
-                                    Cra 8 bfgbfgbdvd jef
-                                </td>
-                                <td>
-                                    Comprobado
-                                </td>  
+                            <tr class="content-pagination  color-gris">
+                                <?php echo $params['list']; ?>
                             </tr>
-                            
                         </tbody>
+                        <tfoot>
+								<tr>
+									<td colspan="2">
+										Listado <b class="raleway-bold"><?php echo LIMIT_PER_PAGE; ?></b> | Total: <b class="raleway-bold"><?php echo $params['cant']; ?></b>
+									</td>
+									<td colspan="6" class="render-pagination">
+										<?php echo $params['render']; ?>
+									</td>
+								</tr>
+							</tfoot>
                     </table>
                 </div>
             </div>

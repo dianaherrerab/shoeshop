@@ -9,12 +9,16 @@ $(document).ready(function() {
             var cantidad = $(this).data("cantidad");
             // ruta del formulario
             var url = $(this).data("url");
+            // talla 
+            var size = $("#size").val();
+            console.log(size);
             $.ajax({
                 url: url,
                 type: 'POST',
                 data: {
                     'productId' : product_id,
-                    'cantidad' : cantidad
+                    'cantidad' : cantidad,
+                    'size' : size
                 },
                 success: function(data) {
                     console.log(data);
