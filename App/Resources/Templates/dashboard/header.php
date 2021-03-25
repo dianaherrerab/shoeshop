@@ -86,10 +86,10 @@
                 <nav class="navbar navbar-expand-lg bg-naranja altura-header px-0">
                     <div class="container-fluid">
                         <div class="row col-12 p-0">
-                            <div class="col-4 d-flex justify-content-center p-0">
+                            <div class="col-lg-3 col-12 d-flex justify-content-center p-0">
                                 <img src="<?php echo IMG?>/dashboard/zapato-dashboard.png" class="medidas-zapatos">
                             </div>
-                            <div class="col-8 p-0">
+                            <div class="col-lg-9 p-0">
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item">
@@ -114,33 +114,33 @@
                     </div>
                 </nav>
             </div>
-            <div class="col-4 p-0 d-none d-lg-block">
+            <div class="col-3 p-0 d-none d-lg-block">
                 <aside class="azul-oscuro">
                     <ul class="nav flex-column pt-4 pb-5">
                         <li class="nav-item px-5">
-                            <a class="nav-link active white-text letra-aside d-flex align-items-center" href="#!">
-                                <i class="fas fa-home fa-2x mr-3"></i>
+                            <a class="nav-link active white-text letra-aside d-flex align-items-center" href="<?php echo IMG?>Admin/">
+                                <i class="fas fa-home fa-lg mr-3"></i>
                                 Inicio
                             </a>
                         </li>
                         <hr class="linea-aside">
                         <li class="nav-item px-5">
-                            <a class="nav-link white-text letra-aside d-flex align-items-center" href="#!">
-                                <i class="fas fa-users fa-2x mr-3"></i>
+                            <a class="nav-link white-text letra-aside d-flex align-items-center" href="<?php echo IMG?>Admin/Client">
+                                <i class="fas fa-users fa-lg mr-3"></i>
                                 Clientes
                             </a>
                         </li>
                         <hr class="linea-aside">
                         <li class="nav-item px-5">
-                            <a class="nav-link white-text letra-aside d-flex align-items-center" href="#!">
-                                <i class="fas fa-shopping-cart fa-2x mr-3"></i>
+                            <a class="nav-link white-text letra-aside d-flex align-items-center" href="<?php echo IMG?>Admin/Product">
+                                <i class="fas fa-shopping-cart fa-lg mr-3"></i>
                                 Productos
                             </a>
                         </li>
                         <hr class="linea-aside">
                         <li class="nav-item px-5">
-                            <a class="nav-link white-text letra-aside d-flex align-items-center" href="#!">
-                                <i class="fas fa-clipboard-list fa-2x mr-3"></i>
+                            <a class="nav-link white-text letra-aside d-flex align-items-center" href="<?php echo IMG?>Admin/Sale">
+                                <i class="fas fa-clipboard-list fa-lg mr-3"></i>
                                 Ventas
                             </a>
                         </li>
@@ -150,68 +150,59 @@
                     </div>
                 </aside>
             </div>
-            <a href="#" data-activates="slide-out-dashboard" class="btn red p-3 button-collapse d-block d-lg-none position-fixed margen-arriba zindex-botones">
+            <a href="#" data-activates="slide-out-dashboard" class="btn bg-morado p-3 button-collapse d-block d-lg-none position-fixed altura-a zindex-botones">
                 <i class="fas fa-search"></i>
             </a>
+
             <div id="slide-out-dashboard" class="side-nav side wide bg-morado">
                 <ul class="custom-scrollbar">
+
                     <li class="text-center">
                         <img src="<?php echo IMG?>/zapato-azul.png" class="z-responsive">
                     </li>
                     <li>
-                    <ul class="collapsible collapsible-accordion">
-                        <li>
-                            <a class="collapsible-header waves-effect arrow-r active">
-                                <i class="sv-slim-icon fas fa-search mr-2"></i>
-                                Tipos
-                                <i class="fas fa-angle-down rotate-icon"></i>
-                            </a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li>
-                                        <a href="#" class="waves-effect active">
-                                        <span class="sv-slim">Femeninos</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="waves-effect">
-                                        <span class="sv-normal">Masculinos</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="collapsible-header waves-effect arrow-r active">
-                                <i class="sv-slim-icon fas fa-search mr-2"></i>
-                                Marcas
-                                <i class="fas fa-angle-down rotate-icon"></i>
-                            </a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li>
-                                        <a href="#" class="waves-effect">
-                                        <span class="sv-normal">Converse</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="waves-effect">
-                                        <span class="sv-normal">Kappa</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="waves-effect">
-                                        <span class="sv-normal">Alpha Tauri</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
+                        <ul class="collapsible collapsible-accordion py-3">
+                            <li>
+                                <a class="collapsible-header waves-effect arrow-r">
+                                    <i class="sv-slim-icon fas fa-user mr-2"></i>
+                                    Mi perfil
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsible-header waves-effect arrow-r mt-3">
+                                    <i class="sv-slim-icon fas fa-home mr-2"></i>
+                                    Inicio
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsible-header waves-effect arrow-r mt-3">
+                                    <i class="sv-slim-icon fas fa-users mr-2"></i>
+                                    Clientes
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsible-header waves-effect arrow-r mt-3">
+                                    <i class="sv-slim-icon fas fa-shopping-cart mr-2"></i>
+                                    Productos
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsible-header waves-effect arrow-r mt-3">
+                                    <i class="sv-slim-icon fas fa-clipboard-list mr-2"></i>
+                                    Ventas
+                                </a>
+                            </li>
+                            <li>
+                                <a class="collapsible-header waves-effect arrow-r mt-4">
+                                    <i class="sv-slim-icon fas fa-sign-out-alt mr-2"></i>
+                                    Cerrar sesión
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
-            <article class="col-12 col-lg-8 py-5 bg-gris">
+            <article class="col-12 col-lg-9 py-5 bg-gris">
                 
             
 

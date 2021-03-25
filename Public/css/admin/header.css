@@ -1,4 +1,4 @@
-.medidas-zapatos{ width: 300px;}
+.medidas-zapatos{ width: 270px;}
 .altura-header{height: 90px;}
 .borde-dropdown{border: 1px solid #ff5b16;}
 nav .dropdown-menu a:active{background-color: #A2A2A2 !important;}
@@ -7,7 +7,7 @@ nav .dropdown-menu a:active{background-color: #A2A2A2 !important;}
 .linea-aside{height: 1px; background-color: white; border: 1px; width: 100%;}
 .letra-aside:hover{background-color:#ff5b16 !important}
 aside, article{height: calc(100vh - 90px);}
-.ancho-img-aside{width: 250px;}
+.ancho-img-aside{width: 200px;}
 article{overflow-y: auto;}
 .hr-cards{height: 8px; background-color: #052f3d; width: 100%;}
 
@@ -20,3 +20,4 @@ article{overflow-y: auto;}
 
 .altura-galeria{height: auto;}
 .posicion-icono{top: 0px; right: 3rem;}
+.altura-a{ margin-top: 15px; margin-left: 30px;}
