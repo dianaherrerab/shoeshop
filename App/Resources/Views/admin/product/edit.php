@@ -22,39 +22,42 @@
                     <i class="far fa-lg fa-edit pr-3"></i>
                     <h5 class="m-0">Editar productos</h5>
                 </div>
-                <form action="" method="post" class="form-edit px-5 pb-5">
+                <form class="form-edit" method="post" action="<?php echo URL; ?>Admin/Product/Update" class="form-edit px-5 pb-5">
+                    <input type="hidden" name="productId" value="<?php echo $params['product']['productId']; ?>">
                     <div class="row my-5">
                         <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Nombre" aria-label="nombre" value="">
+                            <input type="text" class="form-control form-control1" placeholder="Nombre" aria-label="nombre" name="name" value="<?php echo $params['product']['name']; ?>">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Categoría" aria-label="Categoria" value="">
-                        </div>
-                    </div>
-                    <div class="row mb-5">
-                        <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Marca" aria-label="Marca" value="">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Género" aria-label="genero" value="">
+                            <input type="text" class="form-control form-control1" placeholder="Categoría" aria-label="Categoria" name="category" value="<?php echo $params['product']['category']; ?>">
                         </div>
                     </div>
                     <div class="row mb-5">
                         <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Material" aria-label="Material" value="">
+                            <input type="text" class="form-control form-control1" placeholder="Marca" aria-label="Marca" name="brand" value="<?php echo $params['product']['brand']; ?>">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Color" aria-label="color" value="">
+                            <input type="text" class="form-control form-control1" placeholder="Género" aria-label="genero" name="gender" value="<?php echo $params['product']['gender']; ?>">
                         </div>
                     </div>
                     <div class="row mb-5">
                         <div class="col">
-                            <textarea class="form-control form-control1 p-3" id="" placeholder="Descripción"></textarea>
+                            <input type="text" class="form-control form-control1" placeholder="Material" aria-label="Material" name="material" value="<?php echo $params['product']['material']; ?>">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control form-control1" placeholder="Color" aria-label="color" name="color" value="<?php echo $params['product']['color']; ?>">
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col">
+                            <textarea class="form-control form-control1 p-3" id="" placeholder="Descripción">
+                            <?php echo $params['product']['description']; ?>
+                            </textarea>
                         </div>
                     </div>
                     <div class="row mb-5">
                         <div class="col-6">
-                            <input type="text" class="form-control form-control1" placeholder="Precio" aria-label="Precio" value="">
+                            <input type="text" class="form-control form-control1" placeholder="Precio" aria-label="Precio" value="<?php echo $params['product']['price']; ?> COP">
                         </div>
                     </div>
                     <div class="container mb-5 form-control form-control1 altura-galeria">
@@ -64,24 +67,18 @@
                             </a>
                         </div>
                         <div class="row">
-                            <div class="col-12 col-md-4  mb-4 mb-md-0 d-flex align-items-center justify-content-center position-relative">
-                                <img class="card-imagen" src="<?php echo IMG?>/zapatilla.jpeg">
-                                <a href="" class="position-absolute posicion-icono">
-                                    <i class="far fa-2x fa-times-circle color-morado"></i>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-4 mb-4 mb-md-0 d-flex align-items-center justify-content-center position-relative">
-                                <img class="card-imagen" src="<?php echo IMG?>/zapatilla.jpeg">
-                                <a href="" class="position-absolute posicion-icono">
-                                    <i class="far fa-2x fa-times-circle color-morado"></i>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-4 mb-4 mb-md-0 d-flex align-items-center justify-content-center position-relative">
-                                <img class="card-imagen" src="<?php echo IMG?>/zapatilla.jpeg">
-                                <a href="" class="position-absolute posicion-icono">
-                                    <i class="far fa-2x fa-times-circle color-morado"></i>
-                                </a>
-                            </div>
+                            <?php
+                            foreach ($params['images'] as $image) {
+                                echo '
+                                <div class="col-12 col-md-4  mb-4 mb-md-0 d-flex align-items-center justify-content-center position-relative">
+                                    <img class="card-imagen" src="'.IMG.'/bd-products/'.$image['name'].'">
+                                    <a href="" class="position-absolute posicion-icono">
+                                        <i class="far fa-2x fa-times-circle color-morado"></i>
+                                    </a>
+                                </div>
+                                ';
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class=" col-12 p-0 mb-5">
@@ -101,51 +98,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="pt-3-half" contenteditable="true">Aurelia Vega</td>
-                                            <td class="pt-3-half" contenteditable="true">30</td>
-                                            <td>
-                                                <span class="table-remove">
-                                                    <button type="button" class="btn bg-naranja btn-rounded btn-sm my-0">
-                                                        Eliminar
-                                                    </button>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pt-3-half" contenteditable="true">Guerra Cortez</td>
-                                            <td class="pt-3-half" contenteditable="true">45  
-                                            </td>
-                                            <td>
-                                                <span class="table-remove">
-                                                    <button type="button" class="btn bg-naranja btn-rounded btn-sm my-0">
-                                                        Eliminar
-                                                    </button>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pt-3-half" contenteditable="true">Guadalupe House</td>
-                                            <td class="pt-3-half" contenteditable="true">26</td>
-                                            <td>
-                                                <span class="table-remove">
-                                                    <button type="button" class="btn bg-naranja btn-rounded btn-sm my-0">
-                                                        Eliminar
-                                                    </button>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr class="hide">
-                                            <td class="pt-3-half" contenteditable="true">Elisa Gallagher</td>
-                                            <td class="pt-3-half" contenteditable="true">31</td>
-                                            <td>
-                                                <span class="table-remove">
-                                                    <button type="button" class="btn bg-naranja btn-rounded btn-sm my-0">
-                                                        Eliminar
-                                                    </button>
-                                                </span>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        foreach ($params['sizes'] as $size) {
+                                            echo '
+                                            <tr>
+                                                <td class="pt-3-half" contenteditable="true">'.$size['sizeId'].'</td>
+                                                <td class="pt-3-half" contenteditable="true">'.$size['quantity'].'</td>
+                                                <td>
+                                                    <span class="table-remove">
+                                                        <button type="button" class="btn bg-naranja btn-rounded btn-sm my-0">
+                                                            Eliminar
+                                                        </button>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            ';
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

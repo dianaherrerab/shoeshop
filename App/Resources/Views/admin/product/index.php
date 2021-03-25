@@ -20,7 +20,7 @@
             <div class="card-body p-0"> 
                 <div class="letra-subti borde-hist font-weight-bold white-text m-0 d-flex align-items-center azul-oscuro p-3">
                     <i class="fas fa-lg fa-address-card pr-3"></i>
-                    <h5 class="m-0">Listado de clientes</h5>
+                    <h5 class="m-0">Listado de productos</h5>
                 </div>
                 <div class=" table-responsive text-nowrap">
                     <table id="dtBasicExample" class="table" width="100%">
@@ -47,22 +47,20 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            <tr class="color-gris">
-                                <td>01</td>
-                                <td>Karen Daniela Rodríguez Martínez</td>
-                                <td>
-                                    1234567890
-                                </td>
-                                <td>1234567</td>
-                                <td>
-                                    Cra 8 bfgbfgbdvd jef
-                                </td>
-                                <td class="text-center">
-                                    <a href=""><i class="far  fa-2x fa-trash-alt color-naranja"></i></a>
-                                    <a href=""><i class="far  fa-2x fa-edit color-naranja"></i></a>
-                                </td>   
+                            <tr class="content-pagination  color-gris">
+                                <?php echo $params['list']; ?>  
                             </tr>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">
+                                    Listado <b class="raleway-bold"><?php echo LIMIT_PER_PAGE; ?></b> | Total: <b class="raleway-bold"><?php echo $params['cant']; ?></b>
+                                </td>
+                                <td colspan="6" class="render-pagination">
+                                    <?php echo $params['render']; ?>
+                                </td>
+                            </tr>
+						</tfoot>
                     </table>
                 </div>
             </div>

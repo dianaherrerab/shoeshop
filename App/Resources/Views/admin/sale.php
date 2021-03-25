@@ -55,15 +55,15 @@
                             </tr>
                         </tbody>
                         <tfoot>
-								<tr>
-									<td colspan="2">
-										Listado <b class="raleway-bold"><?php echo LIMIT_PER_PAGE; ?></b> | Total: <b class="raleway-bold"><?php echo $params['cant']; ?></b>
-									</td>
-									<td colspan="6" class="render-pagination">
-										<?php echo $params['render']; ?>
-									</td>
-								</tr>
-							</tfoot>
+                            <tr>
+                                <td colspan="2">
+                                    Listado <b class="raleway-bold"><?php echo LIMIT_PER_PAGE; ?></b> | Total: <b class="raleway-bold"><?php echo $params['cant']; ?></b>
+                                </td>
+                                <td colspan="6" class="render-pagination">
+                                    <?php echo $params['render']; ?>
+                                </td>
+                            </tr>
+						</tfoot>
                     </table>
                 </div>
             </div>

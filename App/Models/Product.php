@@ -50,10 +50,10 @@ class Product extends Model
 	}
 
 	// función para listar las tuplas
-	public function listing( $pagina = 1, $input_whr = "id", $value_whr = null )
+	public function listing( $pagina = 1, $input_whr = "productId", $value_whr = null )
 	{
 		// ejecutamos la consulta
-		return parent::pagination( $pagina, $value_whr, $input_whr );
+		return parent::pagination( $pagina, $value_whr, $input_whr, $limit_per_page = LIMIT_PER_PAGE, $sql = 'NULL', $input_ord = 'productId' );
 	}
 
 	// Función para obtener todos los productos
@@ -78,6 +78,10 @@ class Product extends Model
 		return parent::customer("SELECT p.*, i.name as imagen, ps.quantity FROM " .$this->table ." as p INNER JOIN images as i on i.productId = p.productId INNER JOIN productssize as ps on ps.productId = p.productId WHERE p.productId = '".$productId."' AND p.statusProductId = 1 AND i.portada=1");
 	}
 
-	
+	// función para buscar un producto por el slug
+	public function find_status( $productId )
+	{
+		return parent::customer( " SELECT s.name FROM ". $this->table ." as p INNER JOIN statusproducts as s on s.statusProductId=p.statusProductId WHERE p.productId = '".$productId."' " , true );
+	}
 
 }
