@@ -5,9 +5,10 @@ class UserController extends Controller
 	// función de inicialización
 	public function __construct()
 	{
+		// llamamos al constructor del padre
+		parent::__construct();
 		// importamos el modelo de usuarios
 		$this->userModel = $this->model('User');
-        $this->user = new User();
 	}
 
 	public function index()
@@ -19,8 +20,8 @@ class UserController extends Controller
 	public function store( $role_id, $name, $username, $password )
 	{
 		// protegemos las variables para evitar el sql injection
-		$name = parent::__real_escape_string( $name );
-		$username = parent::__real_escape_string( $username );
+		// $name = parent::__real_escape_string( $name );
+		// $username = parent::__real_escape_string( $username );
 		// arreglo que contendra las variables a validar
 		$validations = ['role_id' => $role_id ];
 		// realizamos validaciones de inicio
@@ -33,14 +34,15 @@ class UserController extends Controller
 			// Mostramos el mensaje de error al usuario
 			return $this->errors();
 		}
+		$created_at = date('Y-m-d h:i:s');
 		// Creamos el array con los datos a pasar a la clase modelo
 		$request = [
             'name' => $name,
 			'username' => $username,
 			'slug' => SlugTrait::generate( $username ),
 			'role' => $role_id,
-			'password' => password_hash( parent::__real_escape_string( $password ) , PASSWORD_BCRYPT ),
-			'created_at' => date('Y-m-d h:i:s')
+			'password' => password_hash( $this->auth->protectVars( $password ) , PASSWORD_BCRYPT ),
+			'created_at' => $created_at
 		];
 		// Realizamos la petición de registro
 		$result = $this->userModel->store( $request );
@@ -59,12 +61,12 @@ class UserController extends Controller
 	}
 
 	// función para buscar el pin del usuario
-	public function find_pin_by_created_at( $created_at )
+	public function findByCreated_at( $created_at )
 	{
 		// buscamos los datos del usuario
-		$user = mysqli_fetch_assoc( $this->userModel->find_user_by_created_at(  $created_at ) );
+		$user = $this->userModel->findByCreated_at(  $created_at );
 		// retornamos el pin del usuario
-		return $user['pin'];
+		return $user['id'];
 	}
 
 	// función para buscar el email del usuario por pin

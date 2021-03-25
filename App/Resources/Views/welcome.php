@@ -117,14 +117,16 @@
 											<h4 class="color-naranja font-weight-bold">'.$producto['price'].' COP</h4>
 											<div class="container-fluid">
 												<div class="row justify-content-around">
-													<select class="browser-default custom-select m-auto form-control2 col-5">
+													
+													<select  class="browser-default custom-select m-auto form-control2 col-5">
 														<option selected>Talla</option>';
 														$sizes = $this->ProductSizeModel->find_size($producto['productId']);
 														foreach ($sizes as $size){
-															echo '<option value="1">'.$size['sizeId'].'</option>';
+															echo '<option value="'.$size['sizeId'].'">'.$size['sizeId'].'</option>';
+								
 														}
 											echo '  </select>
-													<a data-url="'.URL.'Client/ShoppingCar/agregar_productos" data-id="'.$producto['productId'].'" data-cantidad="1" class="add_shopping_cart white-text btn-vermas p-0 col-5 d-flex align-items-center justify-content-center">
+													<a href="#" class=" white-text btn-vermas p-0 col-5 d-flex align-items-center justify-content-center">
 														<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
 													</a>
 												</div>
@@ -164,11 +166,11 @@
 						<h6 class="color-morado mb-5">
 							Con nosotros podrás gestionar tu rol empresarial 
 						</h6>
-						<form method="POST" action="<?php echo URL; ?>/auth/register" class="register-form" name="register-form>
+						<form method="POST" action="<?php echo URL; ?>/Admin/Store/store" class="register-form" name="register-form">
 							<input type="text" id="name" name="name" placeholder="Nombre" class="bordes-welcome mb-4 bg-gris">
 							<input type="email" name="username" id="username" placeholder="Correo" class="bordes-welcome mb-4 bg-gris">
 							<input type="text" name="nameE" id="nameE" placeholder="Nombre de la empresa" class="bordes-welcome bg-gris mb-5">
-							<button type="button" class="btn bg-naranja boton-ingresar font-weight-bold mx-0 mb-5">
+							<button id="btn-register" class="btn bg-naranja boton-ingresar font-weight-bold mx-0 mb-5">
 								Enviar
 							</button>
 						</form>		

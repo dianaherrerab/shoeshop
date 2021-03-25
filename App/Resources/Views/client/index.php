@@ -64,29 +64,18 @@ $tienda = $this->StoreModel->find( 1 );
 								</a>
 								<div class="collapsible-body">
 									<ul>
-										<li>
-											<a href="#" class="waves-effect active  color-gris a-hover">
-											<span class="sv-slim">Femeninos</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="waves-effect  color-gris a-hover">
-											<span class="sv-normal">Masculinos</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="waves-effect color-gris a-hover">
-											<span class="sv-normal">Niños</span>
-											</a>
-										</li>
+										
 										<?php
 											foreach ($categorias as $categoria) {
 											echo '
-												<li>
-													<a href="#" class="waves-effect color-gris a-hover">
-													<span class="sv-normal">'.$categoria['name'].'</span>
-													</a>
-												</li>
+											<li>
+											<a href="#" class="waves-effect color-gris a-hover">
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="'.$categoria['categoryId'].'" >
+													<label class="form-check-label" for="'.$categoria['categoryId'].'"><span class="sv-slim">'.$categoria['name'].'</span></label>
+												</div>
+											</a>
+										</li>
 											';
 											}
 										?>
@@ -100,59 +89,26 @@ $tienda = $this->StoreModel->find( 1 );
 								</a>
 								<div class="collapsible-body">
 									<ul>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-slim">Adidas</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Nike</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Reebok</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Puma</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Skechers</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">New Balance</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Le Coq Sportif</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Converse</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Kappa</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="waves-effect color-gris a-hover">
-										<span class="sv-normal">Alpha Tauri</span>
-										</a>
-									</li>
+										<?php
+											foreach ($params['brands'] as $brand) {
+												echo '
+													<li>
+														<a href="#" class="waves-effect color-gris a-hover">
+															<div class="form-check">
+																<input type="checkbox" class="form-check-input" id="'.$brand['id'].'" >
+																<label class="form-check-label" for="'.$brand['id'].'"><span class="sv-slim">'.$brand['name'].'</span></label>
+															</div>
+														</a>
+													</li>
+												';
+												}
+										?>
 									</ul>
 								</div>
 							</li>
+							<button type="submit" class="font-weight-bold white-text bg-naranja boton-ingresar2 px-5">
+									Buscar
+							</button>
 						</ul>
 					</div>
 				</div>
@@ -168,18 +124,20 @@ $tienda = $this->StoreModel->find( 1 );
 											<h4 class="color-morado font-weight-bold">'.$producto['name'].'</h4>
 											<h4 class="color-naranja font-weight-bold">'.$producto['price'].' COP</h4>
 											<div class="container-fluid">
-												<div class="row justify-content-around">
-													<select class="browser-default custom-select m-auto form-control2 col-5">
-														<option selected>Talla</option> ';
-														$sizes = $this->ProductSizeModel->find_size($producto['productId']);
-														foreach ($sizes as $size){
-															echo '<option value="'.$size['sizeId'].'">'.$size['sizeId'].'</option>';
-														}
-												echo'</select>
-													<a data-url="'.URL.'Client/ShoppingCar/agregar_productos" data-id="'.$producto['productId'].'" data-cantidad="1" class="add_shopping_cart white-text btn-vermas p-0 col-5 d-flex align-items-center justify-content-center">
-														<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
-													</a>
-												</div>
+												<form >
+													<div class="row justify-content-around">
+														<select id="size" class="browser-default custom-select m-auto form-control2 col-5">
+															<option selected>Talla</option> ';
+															$sizes = $this->ProductSizeModel->find_size($producto['productId']);
+															foreach ($sizes as $size){
+																echo '<option value="'.$size['sizeId'].'">'.$size['sizeId'].'</option>';			
+															}
+													echo'</select>
+														<a data-url="'.URL.'Client/ShoppingCar/agregar_productos" data-id="'.$producto['productId'].'" data-cantidad="1" class="add_shopping_cart white-text btn-vermas p-0 col-5 d-flex align-items-center justify-content-center">
+															<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
+														</a>
+													</div>
+												</form>	
 											</div>
 											<div class="col-12 mt-4">
 												<a href="'.URL.'client/product/uniqueproduct/'.$producto['slug'].'" class="white-text btn-vermas">Ver más</a>

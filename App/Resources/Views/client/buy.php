@@ -83,7 +83,9 @@
                                         </div>
                                     </div>';
                                 }
-                                ?>    
+                                ?> 
+                            <h6>Total $ <?php echo $params['total']?> COP</h6>
+                                  
                             </div>
                             <h5 class="color-naranja m-0 font-weight-bold">
                                 Información del vendedor

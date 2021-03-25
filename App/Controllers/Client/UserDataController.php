@@ -22,15 +22,18 @@ class UserDataController extends Controller
 	// función para almacenar los datos
 	public function store( $request )
 	{
-		// retornamos los datos encontrados
-		$response = $this->userDataModel->store( $request );
-		// validamos si tenemos un error
-		if( !$response['status'] )
-			// retornamos el error
-			return $response;
-		else
-			// retornamos los datos
-			return $response['data'];
+		
+		// Realizamos la petición de registro
+		$result = $this->userDataModel->store( $request );
+		// Validamos si existe un error
+		if( !$result )
+		{
+			// Agregamos el mensaje a la variable para ser mostrada
+			array_push( $this->errors, $result );
+			// Mostramos el mensaje de error al usuario
+			echo $this->errors();
+		}
+		
 	}
 
 	// función para almacenar los datos

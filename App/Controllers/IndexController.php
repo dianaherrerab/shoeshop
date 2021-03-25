@@ -28,7 +28,7 @@ class IndexController extends Controller
 		// Obtiene todas las categorias de la tienda
 		$categories = $this->CategoryModel->getCategories();
 		// Obtiene todas las marcas 
-		$brands = $this->BrandModel->all();
+		$brands = $this->BrandModel->all(); 
 		// Organiza el arreglo con los datos a pasar a la vista
 		$params = [
 			'products' => $products,

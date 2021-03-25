@@ -1,45 +1,42 @@
 <?php
 
-// función que carga la vista principal de la pagina
+// Clase para gestionar la informacion de los productos
 class ProductController extends Controller
 {
-	// función constructor del controlador
+	// Función constructor del controlador
 	public function __construct()
 	{
-		// llamamos al constructor del padre
+		// Llama al constructor del padre
 		parent::__construct();
-		// Importar modelo de los productos
-        //$this->ProductModel = $this->model("Product");
-		// Importar modelo de usuario
+		// Importa modelo de usuario
 		$this->UserModel = $this->model("User");
-		// Importar modelo de usuario
-		//$this->UserModel = $this->model("User");
-		// Importar modelo de las categorias
+		// Importa modelo de las categorias
 		$this->CategoryModel = $this->model("Category");
-		// Importar modelo de los productos
+		// Importa modelo de los productos
+        $this->ImageModel = $this->model("Image");
+		// Importa modelo de los productos
         $this->ProductModel = $this->model("Product");
-		// Importar modelo de la tienda
+		// Importa modelo de la tienda
 		$this->StoreModel = $this->model("Store");
-		// Importar modelo de la tienda
+		// Importa modelo de las tallas de los productos
 		$this->ProductSizeModel = $this->model("ProductSize");
 	}
 
-	// función para mostrar la vista
-	public function index()
-	{	
-		// mostramos la vista
-		$this->view('client/index');
-	}
-
-    // funcion para mostrar la vista de un producto especifico
+    // Funcion para mostrar la vista de un producto especifico
     public function uniqueproduct( $slug ){
-		// buscamos los datos del usuario
+		// Busca un producto según el slug de su nombre
 		$product = $this->ProductModel->find_by_slug( $slug );
+		// Busca las imagenes del producto
+		$images = $this->ImageModel->find_images_by_id( $product['productId'] );
+		// Busca las tallas del producto
+		$sizes = $this->ProductSizeModel->find_size( $product['productId'] );
+		// Organiza el arreglo con los datos a pasar a la vista
 		$params = [
 			'product' => $product,
+			'images' => $images,
+			'sizes' => $sizes
 		];
-		print_r($params);
-		/* código para cargar la vista para almacenar un registro */
+		// Dirige a la vista con el arreglo de datos
         echo $this->view('client/uniqueProduct', $params);
     }
 

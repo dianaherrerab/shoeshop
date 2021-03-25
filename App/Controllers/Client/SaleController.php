@@ -1,32 +1,33 @@
 <?php
-// importamos el controlador de datos usuarios de la consola
+
+// Importa el controlador de los datalles de la venta
 require_once APP.'/Controllers/Client/SaleDetailController.php';
 
-// función que carga la vista principal de la pagina
+// Clase para gestionar la información de la venta
 class SaleController extends Controller
 {
-	// función constructor del controlador
+	// Función constructor del controlador
 	public function __construct()
 	{
-		// llamamos al constructor del padre
+		// Llama al constructor del padre
 		parent::__construct();
-		// realizamos la peticion al modelo de cerrar sesion
+		// Comprueba si existe una sesión
 		//$this->auth->guest();
 		// Importar modelo de usuario
 		$this->UserModel = $this->model("User");
-		// Importar modelo de las categorias
+		// Importa modelo de las categorias
 		$this->CategoryModel = $this->model("Category");
 		// Importa modelo de las marcas
 		$this->BrandModel = $this->model("Brand");
-		// Importar modelo de los productos
+		// Importa modelo de los productos
         $this->ProductModel = $this->model("Product");
-		// Importar modelo de la tienda
+		// Importa modelo de la tienda
 		$this->StoreModel = $this->model("Store");
-		// Importar modelo de la tienda
+		// Importa modelo de las tallas de un producto
 		$this->ProductSizeModel = $this->model("ProductSize");
-        // Importar modelo de una compra
+        // Importa modelo de una venta
 		$this->SaleModel = $this->model("Sale");
-        // instanciamos el controlador de datos usuarios de la consola
+        // Instacia el controlador de los detalles de una venta
 		$this->SaleDetailController = new SaleDetailController();
 	}
 

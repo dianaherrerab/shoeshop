@@ -27,16 +27,17 @@
                                         <div class="container mb-3 mb-lg-0">
                                             <div class="row color-gris justify-content-around align-items-center">
                                                 <div class="col-12 col-sm-3 d-flex align-items-center justify-content-center justify-content-lg-start p-0">
-                                                    <h5 class="m-0">Talla: <span>37</span></h5>
+                                                    <h5 class="m-0">Talla: <span>'.$product['talla'].'</span></h5>
                                                 </div>
                                                 <div class="col-12 col-sm-5 d-flex flex-row align-items-center justify-content-center p-0">
                                                     <h5 class="m-0">Cantidad: </h5>
                                                     <div>
                                                         <select class="browser-default custom-select form-control2 anchura-cantidad">
-                                                            <option value="1" selected>'.$product['cantidad'].'</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                        </select>
+                                                            <option value="'.$product['cantidad'].'" selected>'.$product['cantidad'].'</option> ';
+                                                            for ($i=1; $i <= $product['cantidad-disponible']; $i++) { 
+                                                               echo'<option value="'.$i.'">'.$i.'</option>';
+                                                            }
+                                                    echo'  </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-4 d-flex align-items-center justify-content-center p-0">
@@ -49,7 +50,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-3 p-0">
-                                        <a data-url="'.URL.'Cliente/ShoppingCar/eliminar_productos" data-id="'.$product['id'].'" data-cantidad="'.$product['cantidad'].'" data-precio="'.$product['precio'].'" class="delete_shopping_cart font-weight-bold white-text red px-5 py-3 borde-eliminar" data-toggle="modal" data-target="#exampleModal">
+                                        <a data-url="'.URL.'Cliente/ShoppingCar/eliminar_productos" data-id="'.$product['id'].'" data-cantidad="'.$product['cantidad'].'" data-precio="'.$product['precio'].'" class="delete_shopping_cart font-weight-bold white-text red px-5 py-3 borde-eliminar">
                                             <i class="far fa-trash-alt mr-2"></i>Eliminar
                                         </a>
                                     </div>
@@ -61,6 +62,9 @@
                     ?>
                     <!-- Fin de un producto  -->
                 </div>
+                <h1>Total:</h1>
+                <h2 class="total">$<?php echo  $params['total']; ?></h2>
+                <input type="hidden" id="total" value="<?php echo  $params['total']; ?>">   
                 <a href="<?php echo URL; ?>/client/shoppingcar/datosCompra" class="font-weight-bold white-text bg-morado boton-guardar">
                     Continuar compra
                 </a>
