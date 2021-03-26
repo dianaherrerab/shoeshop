@@ -92,17 +92,17 @@ class ShoppingCarController extends Controller
 	public function eliminar_productos()
 	{
 		// Guarda el id del producto
-		$id = $_POST['id'];
+		$id = $_POST['productId'];
 		// Declara la posicion como nula
 		$i = NULL;
 		// Recorre los productos
 		foreach ( $_SESSION['cart']['products'] as $position => $product ) 
 		{
 			// Valida si el producto existe
-			if( $product['id'] == $id )
+			if( $product['productId'] == $id )
 				// Obtiene la posición
 				$i = $position;
-		}
+		}		
 		// Valida que la posición no sea nula
 		if( !is_null( $i ) )
 		{

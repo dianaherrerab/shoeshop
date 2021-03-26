@@ -1,7 +1,8 @@
 <?php require_once RESOURCES."/Templates/client/header.php"; 
-$productos = $this->ProductModel->getProducts( 1 );
+
 $categorias = $this->CategoryModel->getCategories();
 $tienda = $this->StoreModel->find( 1 );
+$brands = $this->BrandModel->all();
 
 ?>
 
@@ -53,107 +54,75 @@ $tienda = $this->StoreModel->find( 1 );
 					<hr class="welcome-hr">
 				</div>
 				<div class="col-3 d-none d-lg-block postion-relative p-0 ">
-					<div class="borde-filtro position-absolute white py-5 col-12">
-						<h5 class="font-weight-bold text-center color-naranja">FILTROS</h5>
-						<hr class="filtro-hr mb-4">
-						<ul class="collapsible collapsible-accordion tam-letra-ul font-weight-bold">
-							<li>
-								<a class="collapsible-header waves-effect arrow-r active">
-									Tipos
-									<i class="fas fa-angle-down rotate-icon"></i>
-								</a>
-								<div class="collapsible-body">
-									<ul>
-										
-										<?php
-											foreach ($categorias as $categoria) {
-											echo '
-											<li>
-											<a href="#" class="waves-effect color-gris a-hover">
-												<div class="form-check">
-													<input type="checkbox" class="form-check-input" id="'.$categoria['categoryId'].'" >
-													<label class="form-check-label" for="'.$categoria['categoryId'].'"><span class="sv-slim">'.$categoria['name'].'</span></label>
-												</div>
-											</a>
-										</li>
-											';
-											}
-										?>
-									</ul>
-								</div>
-							</li>
-							<li>
-								<a class="collapsible-header waves-effect arrow-r a-hover">
-									Marcas
-									<i class="fas fa-angle-down rotate-icon"></i>
-								</a>
-								<div class="collapsible-body">
-									<ul>
-										<?php
-											foreach ($params['brands'] as $brand) {
+					<form class="form-search" action="<?php echo URL; ?>Client/Index/Pagination" data-url-change="<?php echo URL; ?>Client/Index/Listing" method="get">
+						<div class="borde-filtro position-absolute white py-5 col-12">
+							<h5 class="font-weight-bold text-center color-naranja">FILTROS</h5>
+							<hr class="filtro-hr mb-4">
+							<ul class="collapsible collapsible-accordion tam-letra-ul font-weight-bold">
+								<li>
+									<a class="collapsible-header waves-effect arrow-r active">
+										Categorias
+										<i class="fas fa-angle-down rotate-icon"></i>
+									</a>
+									<div class="collapsible-body">
+										<ul>
+											<?php
+												foreach ($categorias as $categoria) {
 												echo '
-													<li>
-														<a href="#" class="waves-effect color-gris a-hover">
-															<div class="form-check">
-																<input type="checkbox" class="form-check-input" id="'.$brand['id'].'" >
-																<label class="form-check-label" for="'.$brand['id'].'"><span class="sv-slim">'.$brand['name'].'</span></label>
-															</div>
-														</a>
-													</li>
+												<li>
+												<a class="waves-effect color-gris a-hover">
+													<div class="custom-control custom-radio ">
+														<input type="hidden" id="input_whr" value="categoryId">
+														<input type="radio" class="custom-control-input value_whr" value="'.$categoria['categoryId'].'" id="'.$categoria['categoryId'].'" name="groupOfDefaultRadios">
+														<label class="custom-control-label" for="'.$categoria['categoryId'].'"><span class="sv-slim">'.$categoria['name'].'</span></label>
+													</div>
+												</a>
+												</li>
 												';
 												}
-										?>
-									</ul>
-								</div>
-							</li>
-							<button type="submit" class="font-weight-bold white-text bg-naranja boton-ingresar2 px-5">
-									Buscar
-							</button>
-						</ul>
-					</div>
+											?>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<a class="collapsible-header waves-effect arrow-r a-hover">
+										Marcas
+										<i class="fas fa-angle-down rotate-icon"></i>
+									</a>
+									<div class="collapsible-body">
+										<ul>
+											<?php
+												foreach ($brands as $brand) {
+													echo '
+														<li>
+															<a  class="waves-effect color-gris a-hover">
+																<div class="custom-control custom-radio">
+																	<input type="hidden" id="input_whr" value="brandId">
+																	<input type="radio" class="custom-control-input value_whr" value="'.$brand['id'].'" id="'.$brand['id'].'-1" name="groupOfDefaultRadios2">
+																	<label class="custom-control-label" for="'.$brand['id'].'-1"><span class="sv-slim">'.$brand['name'].'</span></label>
+																</div>
+															</a>
+														</li>
+													';
+													}
+											?>
+										</ul>
+									</div>
+								</li>
+								<button type="submit" class="font-weight-bold white-text bg-naranja boton-ingresar2 px-5">
+										Buscar
+								</button>
+							</ul>
+						</div>
+					</form>
 				</div>
 				<div class="container col-12 col-lg-9">
-					<div class="row">
-					<?php
-							foreach ($productos as $producto) {
-								echo '
-								<div class="col-12 col-sm-6 col-lg-4 py-4">
-									<div class="card text-center bordes-cards py-3">
-										<img class="card-imagen" src="'.IMG.'/bd-products/'.$producto['imagen'].'">
-										<div class="card-body px-1">
-											<h4 class="color-morado font-weight-bold">'.$producto['name'].'</h4>
-											<h4 class="color-naranja font-weight-bold">'.$producto['price'].' COP</h4>
-											<div class="container-fluid">
-												<form >
-													<div class="row justify-content-around">
-														<select id="size" class="browser-default custom-select m-auto form-control2 col-5">
-															<option selected>Talla</option> ';
-															$sizes = $this->ProductSizeModel->find_size($producto['productId']);
-															foreach ($sizes as $size){
-																echo '<option value="'.$size['sizeId'].'">'.$size['sizeId'].'</option>';			
-															}
-													echo'</select>
-														<a data-url="'.URL.'Client/ShoppingCar/agregar_productos" data-id="'.$producto['productId'].'" data-cantidad="1" class="add_shopping_cart white-text btn-vermas p-0 col-5 d-flex align-items-center justify-content-center">
-															<i class="fas fa-1x fa-shopping-cart color-naranja white-text"></i>
-														</a>
-													</div>
-												</form>	
-											</div>
-											<div class="col-12 mt-4">
-												<a href="'.URL.'client/product/uniqueproduct/'.$producto['slug'].'" class="white-text btn-vermas">Ver más</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								';
-							}
-						?>
+					<div class="row content-pagination">
+						<?php echo $params['list']; ?>						
 					</div>
 				</div>
 			</div>
 		</div>
-
-
 		<div class="white py-5">
 			<div class="container">
 				<div class="flex-column text-center">

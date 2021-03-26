@@ -50,7 +50,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-3 p-0">
-                                        <a data-url="'.URL.'Cliente/ShoppingCar/eliminar_productos" data-id="'.$product['id'].'" data-cantidad="'.$product['cantidad'].'" data-precio="'.$product['precio'].'" class="delete_shopping_cart font-weight-bold white-text red px-5 py-3 borde-eliminar">
+                                        <a data-url="'.URL.'Client/ShoppingCar/eliminar_productos" data-id="'.$product['id'].'" data-cantidad="'.$product['cantidad'].'" data-precio="'.$product['precio'].'" class="delete_shopping_cart font-weight-bold white-text red px-5 py-3 borde-eliminar">
                                             <i class="far fa-trash-alt mr-2"></i>Eliminar
                                         </a>
                                     </div>

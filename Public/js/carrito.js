@@ -59,6 +59,7 @@ $(document).ready(function() {
                     'productId' : product_id,
                 },
                 success: function(data) {
+                    console.log(data);
                     // validamos si hay respuesta de exito
                     if( data === 'true' )
                     {

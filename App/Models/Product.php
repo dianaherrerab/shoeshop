@@ -84,4 +84,10 @@ class Product extends Model
 		return parent::customer( " SELECT s.name FROM ". $this->table ." as p INNER JOIN statusproducts as s on s.statusProductId=p.statusProductId WHERE p.productId = '".$productId."' " , true );
 	}
 
+	// función para buscar un producto por el slug
+	public function find_portada( $productId )
+	{
+		return parent::customer( " SELECT i.name FROM ". $this->table ." as p INNER JOIN images as i on i.productId=p.productId WHERE p.productId = '".$productId."' AND i.portada = 1", true );
+	}
+
 }
