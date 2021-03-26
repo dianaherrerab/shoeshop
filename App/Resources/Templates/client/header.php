@@ -112,7 +112,9 @@
           <ul class="navbar-nav col-12 justify-content-around align-items-center font-weight-bold">
             <li class="nav-item active"><a href="" class="white-text p-0 a-hover">DAMAS</a></li>
             <li class="nav-item"><a href="" class=" white-text p-0 a-hover">CABALLEROS</a></li>
-            <img src="<?php echo IMG?>/shoes.png" class="zapato">
+            <a href="<?php echo URL; ?>/Client/">
+              <img src="<?php echo IMG?>/shoes.png" class="zapato">
+            </a>
             <li class="nav-item"><a href="" class="color-naranja p-0 a-hover">NIÑOS</a></li>
             <li class="nav-item"><a href="" class="color-naranja p-0 a-hover">DEPORTIVOS</a></li>
           </ul>
@@ -141,7 +143,13 @@
         <li>
           <ul class="collapsible collapsible-accordion">
             <li>
-              <a class="collapsible-header waves-effect arrow-r active" href="<?php echo URL; ?>/client/client/profile" >
+              <a class="collapsible-header waves-effect arrow-r active" href="<?php echo URL; ?>/client/" >
+                <i class="sv-slim-icon fas fa-home mr-2"></i>
+                  Inicio
+              </a>
+            </li>
+            <li>
+              <a class="collapsible-header waves-effect arrow-r active mt-3" href="<?php echo URL; ?>/client/client/profile" >
                 <i class="sv-slim-icon fas fa-user-alt mr-2"></i>
                   Mi perfil
               </a>

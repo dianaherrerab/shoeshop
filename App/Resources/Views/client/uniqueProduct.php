@@ -17,15 +17,15 @@
 					  if ($cont == 0) {
 						echo '
 						<div class="carousel-item active">
-						<img class="d-block w-100" src="'.IMG.'/bd-products/'.$image['name'].'" 
+						<img class="alto-unique" src="'.IMG.'/bd-products/'.$image['name'].'" 
 						alt="First slide">
 						</div>
 						';
 						$cont++;
 					  }else{
 						echo '
-						<div class="carousel-item">
-						<img class="d-block w-100" src="'.IMG.'/bd-products/'.$image['name'].'" 
+						<div class="carousel-item ">
+						<img class="alto-unique" src="'.IMG.'/bd-products/'.$image['name'].'" 
 						alt="First slide">
 						</div>
 						';	
