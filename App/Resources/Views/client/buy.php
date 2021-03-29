@@ -61,31 +61,37 @@
                             </h5>
                             <hr class="bg-gris mb-5">
                             <div class="container">
-                                <?php
-                                foreach ($params['products'] as $product)
-                                {
-                                    echo '
-                                    <div class="row mb-5 align-items-center">
-                                        <div class="col-6 p-0 color-morado">
-                                            <h6 class="font-weight-bold mb-3">
-                                                '.$product['nombre'].'
-                                            </h6>
-                                        </div>
-                                        <div class="col-3 color-morado">
-                                            <h6 class="mb-3">
-                                            '.$product['cantidad'].' unidad
-                                            </h6>
-                                        </div>
-                                        <div class="col-3 color-morado">
-                                            <h6 class="mb-3">
-                                            '.$product['precio'].' COP
-                                            </h6>
-                                        </div>
-                                    </div>';
-                                }
-                                ?> 
-                            <h6>Total $ <?php echo $params['total']?> COP</h6>
-                                  
+                                <div class="row mb-5 align-items-center">
+                                    <?php
+                                        foreach ($params['products'] as $product)
+                                        {
+                                            echo '
+                                            
+                                                <div class="col-6 p-0 color-morado">
+                                                    <h6 class="font-weight-bold mb-3">
+                                                        '.$product['nombre'].'
+                                                    </h6>
+                                                </div>
+                                                <div class="col-3 color-morado">
+                                                    <h6 class="mb-3">
+                                                    '.$product['cantidad'].' unidad
+                                                    </h6>
+                                                </div>
+                                                <div class="col-3 color-morado">
+                                                    <h6>
+                                                    '.$product['precio'].' COP
+                                                    </h6>
+                                                </div>
+                                            ';
+                                        }
+                                    ?> 
+                                
+                                    <div class="col-3 color-morado p-0 mt-5">
+                                        <h5 class="mb-3 font-weight-bold">
+                                            Total $ <?php echo $params['total']?> COP
+                                        </h5>
+                                    </div>
+                                </div> 
                             </div>
                             <h5 class="color-naranja m-0 font-weight-bold">
                                 Información del vendedor

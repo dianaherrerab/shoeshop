@@ -61,9 +61,13 @@
                     }
                     ?>
                     <!-- Fin de un producto  -->
+                    <div class="container">
+                        <div class="row justify-content-lg-end justify-content-center mb-5">
+                            <h3>Total:</h3>
+                            <h3 class="total pl-3">$<?php echo  $params['total']; ?></h3>
+                        </div>
+                    </div>
                 </div>
-                <h1>Total:</h1>
-                <h2 class="total">$<?php echo  $params['total']; ?></h2>
                 <input type="hidden" id="total" value="<?php echo  $params['total']; ?>">   
                 <a href="<?php echo URL; ?>/client/shoppingcar/datosCompra" class="font-weight-bold white-text bg-morado boton-guardar">
                     Continuar compra
