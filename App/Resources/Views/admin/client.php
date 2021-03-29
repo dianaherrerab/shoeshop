@@ -3,14 +3,17 @@
     <div class="container">
         <div class="card letra-subti borde-hist font-weight-bold white-text azul-oscuro p-3
         mb-5">
-            <form action="" method="post">
+            <form class="form-search" method="get" action="<?php echo URL; ?>Admin/Client/Pagination" data-url-change="<?php echo URL; ?>Admin/Client/Listing">
                 <div class="container">
                     <div class="row">
+                        <select id="input_whr" name="input_whr" class="browser-default form-control btn waves-effect">
+                            <option value="name" selected>Nombre</option>
+                        </select>
                         <div class="col-sm-9 col-12 mb-sm-0 mb-3">
-                            <input class="form-control form-control-lg" type="text" placeholder="¿Qué deseas buscar?">
+                            <input type="text" id="value_whr" name="value_whr" value="" class="form-control form-control-lg" placeholder="¿Qué deseas buscar?">
                         </div>
                         <div class="col-sm-3 col-12">
-                            <button type="submit" class="btn bg-naranja boton-ingresar font-weight-bold">Buscar</button>
+                            <button type="submit"  id="btn-search" class="btn bg-naranja boton-ingresar font-weight-bold">Buscar</button>
                         </div>
                     </div>
                 </div>
@@ -30,7 +33,7 @@
                                     ID
                                 </th>
                                 <th class="th-sm font-weight-bold">
-                                    CLiente
+                                    Cliente
                                 </th>
                                 <th class="th-sm font-weight-bold">
                                     Documento
@@ -43,19 +46,19 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="text-center">
-                            <tr class="color-gris">
-                                <td>01</td>
-                                <td>Karen Daniela Rodríguez Martínez</td>
-                                <td>
-                                    1234567890
-                                </td>
-                                <td>1234567</td>
-                                <td>
-                                    Cra 8 bfgbfgbdvd jef
-                                </td>  
-                            </tr>
+                        <tbody class=" content-pagination text-center">
+                                <?php echo $params['list']; ?>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">
+                                    Listado <b class="raleway-bold"><?php echo LIMIT_PER_PAGE; ?></b> | Total: <b class="raleway-bold"><?php echo $params['cant']; ?></b>
+                                </td>
+                                <td colspan="6" class="render-pagination">
+                                    <?php echo $params['render']; ?>
+                                </td>
+                            </tr>
+						</tfoot>
                     </table>
                 </div>
             </div>

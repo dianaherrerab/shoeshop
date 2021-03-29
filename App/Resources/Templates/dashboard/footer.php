@@ -13,6 +13,9 @@
     <!-- Your custom js (optional) -->
     <script type="text/javascript" src="<?php echo JS; ?>/script.js"></script>
     <script type="text/javascript" src="<?php echo JS; ?>/login.js"></script>
+    
+    <script type="text/javascript" src="<?php echo JS; ?>/form.js"></script>
+    <script type="text/javascript" src="<?php echo JS; ?>/pagination-dashboard.js"></script>
     <script type="text/javascript">
         new WOW().init();
 

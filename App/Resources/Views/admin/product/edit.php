@@ -1,21 +1,6 @@
 <?php require_once RESOURCES."/Templates/dashboard/header.php"; ?>
 
     <div class="container">
-        <div class="card letra-subti borde-hist font-weight-bold white-text azul-oscuro p-3
-        mb-5">
-            <form action="" method="post">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-9 col-12 mb-sm-0 mb-3">
-                            <input class="form-control form-control-lg" type="text" placeholder="¿Qué deseas buscar?">
-                        </div>
-                        <div class="col-sm-3 col-12">
-                            <button type="submit" class="btn bg-naranja boton-ingresar font-weight-bold">Buscar</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
         <div class="card">
             <div class="card-body p-0"> 
                 <div class="letra-subti borde-hist font-weight-bold white-text m-0 d-flex align-items-center azul-oscuro p-3">
@@ -24,12 +9,22 @@
                 </div>
                 <form class="form-edit" method="post" action="<?php echo URL; ?>Admin/Product/Update" class="form-edit px-5 pb-5">
                     <input type="hidden" name="productId" value="<?php echo $params['product']['productId']; ?>">
+                    <?php echo $this->__csrf_field(); ?>
+                    <div class="errors-edit pt-2 text-center white-text"></div>
                     <div class="row my-5">
                         <div class="col">
                             <input type="text" class="form-control form-control1" placeholder="Nombre" aria-label="nombre" name="name" value="<?php echo $params['product']['name']; ?>">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Categoría" aria-label="Categoria" name="category" value="<?php echo $params['product']['category']; ?>">
+                            <select name="categoryId" name="categoryId" class="browser-default custom-select form-control1">
+                                <option <?php if( $params['product']['categoryId'] == 1 ){ echo "selected"; } ?> value="1">Tenis</option>
+                                <option <?php if( $params['product']['categoryId'] == 2 ){ echo "selected"; } ?> value="2">Botas</option>
+                                <option <?php if( $params['product']['categoryId'] == 3 ){ echo "selected"; } ?> value="3">Sandalias</option>
+                                <option <?php if( $params['product']['categoryId'] == 4 ){ echo "selected"; } ?> value="4">Tacones</option>
+                                <option <?php if( $params['product']['categoryId'] == 5 ){ echo "selected"; } ?> value="5">Zapatos Casuales</option>
+                                <option <?php if( $params['product']['categoryId'] == 6 ){ echo "selected"; } ?> value="6">Baletas</option>
+                                <option <?php if( $params['product']['categoryId'] == 7 ){ echo "selected"; } ?> value="7">Mocasines</option>
+							</select>
                         </div>
                     </div>
                     <div class="row mb-5">
@@ -37,7 +32,10 @@
                             <input type="text" class="form-control form-control1" placeholder="Marca" aria-label="Marca" name="brand" value="<?php echo $params['product']['brand']; ?>">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Género" aria-label="genero" name="gender" value="<?php echo $params['product']['gender']; ?>">
+                            <select name="genderId" name="genderId" class="browser-default custom-select form-control1">
+                                <option <?php if( $params['product']['genderId'] == 1 ){ echo "selected"; } ?> value="1">Femenino</option>
+                                <option <?php if( $params['product']['genderId'] == 2 ){ echo "selected"; } ?> value="2">Masculino</option>
+                            </select>    
                         </div>
                     </div>
                     <div class="row mb-5">
@@ -50,14 +48,20 @@
                     </div>
                     <div class="row mb-5">
                         <div class="col">
-                            <textarea class="form-control form-control1 p-3" id="" placeholder="Descripción">
+                            <textarea class="form-control form-control1 p-3" id="" placeholder="Descripción" name="description">
                             <?php echo $params['product']['description']; ?>
                             </textarea>
                         </div>
                     </div>
                     <div class="row mb-5">
-                        <div class="col-6">
-                            <input type="text" class="form-control form-control1" placeholder="Precio" aria-label="Precio" value="<?php echo $params['product']['price']; ?> COP">
+                        <div class="col">
+                            <input type="text" class="form-control form-control1" placeholder="Precio" aria-label="Precio" name="price" value="<?php echo $params['product']['price']; ?>">
+                        </div>
+                        <div class="col">
+                        <select name="statusProductId" class="browser-default custom-select form-control1">
+                                <option <?php if( $params['product']['statusProductId'] == 1 ){ echo "selected"; } ?> value="1">Disponible</option>
+                                <option <?php if( $params['product']['statusProductId'] == 2 ){ echo "selected"; } ?> value="2">Agotado</option>
+                            </select>
                         </div>
                     </div>
                     <div class="container mb-5 form-control form-control1 altura-galeria">

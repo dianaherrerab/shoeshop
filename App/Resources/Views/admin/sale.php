@@ -3,14 +3,18 @@
     <div class="container">
         <div class="card letra-subti borde-hist font-weight-bold white-text azul-oscuro p-3
         mb-5">
-            <form action="" method="post">
+            <form class="form-search" method="get" action="<?php echo URL; ?>Admin/Sale/Pagination" data-url-change="<?php echo URL; ?>Admin/Sale/Listing">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-9 col-12 mb-sm-0 mb-3">
-                            <input class="form-control form-control-lg" type="text" placeholder="¿Qué deseas buscar?">
+                            <select id="input_whr" name="input_whr" class="browser-default form-control btn waves-effect">
+                                <option value="name" selected>Fecha</option>
+                                <option value="statusSaleId">Estado</option>
+                            </select>
+                            <input id="value_whr" name="value_whr" value="" class="form-control form-control-lg" type="text" placeholder="¿Qué deseas buscar?">
                         </div>
                         <div class="col-sm-3 col-12">
-                            <button type="submit" class="btn bg-naranja boton-ingresar font-weight-bold">Buscar</button>
+                            <button type="submit" id="btn-search" class="btn bg-naranja boton-ingresar font-weight-bold">Buscar</button>
                         </div>
                     </div>
                 </div>
@@ -49,10 +53,8 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="text-center">
-                            <tr class="content-pagination  color-gris">
+                        <tbody class="content-pagination text-center">
                                 <?php echo $params['list']; ?>
-                            </tr>
                         </tbody>
                         <tfoot>
                             <tr>

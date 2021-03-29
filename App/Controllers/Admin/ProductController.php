@@ -1,68 +1,68 @@
 <?php
 
-// función que carga la vista principal de la pagina
+// Clase para gestionar la información de los productos
 class ProductController extends Controller
 {
-	// función constructor del controlador
+	// Función constructor del controlador
 	public function __construct()
 	{
-		// llamamos al constructor del padre
+		// Llama al constructor del padre
 		parent::__construct();
-		// instanciamos el modelo del controlador
+		// Importa modelo de los productos
 		$this->ProductModel = $this->model('Product');
-		// instanciamos el modelo del controlador
+		// Importa modelo de las imagenes del producto
 		$this->ImageModel = $this->model('Image');
-		// instanciamos el modelo del controlador
+		// Importa modelo de las tallas del producto
 		$this->ProductSizeModel = $this->model('ProductSize');
+		// Importa el modelo de las tiendas
+		$this->StoreModel=$this->model('Store');
 	}
 
-	// función para mostrar la vista
+	// Función para mostrar el listado de productos
 	public function index()
 	{	
-		// mostramos la vista
+		// Redirige al método de listado
 		$this->redirect('Admin/Product/Listing');
 	}
 
-	// función para mostrar la vista con el listado inicial
+	// Función para mostrar la vista con el listado inicial
 	public function listing( $pagina = 1, $input_whr = "productId", $value_whr = null )
 	{
-		// obtenemos los datos del modelo
+		// Obtiene los datos del modelo
 		$lista = $this->data( $pagina, $input_whr, $value_whr );
-		
-		// mostramos la vista al usuario
+		// Muestra la vista al usuario con los datos
 		echo $this->view( 'admin/product/index', $lista );
 	}
 
-	// función para consultar por medio de ajax para estar cargando los datos sin recargar la página
+	// Función para consultar los datos sin recargar la página por medio de Ajax
 	public function pagination( $pagina = 1, $input_whr = "productId", $value_whr = null )
 	{
-		// obtenemos los datos del modelo
+		// Obtiene los datos del modelo
 		$jsondata = $this->data( $pagina, $input_whr, $value_whr );
-		// agregamos la cabecera de json para evitar errores
+		// Agrega la cabecera de Json para evitar errores
 		header('Content-type: application/json; charset=utf-8');
-		// mostramos la vista al usuario
+		// Muestra la vista al usuario
 		echo json_encode( $jsondata, JSON_FORCE_OBJECT );
 	}
 
-	// función para obtener los datos del listado
+	// Función para obtener los datos del listado
 	public function data( $pagina, $input_whr, $value_whr )
 	{
-		// obtenemos obtenemos los datos del listado
+		// Obtiene los datos del listado
 		$data = $this->ProductModel->listing( $pagina, $input_whr, $value_whr );
-		
-		// variable que contendra el listado
+		// Variable que contiene el listado
 		$list = "";
-		// validamos que existan datos
+		// Valida que existan datos
 		if( $data['cant'] > 0 ) 
 		{
-			// recorremos los datos existentes
+			// Recorre los datos existentes
 			foreach( $data['list'] as $product )
 			{
-				// Buscamos el estado de cada producto
+				// Busca el nombre del estado de cada producto
 				$statusProduct = $this->ProductModel->find_status( $product['statusProductId'] );
-				// Captura el estado
+				// Captura el nombre del estado
 				$product['status'] = $statusProduct['name'];
-				// vamos concatenando cada dato
+				// Concatena cada dato
 				$list .= '
 					<tr class="color-gris">
 						<td>'.$product['productId'].'</td>
@@ -72,7 +72,7 @@ class ProductController extends Controller
 						<td>'.$product['status'].'</td>
 						<td class="text-center">
 							<a href="'.URL.'Admin/Product/edit/'.$product['slug'].'"><i class="far  fa-2x fa-edit color-naranja"></i></a>
-							<a href=""><i class="far  fa-2x fa-trash-alt color-naranja"></i></a>
+							
                         </td> 
 					</tr>
 				';	
@@ -80,7 +80,7 @@ class ProductController extends Controller
 		}
 		else
 		{
-			// asignamos el código para mostrar que no se han encontrado resultados
+			// En caso de no haber datos, se muestra el mensaje correspondiente
 			$list .= '
 				<tr>
 					<td colspan="8" class="grey-text text-center h6 py-4">
@@ -90,13 +90,13 @@ class ProductController extends Controller
 				</tr>
 			';
 		}
-		// cambiamos el valor del parametro que tiene los resultados de la lista con el valor que acabamos de crear
+		// Reemplaza el parametro que tiene los resultados de la lista con el nuevo valor
 		$data['list'] = $list;
-		// retornamos el array
+		// Retorna el array
 		return $data;	
 	}
 
-	// función para mostrar la vista de editar
+	// Función para mostrar la vista de editar
 	public function edit( $slug )
 	{	
 		// Busca un producto según el slug de su nombre
@@ -111,46 +111,107 @@ class ProductController extends Controller
 			'images' => $images,
 			'sizes' => $sizes
 		];
-		// Dirige a la vista con el arreglo de datos
+		// Muestra la vista con el arreglo de datos
         echo $this->view('admin/product/edit', $params);
 	}
 	
-	// función para actualizar un registro completamente
+	// Función para actualizar un registro existente
 	public function update()
 	{
-		// Validamos que sea una petición enviada por post
-	$this->__post();
-	// validación de campos
-	$errors = $this->validate( $_POST, [
-		'name|nombre' => 'required'
-	]);
-	// Validamos si existe un error
-	if( $errors )
-	{
-		// Mostramos el mensaje de error al usuario
-		echo $this->errors();
-		// evitamos que siga la función
-		return;
-	}
-	// Realizamos la petición de registro
-	$result = $this->ProductModel->update( $_POST );
-	// Validamos si existe un error
-	if( !$result )
-	{
-		// Agregamos el mensaje a la variable para ser mostrada
-		array_push( $this->errors, $result );
-		// Mostramos el mensaje de error al usuario
-		echo $this->errors();
-	}
-	else
-		// Mostramos el mensaje de éxito al usuario
-		echo "true";
+		// Valida que sea una petición enviada por post
+		$this->__post();
+		// validación de campos
+		$errors = $this->validate( $_POST, [
+			'name|nombre' => 'required',
+			'categoryId|categoria' => 'required',
+			'brand|nombre' => 'required',
+			'genderId|categoria' => 'required',
+			'material|nombre' => 'required',
+			'color|categoria' => 'required',
+			'description|nombre' => 'required',
+			'price|categoria' => 'required',
+		]);
+		// Valida si existe un error
+		if( $errors )
+		{
+			// Muestra el mensaje de error al usuario
+			echo $this->errors();
+			// Evita que siga ejecutando la función
+			return;
+		}
+		// Realiza la petición de actualización
+		$result = $this->ProductModel->update( $_POST );
+		// Valida si existe un error
+		if( !$result )
+		{
+			// Agrega el mensaje a la variable para ser mostrada
+			array_push( $this->errors, $result );
+			// Muestra el mensaje de error al usuario
+			echo $this->errors();
+		}
+		else
+			// Muestra el mensaje de éxito al usuario
+			echo "true";
 	}
 
-	// función para mostrar la vista de crear
+	public function store()
+	{
+		// Valida que sea una petición enviada por post
+		$this->__post();
+		// Realiza la petición de registro
+		echo $this->store_global( $_POST );
+	}
+
+	public function store_global( $data )
+	{
+		// Valida los campos
+		$errors = $this->validate( $data, [
+			'name|nombre' => 'required',
+			'categoryId|categoria' => 'required',
+			'brand|nombre' => 'required',
+			'genderId|categoria' => 'required',
+			'material|nombre' => 'required',
+			'color|categoria' => 'required',
+			'description|nombre' => 'required',
+			'price|categoria' => 'required'
+		] );
+		// Valida si existe un error
+		if( $errors )
+		{
+			// Muestra el mensaje de error al usuario
+			return $this->errors();
+		}
+		// Busca el id del administrador que está sesionado
+		$userId = $_SESSION['id'];
+		// Busca el Id de la tienda correspondiente
+		$store = $this->StoreModel->findByUserId( $userId );
+		// Organiza el array con los datos a pasar a la clase modelo
+		$data['storeId'] = $store['storeId'];
+		$data['created_at'] = date("Y-m-d H:i:s");
+		$data['brandId'] = 1;
+		$data['statusProductId'] = 1;
+		$data['slug'] = SlugTrait::generate( $data['name'] );
+		// Realiza la petición de registro de los datos
+		$result = $this->ProductModel->store( $data );
+		// Valida si existe un error
+		if( !$result )
+		{
+			// Agrega el mensaje a la variable para ser mostrada
+			array_push( $this->errors, $result['message']  );
+			// Mostramos el mensaje de error al usuario
+			echo $this->errors();
+		}
+		else
+		{
+			// Muestra el mensaje de éxito al usuario
+			echo "true";
+		}
+	}
+
+	// Función para mostrar la vista de crear un registro
 	public function create()
 	{	
-		// mostramos la vista
+		// Muestra la vista
 		$this->view('admin/product/create');
 	}
 

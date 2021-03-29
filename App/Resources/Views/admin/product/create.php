@@ -1,60 +1,62 @@
 <?php require_once RESOURCES."/Templates/dashboard/header.php"; ?>
 
     <div class="container">
-        <div class="card letra-subti borde-hist font-weight-bold white-text azul-oscuro p-3
-        mb-5">
-            <form action="" method="post">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-9 col-12 mb-sm-0 mb-3">
-                            <input class="form-control form-control-lg" type="text" placeholder="¿Qué deseas buscar?">
-                        </div>
-                        <div class="col-sm-3 col-12">
-                            <button type="submit" class="btn bg-naranja boton-ingresar font-weight-bold">Buscar</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
         <div class="card">
             <div class="card-body p-0"> 
                 <div class="letra-subti borde-hist font-weight-bold white-text m-0 d-flex align-items-center azul-oscuro p-3">
                     <i class="far fa-lg fa-edit pr-3"></i>
-                    <h5 class="m-0">Editar productos</h5>
+                    <h5 class="m-0">Nuevo producto</h5>
+                    <a type="button" href="<?php echo URL;?>Admin/Product" class="btn btn-sm">
+						Regresar
+					</a>
                 </div>
-                <form action="" method="post" class="form-edit px-5 pb-5">
+                <form action="<?php echo URL; ?>Admin/Product/Store" method="post" class="form-create px-5 pb-5">
+                <?php echo $this->__csrf_field(); ?>
                     <div class="row my-5">
                         <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Nombre" aria-label="nombre" value="">
+                            <input type="text" class="form-control form-control1" placeholder="Nombre" aria-label="nombre" name="name">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Categoría" aria-label="Categoria" value="">
-                        </div>
-                    </div>
-                    <div class="row mb-5">
-                        <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Marca" aria-label="Marca" value="">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Género" aria-label="genero" value="">
-                        </div>
-                    </div>
-                    <div class="row mb-5">
-                        <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Material" aria-label="Material" value="">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control form-control1" placeholder="Color" aria-label="color" value="">
+                            <select name="categoryId" name="categoryId" class="browser-default custom-select form-control1">
+                                <option value="">Categoría</option>
+                                <option  value="1">Tenis</option>
+                                <option  value="2">Botas</option>
+                                <option  value="3">Sandalias</option>
+                                <option  value="4">Tacones</option>
+                                <option  value="5">Zapatos Casuales</option>
+                                <option  value="6">Baletas</option>
+                                <option  value="7">Mocasines</option>
+							</select>
                         </div>
                     </div>
                     <div class="row mb-5">
                         <div class="col">
-                            <textarea class="form-control form-control1 p-3" id="" placeholder="Descripción"></textarea>
+                            <input type="text" class="form-control form-control1" placeholder="Marca" aria-label="Marca" name="brand">
+                        </div>
+                        <div class="col">
+                            <select name="genderId" name="genderId" class="browser-default custom-select form-control1">
+                                <option value="">Género</option>
+                                <option value="1">Femenino</option>
+                                <option value="2">Masculino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col">
+                            <input type="text" class="form-control form-control1" placeholder="Material" aria-label="Material" name="material">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control form-control1" placeholder="Color" aria-label="color" name="color">
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col">
+                            <textarea class="form-control form-control1 p-3" name="description" placeholder="Descripción"></textarea>
                         </div>
                     </div>
                     <div class="row mb-5">
                         <div class="col-6">
-                            <input type="text" class="form-control form-control1" placeholder="Precio" aria-label="Precio" value="">
+                            <input type="text" class="form-control form-control1" placeholder="Precio" aria-label="Precio" name="price">
                         </div>
                     </div>
                     <div class="container mb-5 form-control form-control1 altura-galeria">

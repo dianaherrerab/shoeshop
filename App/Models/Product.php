@@ -12,7 +12,7 @@ class Product extends Model
 		$this->table = "products";
 		// productId
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
-		$this->fillable = ["name", "slug", "material", "price", "description", "color", "brand", "categoryId", "genderId", "statusProductId", "storeId", "created_at", "updated_at" ];
+		$this->fillable = ["name", "slug", "material", "price", "description", "color", "brand", "brandId" , "categoryId", "genderId", "statusProductId", "storeId", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
 		// variable que contiene clave primaria

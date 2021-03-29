@@ -61,4 +61,9 @@ class Store extends Model
 		return parent::costumer(" SELECT * FROM ".$this->table." as s INNER JOIN product as p ON s.productId=p.productId WHERE p.storeId = '".$productId."' ");
 	}
 
+	// funcion para encontrar la tienda por el id del producto
+	public function findByUserId( $userId ){
+		return parent::customer(" SELECT * FROM ".$this->table." WHERE userId = '".$userId."' ", true);
+	}
+
 }

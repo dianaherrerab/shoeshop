@@ -88,4 +88,11 @@ class User extends Model
 		// ejecutamos la consulta
 		return parent::pagination( $pagina, $value_whr, $input_whr );
 	}
+
+	// función para listar los registros
+	public function listing_clients( $pagina = 1, $input_whr = 'role', $value_whr = 3 )
+	{
+		// ejecutamos la consulta
+		return parent::pagination( $pagina, $value_whr, $input_whr );
+	}
 }

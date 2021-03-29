@@ -118,28 +118,28 @@
                 <aside class="azul-oscuro">
                     <ul class="nav flex-column pt-4 pb-5">
                         <li class="nav-item px-5">
-                            <a class="nav-link active white-text letra-aside d-flex align-items-center" href="<?php echo IMG?>Admin/">
+                            <a class="nav-link active white-text letra-aside d-flex align-items-center" href="<?php echo URL?>Admin/">
                                 <i class="fas fa-home fa-lg mr-3"></i>
                                 Inicio
                             </a>
                         </li>
                         <hr class="linea-aside">
                         <li class="nav-item px-5">
-                            <a class="nav-link white-text letra-aside d-flex align-items-center" href="<?php echo IMG?>Admin/Client">
+                            <a class="nav-link white-text letra-aside d-flex align-items-center" href="<?php echo URL?>Admin/Client">
                                 <i class="fas fa-users fa-lg mr-3"></i>
                                 Clientes
                             </a>
                         </li>
                         <hr class="linea-aside">
                         <li class="nav-item px-5">
-                            <a class="nav-link white-text letra-aside d-flex align-items-center" href="<?php echo IMG?>Admin/Product">
+                            <a class="nav-link white-text letra-aside d-flex align-items-center" href="<?php echo URL?>Admin/Product">
                                 <i class="fas fa-shopping-cart fa-lg mr-3"></i>
                                 Productos
                             </a>
                         </li>
                         <hr class="linea-aside">
                         <li class="nav-item px-5">
-                            <a class="nav-link white-text letra-aside d-flex align-items-center" href="<?php echo IMG?>Admin/Sale">
+                            <a class="nav-link white-text letra-aside d-flex align-items-center" href="<?php echo URL?>Admin/Sale">
                                 <i class="fas fa-clipboard-list fa-lg mr-3"></i>
                                 Ventas
                             </a>
