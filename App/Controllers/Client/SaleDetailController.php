@@ -18,7 +18,9 @@ class SaleDetailController extends Controller
             $request = [
                 'saleId' => $id_sale,
                 'productId' => $product['id'],
-                'price' => $product['subtotal']*$product['cantidad']
+				'size' => $product['talla'],
+                'price' => $product['subtotal']*$product['cantidad'],
+				'created_at' => date('Y-m-d H:i:s')
             ];
 			// Registra cada detalle de venta
 			$this->SaleDetailModel->store( $request );

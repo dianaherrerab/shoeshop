@@ -1,0 +1,27 @@
+/************ ESTILOS PARA LA FUNCIÓN DE CROPPIE *************/
+
+/* estilos para el contenedor del croppie */
+#croppie_uploaded_image{ background: #eee; border: 2px dashed #333; height: 300px; position: relative; width: 100%; }
+/* estilos para el label del croppie en dado caso de que desee subir foto */
+#croppie_uploaded_image .label_upload_image{ -ms-align-items: center; align-items: center; cursor: pointer; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; height: 100%; justify-content: center; width: 100%; }
+/* estilos para la card cuando se ejecute el croppie */
+.content-loader-croppie{ -ms-align-items: center; align-items: center; background-color: rgba(0, 0, 0, 0.7); border-radius: 5px; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; height: 100%; justify-content: center; left: 0; position: absolute; top: 0; width: 100%; z-index: 9; }
+
+
+
+/************ ESTILOS PARA LA IMAGEN CARGADA DESPUES DE CROPPIE *************/
+
+/* estilos para la imagen que sea seleccionada como miniatura */
+.img-thumbnail.miniature{ background: green; border-color: green; }
+/* estilos para las opciones de usuario */
+.options-image{ display: none; height: 100%; left: 15px; position: absolute; top: 0; width: calc( 100% - 30px ); }
+/* estilos para el contenedor de las opciones de la imagen cargada por croppie */
+.options-image .content-options-image{ -ms-align-items: flex-end; align-items: flex-end; background-color: rgba(0, 0, 0, 0.6); border-radius: 5px; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; height: 100%; justify-content: center; left: 0px; overflow: hidden; position: absolute; top: 0; width: 100%; }
+/* estilos para el boton de eliminar imagen */
+.options-image .content-options-image .delete-image{ -ms-align-items: center; align-items: center; border-radius: 50%; color: #aaa; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; height: 30px; justify-content: center; padding: 5px; position: absolute; top: 10px; right: 15px; width: 30px; }
+/* estilos para el boton de eliminar imagen cuando le hagan hover */
+.options-image .content-options-image .delete-image:hover{ background: #B00F0F; color: #fff; transition-duration: .2s; }
+/* estilos para el boton de seleccionar imagen como miniatura */
+.options-image .content-options-image .miniature-image{ -ms-align-items: center; align-items: center; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; justify-content: center; height: 40px; color: #ccc; width: 100%; }
+/* estilos para el boton de seleccionar imagen como miniatura cuando le hagan hover */
+.options-image .content-options-image .miniature-image:hover{ background: #56B872; box-shadow: 0px -3px 3px #333; color: #fff; transition-duration: .3s; }

@@ -49,10 +49,10 @@ class Sale extends Model
 	}
 
 	// función para listar las tuplas
-	public function listing( $pagina = 1, $input_whr = 'saleId', $value_whr = null )
+	public function listing( $pagina = 1, $input_whr = 'date', $value_whr = null )
 	{
 		// ejecutamos la consulta
-		return parent::pagination( $pagina, $value_whr, $input_whr, $limit_per_page = LIMIT_PER_PAGE, $sql = 'NULL', $input_ord = 'saleId' );
+		return parent::pagination( $pagina, $value_whr, $input_whr, $limit_per_page = LIMIT_PER_PAGE, $sql = 'NULL', $input_ord = 'date', $order = 'desc' );
 	}
 
 	// función para buscar un usuario por el slug

@@ -10,11 +10,12 @@ class StatusSale extends Model
 		parent::__construct();
 		// variable para declarar el nombre de la tabla al cual pertenece
 		$this->table = "statussale";
-		// statusSaleId
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
-		$this->fillable = [ "id", "name", "slug", "created_at", "updated_at" ];
+		$this->fillable = ["name", "slug", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
+		// variable que contiene la clave primaria de la tabla
+		$this->primary_key = "statusSaleId";
 	}
 
 	// función para buscar todos los datos

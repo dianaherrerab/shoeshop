@@ -2,6 +2,8 @@
 
 // Importa el controlador de los datalles de la venta
 require_once APP.'/Controllers/Client/SaleDetailController.php';
+// Importa el controlador de las tallas de los productos
+require_once APP.'/Controllers/Client/ProductSizeController.php';
 
 // Clase para gestionar la información de la venta
 class SaleController extends Controller
@@ -29,6 +31,8 @@ class SaleController extends Controller
 		$this->SaleModel = $this->model("Sale");
         // Instacia el controlador de los detalles de una venta
 		$this->SaleDetailController = new SaleDetailController();
+        // Instacia el controlador de las tallas del producto
+		$this->ProductSizeController = new ProductSizeController();
 	}
 
 	// función para mostrar la vista
@@ -44,6 +48,8 @@ class SaleController extends Controller
 		$id_sale = $this->store( $id_user, $store, $products_and_total['total'] );
         // Almacenamos los datos del pedido
         $this->SaleDetailController->store( $products_and_total['products'] , $id_sale['saleId']);
+		// Actualizar la cantidad que queda de cada producto
+		$data = $this->ProductSizeController->update_quantity( $products_and_total );
         // limpiamos el carrito
 		unset( $_SESSION['cart'] );
 		// redireccionamos
@@ -64,6 +70,7 @@ class SaleController extends Controller
 			$total += $subtotal;
 			$product_to_add = [
 				'cantidad' => $product['cantidad'],
+				'talla' => $product['size'],
 				'subtotal' => $subtotal,
 				'id' => $product['productId'],
 			];

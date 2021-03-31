@@ -1,19 +1,19 @@
 <?php
 
-// función que carga la vista principal de la pagina
+// Clase para gestionar la información del cliente desde el dashboard
 class IndexController extends Controller
 {
-	// función constructor del controlador
+	// Función constructor del controlador
 	public function __construct()
 	{
-		// llamamos al constructor del padre
+		// Llama al constructor del padre
 		parent::__construct();
 	}
 
-	// función para mostrar la vista
+	// Función para mostrar la vista principal
 	public function index()
 	{	
-		// mostramos la vista
+		// Muestra la vista al usuario
 		$this->view('admin/index');
 	}
 

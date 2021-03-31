@@ -24,4 +24,23 @@ class ProductSizeController extends Controller
 		echo "true|".$option;
 	}
 
+	// Función para buscar la cantidad disponible de cada producto
+	public function update_quantity( $products_and_total )
+	{
+		foreach ($products_and_total['products'] as $product) {
+			// Busca la información de la talla de un producto
+			$product_found = $this->ProductSizeModel->find_size( $product['id'] );
+			foreach ($product_found as $p) {
+				if($p['sizeId'] == $product['talla'])
+				{
+					$p['quantity'] = $p['quantity']-$product['cantidad'];
+				}
+				// Actualiza la nueva cantidad
+				$this->ProductSizeModel->update( $p );
+			}
+			// Imprime el listado
+			echo "true|";
+		}
+	}
+
 }

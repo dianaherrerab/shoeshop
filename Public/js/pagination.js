@@ -73,9 +73,12 @@ function pagination( url, url_change, pagina = 1, input_whr = 'id', value_whr = 
 // función para obtener el valor en el campo de tipo de dato
 function input_whr()
 {
-	
 	// retornamos el valor correspondiente
-	return $("#input_whr").val();
+ 	if ( $("#input_whr_category").checked ){
+		return $("#input_whr_category").val(); 
+	}else{
+		return $("#input_whr_brand").val();
+	}
 }
 
 // función para obtener el valor escrito en el campo de busqueda

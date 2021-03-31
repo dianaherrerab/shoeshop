@@ -72,7 +72,7 @@ $brands = $this->BrandModel->all();
 												<li>
 												<a class="waves-effect color-gris a-hover">
 													<div class="custom-control custom-radio ">
-														<input type="hidden" id="input_whr" value="categoryId">
+														<input type="hidden" id="input_whr_category" value="categoryId">
 														<input type="radio" class="custom-control-input value_whr" value="'.$categoria['categoryId'].'" id="'.$categoria['categoryId'].'" name="groupOfDefaultRadios">
 														<label class="custom-control-label" for="'.$categoria['categoryId'].'"><span class="sv-slim">'.$categoria['name'].'</span></label>
 													</div>
@@ -97,7 +97,7 @@ $brands = $this->BrandModel->all();
 														<li>
 															<a  class="waves-effect color-gris a-hover">
 																<div class="custom-control custom-radio">
-																	<input type="hidden" id="input_whr" value="brandId">
+																	<input type="hidden" id="input_whr_brand" value="brandId">
 																	<input type="radio" class="custom-control-input value_whr" value="'.$brand['id'].'" id="'.$brand['id'].'-1" name="groupOfDefaultRadios2">
 																	<label class="custom-control-label" for="'.$brand['id'].'-1"><span class="sv-slim">'.$brand['name'].'</span></label>
 																</div>

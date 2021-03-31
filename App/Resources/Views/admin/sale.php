@@ -72,4 +72,7 @@
         </div>
     </div>
 
+<!-- Modal para cargar el estado de la venta -->
+    
+<!-- Fin del modal para cargar el estado de la venta -->
 <?php require_once RESOURCES."/Templates/dashboard/footer.php"; ?>

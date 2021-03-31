@@ -98,7 +98,7 @@
                                                     <i class="fas fa-user pr-2"></i>Mi perfil
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right borde-dropdown">
-                                                    <a href="#" class="dropdown-item py-0 mt-2">
+                                                    <a href="<?php echo URL; ?>/Admin/Store/profile" class="dropdown-item py-0 mt-2">
                                                         <i class="fas fa-user pr-2 color-naranja"></i>Perfil
                                                     </a>
                                                     <a href="<?php echo URL; ?>/Auth/logout" class="dropdown-item py-0">

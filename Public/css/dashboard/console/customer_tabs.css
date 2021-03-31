@@ -1,0 +1,57 @@
+/* estilos para el contenedor de header de tabs */
+body .content-header-tabs{ background-color: #DDDDDD; }
+/* estilos para el contenedor de header de tabs cuando se active el modo oscuro */
+body.dark .content-header-tabs{ background-color: #000; }
+/* estilos para los links de las tabs */
+body.dark .content-header-tabs .header-tabs ul .tab a{ color: #bbb; }
+
+
+/* estilos para el submenu del perfil de usuario */
+.content-header-tabs .header-tabs{ height: 50px; }
+/* estilos para el contenedor de las tabs */
+.content-header-tabs .header-tabs ul{ height: 100%; overflow: hidden; }
+/* estilos para el botón de expandir el contenedor de tabs cuando se active el modo oscuro */
+.content-header-tabs .header-tabs ul .btn-expanded-tabs{ -ms-align-items: center; align-items: center; cursor: pointer; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; font-size: 20px; height: 50px; justify-content: center; position: absolute; right: 0; top: 0; width: 10%; z-index: 2; }
+/* estilo para cada tab */
+.content-header-tabs .header-tabs ul .tab{ height: 50px; padding: 0; }
+/* estilos para los links de las tabs */
+.content-header-tabs .header-tabs ul .tab a{ -ms-align-items: center; align-items: center; color: #666; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; height: 100%; font-size: 13px; width: 90%; }
+/* estilos para el before de las tabs */
+.content-header-tabs .header-tabs ul .tab a:before{ content: ''; bottom: 0; height: 2px; left: 0; position: absolute; transition-duration: .5s; width: 0%; }
+/* estilos para cuando se le hace hover al vinculo o esta activo */
+.content-header-tabs .header-tabs ul .tab a:hover, .content-header-tabs .header-tabs ul .tab a.active{ color: #257EC0; transition-duration: .5s;}
+/* estilos para el before cuando se le hace hover al vinculo o esta activo */
+.content-header-tabs .header-tabs ul .tab a:hover:before, .content-header-tabs .header-tabs ul .tab a.active:before{ background-color: #257EC0; transition-duration: .5s; width: 90%; }
+/* estilos para el contenedor de las tabs */
+.content-tabs{ min-height: calc( 100vh - 328px ); position: relative; }
+/* estilos para el contenido de las tabs */
+.content-tabs .content-tab{ left: 50%; opacity: 0; position: absolute; top: 0; transform: translateX(-50%); transition-duration: .7s; visibility: hidden; width: 100%; }
+/* estilos para el contenido de las tabs cuando esten activas */
+.content-tabs .content-tab.active{ visibility: visible; opacity: 1; transition-duration: .7s; }
+
+
+
+@media( min-width:768px )
+{
+	/* estilos para el submenu del perfil de usuario */
+	.content-header-tabs .header-tabs{ height: auto; }
+	/* estilos para el contenedor de las tabs */
+	.content-header-tabs .header-tabs ul{ -ms-align-items: flex-start; align-items: flex-start; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; flex-wrap: wrap; margin-bottom: 0; }
+	/* estilos para el botón de expandir el contenedor de tabs */
+	.content-header-tabs .header-tabs ul .btn-expanded-tabs{ display: none; }
+	/* estilos para los links de las tabs */
+	.content-header-tabs .header-tabs ul .tab a{ width: 100%; }
+	/* estilos para el before cuando se le hace hover al vinculo o esta activo */
+	.content-header-tabs .header-tabs ul .tab a:hover:before, .content-header-tabs .header-tabs ul .tab a.active:before{ width: 100%; }
+	/* estilos para el contenedor de las tabs */
+	.content-tabs{ min-height: calc( 100vh - 308px ); }
+	/* estilos para el contenido de las tabs */
+	.content-tabs .content-tab{ width: calc( 100% - 3rem ); }
+}
+
+
+@media( min-width: 992px )
+{
+	/* estilos para el contenedor de las tabs */
+	.content-tabs{ min-height: calc( 100vh - 212px ); }
+}

@@ -59,9 +59,9 @@
                         </div>
                         <div class="col">
                         <select name="statusProductId" class="browser-default custom-select form-control1">
-                                <option <?php if( $params['product']['statusProductId'] == 1 ){ echo "selected"; } ?> value="1">Disponible</option>
-                                <option <?php if( $params['product']['statusProductId'] == 2 ){ echo "selected"; } ?> value="2">Agotado</option>
-                            </select>
+                            <option <?php if( $params['product']['statusProductId'] == 1 ){ echo "selected"; } ?> value="1">Disponible</option>
+                            <option <?php if( $params['product']['statusProductId'] == 2 ){ echo "selected"; } ?> value="2">Agotado</option>
+                        </select>
                         </div>
                     </div>
                     <div class="container mb-5 form-control form-control1 altura-galeria">

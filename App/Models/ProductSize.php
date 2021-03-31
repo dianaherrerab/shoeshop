@@ -15,6 +15,8 @@ class ProductSize extends Model
 		$this->fillable = [ "quantity", "sizeId", "productId", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
+		// clave primaria
+		$this->primary_key = 'productSizesId';
 	}
 
 	// función para buscar todos los datos

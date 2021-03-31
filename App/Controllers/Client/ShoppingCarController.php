@@ -135,6 +135,7 @@ class ShoppingCarController extends Controller
 				'id' => $product['productId'],
 				'nombre' => $product_found['name'],
 				'cantidad' => $product['cantidad'],
+				'talla' => $product['size'],
 				'precio' => $product_found['price'],
 				'color' => $product_found['color'],
 				'subtotal' => $subtotal,

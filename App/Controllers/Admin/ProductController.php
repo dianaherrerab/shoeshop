@@ -8,13 +8,13 @@ class ProductController extends Controller
 	{
 		// Llama al constructor del padre
 		parent::__construct();
-		// Importa modelo de los productos
+		// Instancia modelo de los productos
 		$this->ProductModel = $this->model('Product');
-		// Importa modelo de las imagenes del producto
+		// Instancia modelo de las imagenes del producto
 		$this->ImageModel = $this->model('Image');
-		// Importa modelo de las tallas del producto
+		// Instancia modelo de las tallas del producto
 		$this->ProductSizeModel = $this->model('ProductSize');
-		// Importa el modelo de las tiendas
+		// Instancia el modelo de las tiendas
 		$this->StoreModel=$this->model('Store');
 	}
 
@@ -198,7 +198,7 @@ class ProductController extends Controller
 		{
 			// Agrega el mensaje a la variable para ser mostrada
 			array_push( $this->errors, $result['message']  );
-			// Mostramos el mensaje de error al usuario
+			// Muestra el mensaje de error al usuario
 			echo $this->errors();
 		}
 		else

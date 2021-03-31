@@ -67,9 +67,14 @@
                                         {
                                             echo '
                                             
-                                                <div class="col-6 p-0 color-morado">
+                                                <div class="col-5 p-0 color-morado">
                                                     <h6 class="font-weight-bold mb-3">
                                                         '.$product['nombre'].'
+                                                    </h6>
+                                                </div>
+                                                <div class="col-2 color-morado">
+                                                    <h6 class="mb-3">
+                                                        '.$product['talla'].'
                                                     </h6>
                                                 </div>
                                                 <div class="col-3 color-morado">
@@ -77,7 +82,7 @@
                                                     '.$product['cantidad'].' unidad
                                                     </h6>
                                                 </div>
-                                                <div class="col-3 color-morado">
+                                                <div class="col-2 color-morado">
                                                     <h6>
                                                     '.$product['precio'].' COP
                                                     </h6>

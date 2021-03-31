@@ -16,6 +16,8 @@
     
     <script type="text/javascript" src="<?php echo JS; ?>/form.js"></script>
     <script type="text/javascript" src="<?php echo JS; ?>/pagination-dashboard.js"></script>
+    
+    <script type="text/javascript" src="<?php echo JS; ?>/update-status-sale.js"></script>
     <script type="text/javascript">
         new WOW().init();
 

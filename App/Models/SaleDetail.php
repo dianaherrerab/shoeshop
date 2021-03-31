@@ -62,4 +62,5 @@ class SaleDetail extends Model
 		return parent::customer( " SELECT s.*, p.name FROM ". $this->table ." as s INNER JOIN products as p on s.productId=p.productId WHERE s.saleId = '".$saleId."'  ");
 	}
 
+
 }

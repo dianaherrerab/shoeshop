@@ -1,0 +1,3 @@
+.content-list-reminders{ max-height: 210px; overflow-y: auto; overflow-x: hidden; }
+.content-list-reminders li{ border-bottom: 1px dashed #aaa; }
+.content-list-reminders li:last-child{ border-bottom: none; }

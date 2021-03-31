@@ -1,63 +1,62 @@
 <?php
 
-// función que carga la vista principal de la pagina
+// Clase para gestionar la información del cliente desde el dashboard
 class ClientController extends Controller
 {
-	// función constructor del controlador
+	// Función constructor del controlador
 	public function __construct()
 	{
-		// llamamos al constructor del padre
+		// Llama al constructor del padre
 		parent::__construct();
-		// instanciamos el modelo del controlador
+		// Instancia modelo de usuario
 		$this->UserModel = $this->model('User');
-		// instanciamos el modelo del controlador
+		// Instancia modelo de usuario
 		$this->UserDataModel = $this->model('UserData');
 	}
 
-	// función para mostrar la vista
+	// Función para mostrar la vista principal
 	public function index()
 	{	
-		// mostramos la vista
+		// Redirige al método que carga el listado de clientes
 		$this->redirect('Admin/Client/Listing');
 	}
 
-	// función para mostrar la vista con el listado inicial
+	// Función para mostrar la vista con el listado inicial
 	public function listing( $pagina = 1, $input_whr = 'role', $value_whr = 3 )
 	{
-		// obtenemos los datos del modelo
+		// Obtiene de forma organizada los datos del cliente
 		$lista = $this->data( $pagina, $input_whr, $value_whr );
-		
-		// mostramos la vista al usuario
+		// Muestra la vista al usuario
 		echo $this->view( 'admin/client', $lista );
 	}
 
-	// función para consultar por medio de ajax para estar cargando los datos sin recargar la página
+	// Función para consultar los datos sin recargar la página por medio de ajax
 	public function pagination( $pagina = 1, $input_whr = "id", $value_whr = null )
 	{
-		// obtenemos los datos del modelo
+		// Obtiene los datos del modelo
 		$jsondata = $this->data( $pagina, $input_whr, $value_whr );
-		// agregamos la cabecera de json para evitar errores
+		// Agrega la cabecera de Json para evitar errores
 		header('Content-type: application/json; charset=utf-8');
-		// mostramos la vista al usuario
+		// Codifica los datos en tipo Json
 		echo json_encode( $jsondata, JSON_FORCE_OBJECT );
 	}
 
-	// función para obtener los datos del listado
+	// Función para obtener los datos del listado
 	public function data( $pagina, $input_whr, $value_whr )
 	{
-		// obtenemos obtenemos los datos del listado
+		// Obtiene los datos del listado
 		$data = $this->UserModel->listing( $pagina, $input_whr, $value_whr );
-		
-		// variable que contendra el listado
+		// Variable que contiene el listado
 		$list = "";
-		// validamos que existan datos
+		// Valida que hayan datos obtenidos
 		if( $data['cant'] > 0 ) 
 		{
-			// recorremos los datos existentes
+			// Recorre los datos existentes
 			foreach( $data['list'] as $user )
 			{
+				// Obtiene los datos del usuario
 				$userData = $this->UserDataModel->find_by_user_id( $user['id'] );
-				// vamos concatenando cada dato
+				// Se concatena cada dato (Formato que se muestra en la vista)
 				$list .= '
 					<tr class="color-gris">
 						<td>'.$user['id'].'</td>
@@ -71,7 +70,7 @@ class ClientController extends Controller
 		}
 		else
 		{
-			// asignamos el código para mostrar que no se han encontrado resultados
+			// Código para mostrar cuando no se han encontrado resultados
 			$list .= '
 				<tr>
 					<td colspan="8" class="grey-text text-center h6 py-4">
@@ -81,9 +80,9 @@ class ClientController extends Controller
 				</tr>
 			';
 		}
-		// cambiamos el valor del parametro que tiene los resultados de la lista con el valor que acabamos de crear
+		// Cambia el valor del parametro con el valor que se acaba de crear
 		$data['list'] = $list;
-		// retornamos el array
+		// Retorna el array
 		return $data;	
 	}
 

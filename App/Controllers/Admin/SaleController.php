@@ -10,15 +10,13 @@ class SaleController extends Controller
 		parent::__construct();
 		// instanciamos el modelo del controlador
 		$this->SaleModel = $this->model('Sale');
-		
+		// Importa modelo de los detalles de la venta
+		$this->SaleDetailModel = $this->model("SaleDetail"); 
+		// instanciamos el modelo del controlador
+		$this->UserDataModel = $this->model('UserData');
+		// instanciamos el modelo del controlador
+		$this->StatusSaleModel = $this->model('StatusSale');
 	}
-
-	// función para mostrar la vista
-	// public function index()
-	// {	
-	// 	// mostramos la vista
-	// 	$this->view('admin/sale');
-	// }
 
 	// función para mostrar la vista
 	public function index()
@@ -53,7 +51,6 @@ class SaleController extends Controller
 	{
 		// obtenemos obtenemos los datos del listado
 		$data = $this->SaleModel->listing( $pagina, $input_whr, $value_whr );
-		
 		// variable que contendra el listado
 		$list = "";
 		// validamos que existan datos
@@ -62,18 +59,70 @@ class SaleController extends Controller
 			// recorremos los datos existentes
 			foreach( $data['list'] as $sale )
 			{
+				// variable que contendra el listado de productos
+				$products = "";
+				// Busca los detalles de cada venta
+				$details = $this->SaleDetailModel->find_all( $sale['saleId'] );
+				// Asigna el valor
+				foreach ($details as $detail) {
+					$products .= '
+						<div>'.$detail['name'].' Talla:'.$detail['size'].'</div>
+					';
+				}
+				// Busca los datos del usuario
+				$dataCliente = $this->UserDataModel->find_by_user_id( $sale['userId'] );
+				// Busca el nombre del estado de la venta
+				$status = $this->StatusSaleModel->find( $sale['statusSaleId'] );
+				$modal="";
+
+				$modal='
+				<div class="modal fade" id="ModalSale" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header bg-naranja">
+							<h5 class="modal-title white-text centrar" id="exampleModalLabel">Modificar Estado de venta</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true" class="white-text">&times;</span>
+							</button>
+							</div>
+						<form method="POST" action="'.URL.'Admin/Sale/UpdateStatus" class="form-status-sale">
+							'.$this->__csrf_field().'
+							<input type="hidden" name="saleId" value="'. $sale['saleId'].'">	
+							<div class="errors-status"></div>
+							<div class="modal-body px-5 pt-5 pb-0">
+							<label for="">Estado</label>
+							<select class="browser-default form-control" name="statusSaleId" id="statusSaleId">
+								<option value="1">En proceso</option>
+								<option value="2">Enviado</option>
+								<option value="3">Cancelado</option>
+								<option value="4">Anulado</option>
+							</select>
+							</div>
+							<div class="modal-footer pt-0 pb-5 px-5 text-center">
+							<button id="" class="btn bg-morado boton-ingresar font-weight-bold mb-4">Actualizar estado</button>
+							</div>
+						</form>  
+						</div>
+					</div>
+				</div>
+				';
 				// vamos concatenando cada dato
 				$list .= '
 					<tr class="color-gris">
 						<td>'.$sale['saleId'].'</td>
 						<td>'.ConvertTrait::date( $sale['date'] ).'</td>
-						<td>'.$sale['userId'].'</td>
-						<td>'.$sale['storeId'].'</td>
+						<td>'.$dataCliente['firstName'].' '.$dataCliente['lastName'].'</td>
+						<td>'.$products.'</td>
 						<td>'.$sale['totalPrice'].'</td>
-						<td>'.$sale['userId'].'</td>
-						<td>'.$sale['statusSaleId'].'</td>
+						<td>'.$dataCliente['address'].'</td>
+						<td>
+							<a href="" data-toggle="modal" data-target="#ModalSale" data-url="'.URL.'Admin/Sale/" data-status="'.$status['statusSaleId'].'" class="form-status-sale btn btn-sm btn-success m-0">
+							'.$status['name'].'
+							</a>
+							'.$modal.'
+						</td>
 					</tr>
-				';	
+				';
 			};
 		}
 		else
@@ -93,5 +142,53 @@ class SaleController extends Controller
 		// retornamos el array
 		return $data;	
 	}
+
+	// Función para actualizar el estado de una venta
+    public function UpdateStatus(){
+		// Valida que sea una peticion de tipo POST
+		//$this->__post();
+		// Valida los campos requeridos
+		$errors = $this->validate( $_POST, [
+			'statusSaleId|<b>Estado</b>' => 'required',
+		] );
+		// Valida si hay errores
+		if( $errors )
+		{
+			// Muestra los errores
+			echo $this->errors();
+			// Detiene la ejecuciónde la función
+			return;
+		}
+		// Captura la fecha y hora de actualización
+		$_POST['updated_at'] = date('Y-m-d H:i:s');
+		// Agrega al arreglo de datos del usuario
+		$sale = $this->SaleModel->find( $_POST['saleId'] );
+		// rregla los datos para actualizar
+		$request = [
+			'saleId' => $_POST['saleId'],
+			'date' => $sale['date'],
+			'totalPrice' => $sale['totalPrice'],
+			'userId' => $sale['userId'],
+			'storeId' => $sale['storeId'],
+			'statusSaleId' => $_POST['statusSaleId'],
+			'created_at' => $sale['created_at'],
+			'updated_at' => $_POST['updated_at']
+		];
+		$response = $this->SaleModel->update( $request );
+		// Valida si el resultado encontrado no es un array
+		if( isset( $response['status'] ) && !$response['status'] )
+		{
+			// Crea un mensaje personalizado
+			array_push( $this->errors, $response['message'] );
+			// Muestra los errores
+			echo $this->errors();
+			// Detiene la ejecuciónde la función
+			return;
+		}
+		else
+			// Retorna mensaje de exito
+			echo "true";
+		
+    }
 
 }

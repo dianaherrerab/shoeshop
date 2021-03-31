@@ -72,7 +72,7 @@ $(document).ready(function() {
                         // mostramos el nuevo total de la venta
                         $(".total").html( "$"+total );
                         // eliminamos el campo de la tabla
-                        btn_delete.parent('td').parent('tr').remove();
+                        btn_delete.parent('div').parent('div').parent('div').parent('div').remove();
                         // mostramos una notificacion de exito
                         toastr.success("Producto eliminado.");
                     }

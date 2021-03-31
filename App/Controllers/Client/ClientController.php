@@ -17,17 +17,17 @@ class ClientController extends Controller
 		parent::__construct();
 		// Comprueba si existe una sesión
 		//$this->auth->guest();
-		// Importa modelo de usuario
+		// Instancia modelo de usuario
 		$this->UserModel = $this->model("User");
-		// Importa modelo de las categorias
+		// Instancia modelo de las categorias
 		$this->CategoryModel = $this->model("Category");
-		// Importa modelo de los productos
+		// Instancia modelo de los productos
         $this->ProductModel = $this->model("Product");
-		// Importa modelo de la tienda
+		// Instancia modelo de la tienda
 		$this->StoreModel = $this->model("Store");
-		// Importa modelo de los detalles de la venta
+		// Instancia modelo de los detalles de la venta
 		$this->SaleDetailModel = $this->model("SaleDetail");
-		// Importa modelo de las ventas
+		// Instancia modelo de las ventas
 		$this->SaleModel = $this->model("Sale");
 		// Instancia el controlador de los datos del usuario
 		$this->UserDataController = new UserDataController();
@@ -56,7 +56,7 @@ class ClientController extends Controller
 			// Detiene la ejecución de la función
 			return;
 		}
-		// Hace la petición de registro del usuario y obtiene su Id
+		// Hace la petición de registro del usuario y obtiene sus datos
 		// Usuario con rol 3 (Cliente)
 		$userId = $this->UserController->store( 3, $_POST['name'], $_POST['username'], $_POST['password'] );
 		// Genera el arreglo con los datos del usuario 
