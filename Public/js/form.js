@@ -13,7 +13,7 @@ $(document).ready(function() {
 				toastr.info("Creando registro, espere un momento...");
 			},
 			success: function(data) {
-				console.log(data);
+				console.log( data );
 				if( data === 'true' )
 				{
 					toastr.success("Registro exitoso.");
@@ -26,7 +26,7 @@ $(document).ready(function() {
 			},
 			error: function(xhr) {
 			   	toastr.error("Ha ocurrido un error.");
-			 console.log(xhr.statusText + xhr.responseText);
+			 	console.log(xhr.statusText + xhr.responseText);
 			},
 		});
 		return false;
@@ -148,7 +148,7 @@ $(document).ready(function() {
 			},
 			error: function(xhr) {
 			   	toastr.error("Ha ocurrido un error.");
-			    // console.log(xhr.statusText + xhr.responseText);
+			    console.log(xhr.statusText + xhr.responseText);
 			},
 		});
 		return false;

@@ -21,7 +21,7 @@ class UploadFileTrait
 	public static function uploadImg( $file, $folder )
 	{
 		// obtenemos el nombre con los segundos y el nombre arreglado por el slug
-		$name = date('i-s-') . SlugTrait::slug( $file['name'] );
+		$name = date('i-s-') . SlugTrait::generate( $file['name'] );
 		// obtenemos el tipo de imagen
 		$type = $file['type'];
 		// obtenemos el nombre temporal del archivo
@@ -90,7 +90,7 @@ class UploadFileTrait
 	}
 
 	// funcion para validar si el archivo es una imagen
-	private function validateImg( $type )
+	public static function validateImg( $type )
 	{
 		if( $type == 'image/jpg' or $type == 'image/jpeg' or $type == 'image/png' or $type == 'image/gif' )
 			return true;
@@ -98,7 +98,7 @@ class UploadFileTrait
 	}
 
 	// funcion para validar si es un archivo permitido
-	private function validateFile( $type )
+	public static function validateFile( $type )
 	{
 		if( $type == 'application/pdf' or $type == 'application/msword' or $type == 'application/excel' or $type == 'application/vnd.ms-excel' or $type == 'application/x-excel' or $type == 'application/x-msexcel' or $type == 'text/plain' or $type == 'application/x-compressed' or $type == 'application/x-zip-compressed' or $type == 'application/zip' or $type == 'multipart/x-zip' or $type == 'application/mspowerpoint' or $type == 'application/powerpoint' or $type == 'application/vnd.ms-powerpoint' or $type == 'application/x-mspowerpoint' )
 			return true;

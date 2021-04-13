@@ -59,7 +59,7 @@ class ProductController extends Controller
 			foreach( $data['list'] as $product )
 			{
 				// Busca el nombre del estado de cada producto
-				$statusProduct = $this->ProductModel->find_status( $product['statusProductId'] );
+				$statusProduct = $this->ProductModel->find_status( $product['productId'] );
 				// Captura el nombre del estado
 				$product['status'] = $statusProduct['name'];
 				// Concatena cada dato
@@ -164,6 +164,7 @@ class ProductController extends Controller
 
 	public function store_global( $data )
 	{
+		
 		// Valida los campos
 		$errors = $this->validate( $data, [
 			'name|nombre' => 'required',
@@ -203,8 +204,61 @@ class ProductController extends Controller
 		}
 		else
 		{
+			// Busca el producto correspondiente
+			$product = $this->ProductModel->find_by_slug( $data['slug'] );
+			// Guarda la imagen en su tabla
+			$result = $this->store_image( $product['productId'], $_POST['images'] );
+			// Busca el id de la talla
+			$size = $this->store_size( $product['productId'],  $_POST['size'], $_POST['quantity']);
 			// Muestra el mensaje de éxito al usuario
 			echo "true";
+		}
+	}
+
+	// funcion para subir una imagen
+	public function upload_image()
+	{
+		require_once APP."/Traits/UploadFileTrait.php";
+		$uploadImg = UploadFileTrait::uploadImg( $_FILES['uploadedfile'], 'bd-products');
+		if( $uploadImg[0] == 'error' )
+		{
+			$params = [ 'status' => 'error', 'message' => $uploadImg[1] ];
+		}
+		else
+		{
+			$params = [ 'status' => 'success', 'image' => IMG.'/bd-products/'.$uploadImg[0], 'name' => $uploadImg[0] ];
+		}
+
+		echo json_encode( $params );
+	}
+
+	// funcion para guardar imagenes
+	public function store_image( $productId, $images ){
+		$i = 0;
+		foreach ($images as $image) {
+			$portada = ($i==0) ? '1' : '0';
+			$request = [
+				'productId' => $productId,
+				'name' => $image,
+				'portada' => $portada,
+				'created_at' => date("Y-m-d H:i:s")
+			];
+			$this->ImageModel->store($request);
+			$i++;
+		}
+	}
+
+	// funcion para guardar imagenes
+	public function store_size( $productId, $size, $quantity ){
+		
+		foreach ($images as $image) {
+			$request = [
+				'productId' => $productId,
+				'sizeId' => $image,
+				'quantity' => $quantity,
+				'created_at' => date("Y-m-d H:i:s")
+			];
+			$this->ProductSizeModel->store($request);
 		}
 	}
 
@@ -214,5 +268,7 @@ class ProductController extends Controller
 		// Muestra la vista
 		$this->view('admin/product/create');
 	}
+
+
 
 }

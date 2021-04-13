@@ -49,10 +49,10 @@ class UserData extends Model
 	}
 
 	// función para listar las tuplas
-	public function listing( $pagina = 1, $input_whr = "id", $value_whr = null )
+	public function listing( $pagina = 1, $input_whr = "firstName", $value_whr = null )
 	{
 		// ejecutamos la consulta
-		return parent::pagination( $pagina, $value_whr, $input_whr );
+		return parent::pagination( $pagina, $value_whr, $input_whr, $limit_per_page = LIMIT_PER_PAGE, $sql = 'NULL', $input_ord = 'userDataId');
 	}
 
 	// función para buscar los datos por userId

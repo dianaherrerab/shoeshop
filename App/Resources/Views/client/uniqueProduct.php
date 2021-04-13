@@ -58,7 +58,7 @@
                   		<?php 
 						foreach ( $params['sizes'] as $size ) 
 						{
-							echo '<option value="'.$size['productSizesId'].'">'.$size['sizeId'].'</option>';
+							echo '<option id="size" value="'.$size['productSizesId'].'">'.$size['sizeId'].'</option>';
 						}
 						?>
                 </select>

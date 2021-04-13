@@ -19,7 +19,7 @@ class Sale extends Model
 	}
 
 	// función para buscar todos los datos
-	public function all( $input = "id", $order = "asc" )
+	public function all( $input = "saleId", $order = "asc" )
 	{
 		return parent::all( $input, $order );
 	}
@@ -64,5 +64,10 @@ class Sale extends Model
 	public function find_by_fecha_ped( $created_at )
 	{
 		return parent::customer("SELECT * FROM " .$this->table ." WHERE created_at = '".$created_at."'");
+	}
+
+	public function all_status( )
+	{
+		return parent::customer(" SELECT s.*,t.name, count(*) as cantidad FROM " .$this->table ." as s INNER JOIN statussale as t on t.statusSaleId=s.statusSaleId group by s.statusSaleId ");
 	}
 }

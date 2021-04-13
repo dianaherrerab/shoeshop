@@ -43,11 +43,9 @@ class UserController extends Controller
 		$this->__post();
 		// Valida los campos requeridos
 		$errors = $this->validate( $_POST, [
-			'firstName|<b>Primer Nombre</b>' => 'required',
-			'secondName|<b>Segundo Nombre</b>' => 'required',
-			'lastName|<b>Primer Apellido</b>' => 'required',
-			'typeDocumentId|<b>Tipo de documento</b>' => 'required',
-			'documentNumber|<b>Número de documento</b>' => 'required',
+			'name|<b>Nombre</b>' => 'required',
+			'nit|<b>Nit</b>' => 'required',
+			'description|<b>Descripción</b>' => 'required',
 			'cellphone|<b>Teléfono/Celular</b>' => 'required',
 			'address|<b>Dirección</b>' => 'required',
 		] );
@@ -62,16 +60,17 @@ class UserController extends Controller
 		// Captura la fecha y hora de actualización
 		$_POST['updated_at'] = date('Y-m-d H:i:s');
 		// Agrega al arreglo de datos del usuario
-		$_POST['userDataId'] = $this->UserDataController->find_by_user_id( $this->auth->user->__get('id') )['userDataId'];
+		$store = $this->StoreModel->findByUserId( $_POST['userId'] );
+		$_POST['storeId'] = $store['storeId'];
 		// Invierte la posición del array para que el id quede al inicio
 		$user_data = array_reverse( $_POST );
 		// Hace la petición de actualización
-		$user_data_response = $this->UserDataController->update( $user_data );
+		$store_response = $this->StoreModel->update( $user_data );
 		// Valida si el resultado encontrado no es un array
-		if( isset( $user_data_response['status'] ) && !$user_data_response['status'] )
+		if( isset( $store_response['status'] ) && !$store_response['status'] )
 		{
 			// Crea un mensaje personalizado
-			array_push( $this->errors, $user_data_response['message'] );
+			array_push( $this->errors, $store_response['message'] );
 			// Muestra los errores
 			echo $this->errors();
 			// Detiene la ejecuciónde la función
@@ -79,21 +78,6 @@ class UserController extends Controller
 		}
 		else
 		{
-			// Captura el id de usuario
-			$_POST['id'] = $_POST['user_id'];
-			// Hace la petición de actualización
-			$response = $this->UserModel->update( $_POST );
-			// Valida si el resultado encontrado no es un array
-			if( isset( $response['status'] ) && !$response['status'] )
-			{
-				// Crea un mensaje personalizado
-				array_push( $this->errors, $response['message'] );
-				// Muestra los errores
-				echo $this->errors();
-				// Detiene la ejecuciónde la función
-				return;
-			}
-			else
 				// Retorna mensaje de exito
 				echo "true";
 		}
@@ -134,7 +118,7 @@ class UserController extends Controller
 		// generamos el slug
 		$_POST['slug'] = SlugTrait::generate( $_POST['username'] );
 		// hacemos la petición de registro
-		$response = $this->userModel->update( $_POST );
+		$response = $this->UserModel->update( $_POST );
 		// validamos si el resultado encontrado no es un array
 		if( isset( $response['status'] ) && !$response['status'] )
 		{

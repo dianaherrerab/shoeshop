@@ -9,7 +9,7 @@ class IndexController extends Controller
 		// Llama al constructor del padre
 		parent::__construct();
 		// Comprueba si existe una sesión
-		//$this->auth->guest();
+		$this->auth->guest();
 		// Importa modelo de usuario
 		$this->UserModel = $this->model("User");
 		// Importa modelo de las categorias
@@ -23,27 +23,6 @@ class IndexController extends Controller
 		// Importr modelo de las tallas de los productos
 		$this->ProductSizeModel = $this->model("ProductSize");
 	}
-
-	// // Función para mostrar la vista
-	// public function index()
-	// {	
-	// 	// Obtiene todos los datos de una tienda
-	// 	$tienda = $this->StoreModel->find( 1 );	
-	// 	// Obtiene todos los productos de una tienda 
-	// 	$products = $this->ProductModel->getProducts( 1 );
-	// 	// Obtiene todas las categorias
-	// 	$categories = $this->CategoryModel->getCategories();
-	// 	// Obtiene todas las marcas 
-	// 	$brands = $this->BrandModel->all();
-	// 	// Organiza el arreglo con los datos a pasar a la vista
-	// 	$params = [
-	// 		'products' => $products,
-	// 		'categories' => $categories,
-	// 		'brands' => $brands
-	// 	];
-	// 	// Dirige a la vista con el arreglo de datos
-	// 	$this->view('client/index', $params);
-	// }
 
 	// función para mostrar la vista
 	public function index()
@@ -98,7 +77,7 @@ class IndexController extends Controller
 				// concatenar las opciones de tallas
 				foreach ($sizes as $size){
 					$tallas .= '<option value="'.$size['sizeId'].'">'.$size['sizeId'].'</option>';			
-				}
+				} 
 				// vamos concatenando cada dato
 				$list .= '
 					<div class="col-12 col-sm-6 col-lg-4 py-4">

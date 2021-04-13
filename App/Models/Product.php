@@ -20,7 +20,7 @@ class Product extends Model
 	}
 
 	// función para buscar todos los datos
-	public function all( $input = "id", $order = "asc" )
+	public function all( $input = "productId", $order = "asc" )
 	{
 		return parent::all( $input, $order );
 	}
@@ -53,7 +53,7 @@ class Product extends Model
 	public function listing( $pagina = 1, $input_whr = "productId", $value_whr = null )
 	{
 		// ejecutamos la consulta
-		return parent::pagination( $pagina, $value_whr, $input_whr, $limit_per_page = LIMIT_PER_PAGE, $sql = 'NULL', $input_ord = 'productId' );
+		return parent::pagination( $pagina, $value_whr, $input_whr, $limit_per_page = LIMIT_PER_PAGE, $sql = 'NULL', $input_ord = 'productId', $order = 'desc' );
 	}
 
 	// Función para obtener todos los productos

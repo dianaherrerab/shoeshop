@@ -4,6 +4,7 @@ $(document).ready(function(){
 		var url = $(this).data('url');
 		var productSizesId = $(this).val();
 		var quantity = $(this).data('quantity');
+		console.log(quantity);
 		$.ajax({
 			url: url,
 			type: 'POST',
@@ -16,7 +17,7 @@ $(document).ready(function(){
 				if( data[0] === 'true' )
 				{
 					$("#"+quantity).html( data[1] );
-					toastr.success("Estados cargados con éxito.");
+					toastr.success("Cantidad cargada con éxito.");
 				}else
 				{
 					toastr.error("Ha ocurrido un error. Intentelo nuevamente.");

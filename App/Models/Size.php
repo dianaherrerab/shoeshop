@@ -15,6 +15,8 @@ class Size extends Model
 		$this->fillable = [ "id", "number", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
+		// variable que contiene clave primaria
+		$this->primary_key = "sizedId";
 	}
 
 	// función para buscar todos los datos

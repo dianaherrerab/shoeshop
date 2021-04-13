@@ -60,7 +60,6 @@ class ShoppingCarController extends Controller
 			// Agrega el array de los datos del producto al array de productos del carrito
 			array_push( $products , $product_to_add );
 		}
-		print_r($products);
 		// Dirige a la vista del carrito de compras con los datos correspondiente
 		$this->view('client/shoppingCar', ['products' => $products, 'total' => $total]);
 	}

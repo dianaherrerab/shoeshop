@@ -19,7 +19,7 @@ class SaleDetail extends Model
 	}
 
 	// función para buscar todos los datos
-	public function all( $input = "id", $order = "asc" )
+	public function all( $input = "saleDetailsId", $order = "asc" )
 	{
 		return parent::all( $input, $order );
 	}
@@ -60,6 +60,12 @@ class SaleDetail extends Model
 	public function find_all( $saleId )
 	{
 		return parent::customer( " SELECT s.*, p.name FROM ". $this->table ." as s INNER JOIN products as p on s.productId=p.productId WHERE s.saleId = '".$saleId."'  ");
+	}
+
+	// función para buscar un usuario por el slug
+	public function all_name( )
+	{
+		return parent::customer( " SELECT s.productId, p.name, count(*) as cantidad FROM ". $this->table ." as s INNER JOIN products as p on s.productId=p.productId group by s.productId   ");
 	}
 
 

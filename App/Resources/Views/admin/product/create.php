@@ -10,8 +10,9 @@
 						Regresar
 					</a>
                 </div>
-                <form action="<?php echo URL; ?>Admin/Product/Store" method="post" class="form-create px-5 pb-5">
+                <form enctype="multipart/form-data" action="<?php echo URL; ?>Admin/Product/Store" method="post" class="form-create px-5 pb-5">
                 <?php echo $this->__csrf_field(); ?>
+                <div class="errors-create pt-2 text-center white-text"></div>
                     <div class="row my-5">
                         <div class="col">
                             <input type="text" class="form-control form-control1" placeholder="Nombre" aria-label="nombre" name="name">
@@ -65,25 +66,8 @@
                                 <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
                             </a>
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-md-4  mb-4 mb-md-0 d-flex align-items-center justify-content-center position-relative">
-                                <img class="card-imagen" src="<?php echo IMG?>/zapatilla.jpeg">
-                                <a href="" class="position-absolute posicion-icono">
-                                    <i class="far fa-2x fa-times-circle color-morado"></i>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-4 mb-4 mb-md-0 d-flex align-items-center justify-content-center position-relative">
-                                <img class="card-imagen" src="<?php echo IMG?>/zapatilla.jpeg">
-                                <a href="" class="position-absolute posicion-icono">
-                                    <i class="far fa-2x fa-times-circle color-morado"></i>
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-4 mb-4 mb-md-0 d-flex align-items-center justify-content-center position-relative">
-                                <img class="card-imagen" src="<?php echo IMG?>/zapatilla.jpeg">
-                                <a href="" class="position-absolute posicion-icono">
-                                    <i class="far fa-2x fa-times-circle color-morado"></i>
-                                </a>
-                            </div>
+                        <div class="row content-images">
+                            <input name="uploadedfile" id="uploadedfile" type="file" class="form-control" data-url="<?php echo URL; ?>Admin/Product/upload_image" />
                         </div>
                     </div>
                     <div class=" col-12 p-0 mb-5">
@@ -120,7 +104,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="font-weight-bold white-text bg-morado boton-editar">
+                        <button type="submit" value="Subir archivo" class="font-weight-bold white-text bg-morado boton-editar">
                             Guardar
                         </button>
                     </div>
@@ -130,3 +114,41 @@
     </div>
 
 <?php require_once RESOURCES."/Templates/dashboard/footer.php"; ?>
+<script>
+    $(document).ready(function(){
+
+        $("#uploadedfile").on('change', function(){
+            let url = $(this).data('url');
+            var form = $('.form-create')[0]; // You need to use standard javascript object here
+            var formData = new FormData(form);
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: formData,
+                contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+                processData: false,
+                dataType: 'json',
+                success: function(data) {
+                    if( data.status == 'success' )
+                    {
+                        $(".content-images").append(`
+                            <div class="col-md-6 col-lg-4">
+                                <input type="hidden" name="images[]" value="`+data.name+`" />
+                                <img src="`+data.image+`" class="img-fluid" />
+                            </div>
+                        `);
+                    }
+                    else{
+                        toastr.error( data.message );
+                    }
+                },
+                error: function(xhr) {
+                    
+			   	    toastr.error("Ha ocurrido un error.");
+                    // console.log(xhr.statusText + xhr.responseText);
+                },
+            });
+        });
+
+    });
+</script>

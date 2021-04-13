@@ -10,8 +10,7 @@ $(document).ready(function() {
             // ruta del formulario
             var url = $(this).data("url");
             // talla 
-            var size = $("#size").val();
-            console.log(size);
+            var size = $(this).siblings("#size").val();
             $.ajax({
                 url: url,
                 type: 'POST',

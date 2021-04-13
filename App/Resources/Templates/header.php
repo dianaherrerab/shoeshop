@@ -99,7 +99,9 @@
           <ul class="navbar-nav col-12 justify-content-around align-items-center font-weight-bold">
             <li class="nav-item active"><a href="" class="white-text p-0 a-hover">DAMAS</a></li>
             <li class="nav-item"><a href="" class=" white-text p-0 a-hover">CABALLEROS</a></li>
-            <img src="<?php echo IMG?>/shoes.png" class="zapato">
+            <a href="<?php echo URL; ?>Index">
+              <img src="<?php echo IMG?>/shoes.png" class="zapato">
+            </a>
             <li class="nav-item"><a href="" class="color-naranja p-0 a-hover">NIÑOS</a></li>
             <li class="nav-item"><a href="" class="color-naranja p-0 a-hover">DEPORTIVOS</a></li>
           </ul>

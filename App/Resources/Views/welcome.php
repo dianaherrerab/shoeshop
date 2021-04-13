@@ -31,10 +31,10 @@ $brands = $this->BrandModel->all();
 					<hr class="welcome-hr">
 				</div>
 				<div class="col-3 d-none d-lg-block postion-relative p-0 ">
-					<div class="borde-filtro position-absolute white py-5 col-12">
-						<h5 class="font-weight-bold text-center color-naranja">FILTROS</h5>
-						<hr class="filtro-hr mb-4">
-						<form class="form-search" method="get" action="<?php echo URL; ?>Index/Pagination" data-url-change="<?php echo URL; ?>Index/Listing" >
+					<form class="form-search" method="get" action="<?php echo URL; ?>Index/Pagination" data-url-change="<?php echo URL; ?>Index/Listing" >
+						<div class="borde-filtro position-absolute white py-5 col-12">
+							<h5 class="font-weight-bold text-center color-naranja">FILTROS</h5>
+							<hr class="filtro-hr mb-4">
 							<ul class="collapsible collapsible-accordion tam-letra-ul font-weight-bold">
 								<li>
 									<a class="collapsible-header waves-effect arrow-r active">
@@ -47,13 +47,13 @@ $brands = $this->BrandModel->all();
 												foreach ($categorias as $categoria) {
 												echo '
 												<li>
-												<a class="waves-effect color-gris a-hover">
-													<div class="custom-control custom-radio ">
-														<input type="hidden" id="input_whr" value="categoryId">
-														<input type="radio" class="custom-control-input value_whr" value="'.$categoria['categoryId'].'" id="'.$categoria['categoryId'].'" name="groupOfDefaultRadios">
-														<label class="custom-control-label" for="'.$categoria['categoryId'].'"><span class="sv-slim">'.$categoria['name'].'</span></label>
-													</div>
-												</a>
+													<a class="waves-effect color-gris a-hover">
+														<div class="custom-control custom-radio ">
+															<input type="hidden" class="input_whr" value="categoryId">
+															<input type="radio" class="filter-pagination custom-control-input value_whr" value="'.$categoria['categoryId'].'" id="'.$categoria['categoryId'].'" name="groupOfDefaultRadios">
+															<label class="custom-control-label" for="'.$categoria['categoryId'].'"><span class="sv-slim">'.$categoria['name'].'</span></label>
+														</div>
+													</a>
 												</li>
 												';
 												}
@@ -69,19 +69,19 @@ $brands = $this->BrandModel->all();
 									<div class="collapsible-body">
 										<ul>
 										<?php
-												foreach ($brands as $brand) {
-													echo '
-														<li>
-															<a  class="waves-effect color-gris a-hover">
-																<div class="custom-control custom-radio">
-																	<input type="hidden" id="input_whr" name="" value="brandId">
-																	<input type="radio" class="custom-control-input value_whr" value="'.$brand['id'].'" id="'.$brand['id'].'-1" name="groupOfDefaultRadios2">
-																	<label class="custom-control-label" for="'.$brand['id'].'-1"><span class="sv-slim">'.$brand['name'].'</span></label>
-																</div>
-															</a>
-														</li>
-													';
-													}
+											foreach ($brands as $brand) {
+												echo '
+													<li>
+														<a  class="waves-effect color-gris a-hover">
+															<div class="custom-control custom-radio">
+																<input type="hidden" class="input_whr" value="brandId">
+																<input type="radio" class="filter-pagination custom-control-input value_whr" value="'.$brand['id'].'" id="'.$brand['id'].'-1" name="groupOfDefaultRadios">
+																<label class="custom-control-label" for="'.$brand['id'].'-1"><span class="sv-slim">'.$brand['name'].'</span></label>
+															</div>
+														</a>
+													</li>
+												';
+												}
 											?>
 										</ul>
 									</div>
@@ -90,8 +90,8 @@ $brands = $this->BrandModel->all();
 									Buscar
 								</button>
 							</ul>
-						</form>						
-					</div>
+						</div>
+					</form>							
 				</div>
 				<div class="container col-12 col-lg-9">
 					<div class="row content-pagination">

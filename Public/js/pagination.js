@@ -41,9 +41,8 @@ $(document).ready(function() {
 // pagina: número de la página a donde irea
 // input_whr: valor en el campo de tipo de dato
 // value_whr: valor escrito en el campo de busqueda
-function pagination( url, url_change, pagina = 1, input_whr = 'id', value_whr = 'null' )
+function pagination( url, url_change, pagina = 1, input_whr, value_whr = 'null' )
 {
-	console.log(input_whr);
 	$.ajax({
 		url: url+"/"+pagina+"/"+input_whr+"/"+value_whr,
 		type: 'GET',
@@ -73,18 +72,14 @@ function pagination( url, url_change, pagina = 1, input_whr = 'id', value_whr = 
 // función para obtener el valor en el campo de tipo de dato
 function input_whr()
 {
-	// retornamos el valor correspondiente
- 	if ( $("#input_whr_category").checked ){
-		return $("#input_whr_category").val(); 
-	}else{
-		return $("#input_whr_brand").val();
-	}
+	return $(".filter-pagination:checked").siblings(".input_whr").val();
+	
 }
 
 // función para obtener el valor escrito en el campo de busqueda
 function value_whr()
 {
-	var valores = $(".value_whr");
+	let valores = $(".value_whr");
 	for (const key in valores) {
 		if(valores[key].checked){
 			return valores[key].value;

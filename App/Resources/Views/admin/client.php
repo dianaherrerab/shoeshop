@@ -3,11 +3,12 @@
     <div class="container">
         <div class="card letra-subti borde-hist font-weight-bold white-text azul-oscuro p-3
         mb-5">
-            <form class="form-search" method="get" action="<?php echo URL; ?>Admin/Client/Pagination" data-url-change="<?php echo URL; ?>Admin/Client/Listing">
+            <form class="form-search" method="get" action="<?php echo URL; ?>Admin/UserData/Pagination" data-url-change="<?php echo URL; ?>Admin/UserData/Listing">
                 <div class="container">
                     <div class="row">
                         <select id="input_whr" name="input_whr" class="browser-default form-control btn waves-effect">
-                            <option value="name" selected>Nombre</option>
+                            <option value="firstName" selected>Nombre</option>
+                            <option value="lastName">Apellido</option>
                         </select>
                         <div class="col-sm-9 col-12 mb-sm-0 mb-3">
                             <input type="text" id="value_whr" name="value_whr" value="" class="form-control form-control-lg" placeholder="¿Qué deseas buscar?">
