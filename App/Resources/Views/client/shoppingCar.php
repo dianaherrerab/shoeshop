@@ -33,9 +33,10 @@
                                                     <h5 class="m-0">Cantidad: </h5>
                                                     <div>
                                                         <select class="browser-default custom-select form-control2 anchura-cantidad">
-                                                            <option value="'.$product['cantidad'].'" selected>'.$product['cantidad'].'</option> ';
+                                                    ';
                                                             for ($i=1; $i <= $product['cantidad-disponible']; $i++) { 
-                                                               echo'<option value="'.$i.'">'.$i.'</option>';
+                                                                $selected = ( $product['cantidad'] == $i ) ? 'selected' : '';
+                                                               echo'<option '.$selected.' value="'.$i.'">'.$i.'</option>';
                                                             }
                                                     echo'  </select>
                                                     </div>

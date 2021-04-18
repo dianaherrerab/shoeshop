@@ -11,7 +11,7 @@ class Sale extends Model
 		// variable para declarar el nombre de la tabla al cual pertenece
 		$this->table = "sales";
 		// llenamos la variable que contiene los datos que se pueden registrar en masa 
-		$this->fillable = ["date", "totalPrice", "userId", "storeId", "statusSaleId", "created_at", "updated_at" ];
+		$this->fillable = ["date", "totalPrice", "userId", "storeId", "statusSaleId", "observations", "created_at", "updated_at" ];
 		// variable que contiene los campos que no queremos dejar ver
 		$this->hidden = [];
 		// clave primaria
@@ -51,8 +51,12 @@ class Sale extends Model
 	// función para listar las tuplas
 	public function listing( $pagina = 1, $input_whr = 'date', $value_whr = null )
 	{
+		if( $input_whr != 'date' )
+			$sql = 'SELECT * FROM ' . $this->table .' t1 INNER JOIN statussale t2 ON t1.statusSaleId = t2.statusSaleId WHERE name LIKE "%' . $value_whr . '%"';
+		else
+			$sql = 'NULL';
 		// ejecutamos la consulta
-		return parent::pagination( $pagina, $value_whr, $input_whr, $limit_per_page = LIMIT_PER_PAGE, $sql = 'NULL', $input_ord = 'date', $order = 'desc' );
+		return parent::pagination( $pagina, $value_whr, $input_whr, $limit_per_page = LIMIT_PER_PAGE, $sql, $input_ord = 'date', $order = 'desc' );
 	}
 
 	// función para buscar un usuario por el slug

@@ -117,7 +117,14 @@
                         </thead>
                         <tbody class="text-center">
                             <?php
-                                foreach ($params['sales'] as $sale) {
+                                foreach ($params['sales'] as $sale) 
+                                {
+                                    $date1 = new DateTime( $sale['date'] );
+                                    $date2 = new DateTime( date('Y-m-d H:i:s') );
+                                    $diff = $date1->diff($date2);
+                                    $btn_cancelar = ( $diff->d < 1 && $sale['statusSaleId'] == 1 ) ? '' : 'd-none';
+                                    $btn_devolver = ( $sale['statusSaleId'] != 2 ) ? 'd-none' : '';
+                                    $btn_confirmar = ( $sale['statusSaleId'] != 2 ) ? 'd-none' : '';
                                     echo '
                                     <tr class="color-gris">
                                         <td>'.$sale['date'].'</td>
@@ -139,13 +146,13 @@
                                         </td>
                                         <td class="text-left">
                                             <div class="mb-4">
-                                                <a href="" class=" font-weight-bold white-text grey boton-historial" data-toggle="modal" data-target="#cancelacion">Cancelar</a>
+                                                <a href="" class="'.$btn_cancelar.' btn_cancelar font-weight-bold white-text grey boton-historial" data-toggle="modal" data-target="#cancelacion" data-saleid="'.$sale['saleId'].'">Cancelar</a>
                                             </div>
                                             <div class="mb-4">
-                                                <a href="" class=" font-weight-bold white-text grey boton-historial" data-toggle="modal" data-target="#devolucion">Devolver</a>
+                                                <a href="" class="'.$btn_devolver.' btn_devolucion font-weight-bold white-text grey boton-historial" data-toggle="modal" data-target="#devolucion" data-toggle="modal" data-target="#cancelacion" data-saleid="'.$sale['saleId'].'">Devolver</a>
                                             </div>
                                             <div>
-                                                <a href="" class=" font-weight-bold white-text grey boton-historial">Confirmar</a>
+                                                <a href="" class="'.$btn_confirmar.' btn_confirmar font-weight-bold white-text grey boton-historial" data-toggle="modal" data-target="#confirmacion" data-saleid="'.$sale['saleId'].'">Confirmar</a>
                                             </div>
                                         </td>  
                                     </tr>
@@ -171,30 +178,58 @@
                 <span aria-hidden="true" class="white-text">&times;</span>
             </button>
         </div>
-        <div class="modal-body px-5 py-5 pb-0">
-            <div class="container">
-                <div class="form-check p-0">
-                    <div class="container">
-                        <div class="d-flex flex-column mb-5">
-                            <input type="checkbox" class="form-check-input" id="materialIndeterminate2" checked>
-                            <label class="form-check-label" for="materialIndeterminate2">Zapatillas</label>
-                            <input type="checkbox" class="form-check-input" id="materialIndeterminate3" checked>
-                            <label class="form-check-label" for="materialIndeterminate3">Zapatillas Nike</label>
-                            <input type="checkbox" class="form-check-input" id="materialIndeterminate4" checked>
-                            <label class="form-check-label" for="materialIndeterminate4">Zapatos</label>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Justificación" aria-label="Justificacion" value="No me gustaron">
-                    </div>
-                </div>
+        <form method="POST" action="<?php echo URL; ?>/client/sale/cancel" class="sale-form">
+        <div class="errors-recover"></div>
+        <div class="row my-4 justify-content-center">
+
+          <div class="col-12 col-md-10">
+            <input type="hidden" id="saleId" name="saleId" value="">
+            <textarea id="observations" name="observations" placeholder="Motivo de cancelación" class="bordes-input form-control mb-4"></textarea>
+          </div>
+        </div>
+        <div class="row align-items-center justify-content-center">
+          <div class="col-12 order-md-2 col-md-5 text-center">
+            <div class="text-md-right my-2">
+              <button class="btn bg-morado boton-ingresar font-weight-bold mb-4">Enviar</button>
             </div>
+          </div>
         </div>
-        <div class="modal-footer pt-0 pb-5 px-5 text-center">
-            <button type="button" class="btn bg-morado boton-ingresar font-weight-bold">Guardar cambios</button>
-        </div>
+      </form>
       </div>
     </div>
 </div>
-<!-- Modal para devolver una compra -->
+
+
+<div class="modal fade" id="confirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-naranja">
+            <h5 class="modal-title white-text texto-modal" id="exampleModalLabel">Confirmar de compra</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="white-text">&times;</span>
+            </button>
+        </div>
+        <form method="POST" action="<?php echo URL; ?>/client/sale/confirm" class="sale-form">
+        <div class="errors-recover"></div>
+        <div class="row my-4 justify-content-center">
+
+          <div class="col-12 col-md-10">
+            <input type="hidden" id="saleId_confirm" name="saleId" value="">
+            <textarea id="observations" name="observations" placeholder="Observaciones" class="bordes-input form-control mb-4"></textarea>
+          </div>
+        </div>
+        <div class="row align-items-center justify-content-center">
+          <div class="col-12 order-md-2 col-md-5 text-center">
+            <div class="text-md-right my-2">
+              <button class="btn bg-morado boton-ingresar font-weight-bold mb-4">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+</div>
+
 <div class="modal fade" id="devolucion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -204,33 +239,83 @@
                 <span aria-hidden="true" class="white-text">&times;</span>
             </button>
         </div>
-        <div class="modal-body px-5 py-5 pb-0">
-            <div class="container">
-                <div class="form-check p-0">
-                    <div class="container">
-                        <div class="d-flex flex-column mb-5">
-                            <input type="checkbox" class="form-check-input" id="materialIndeterminate2" checked>
-                            <label class="form-check-label" for="materialIndeterminate2">Zapatillas</label>
-                            <input type="checkbox" class="form-check-input" id="materialIndeterminate3" checked>
-                            <label class="form-check-label" for="materialIndeterminate3">Zapatillas Nike</label>
-                            <input type="checkbox" class="form-check-input" id="materialIndeterminate4" checked>
-                            <label class="form-check-label" for="materialIndeterminate4">Zapatos</label>
-                        </div>
-                        <select class="browser-default form-control">
-                            <option selected>Tipo de devolución</option>
-                            <option value="1">Daño</option>
-                            <option value="2">Diferente color</option>
-                            <option value="3">sdfsdf</option>
-                            <option value="4">sdgdg</option>
-                        </select>
-                    </div>
-                </div>
+        <form method="POST" action="<?php echo URL; ?>/client/sale/devolucion" class="sale-form">
+        <div class="errors-recover"></div>
+        <div class="row my-4 justify-content-center">
+
+          <div class="col-12 col-md-10">
+            <input type="hidden" id="saleId_devolucion" name="saleId" value="">
+            <p>Seleccione el tipo de devolución que desee:</p>
+            <!-- Default unchecked -->
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="Mercancia" name="observations" value="Mercancia">
+              <label class="custom-control-label" for="Mercancia">Mercancia</label>
+          </div>
+
+          <!-- Default checked -->
+          <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="Efectivo" name="observations" value="Efectivo">
+              <label class="custom-control-label" for="Efectivo">Efectivo</label>
+          </div>
+          </div>
+        </div>
+        <div class="row align-items-center justify-content-center">
+          <div class="col-12 order-md-2 col-md-5 text-center">
+            <div class="text-md-right my-2">
+              <button class="btn bg-morado boton-ingresar font-weight-bold mb-4">Enviar</button>
             </div>
+          </div>
         </div>
-        <div class="modal-footer pt-0 pb-5 px-5 text-center">
-            <button type="button" class="btn bg-morado boton-ingresar font-weight-bold">Guardar cambios</button>
-        </div>
+      </form>
       </div>
     </div>
 </div>
+
 <?php require_once RESOURCES."/Templates/footer.php"; ?>
+<script>
+    $(document).ready(function(){
+
+        $("body").on('click', '.btn_cancelar', function() {
+            $("#saleId").val( $(this).data('saleid') );
+        });
+
+        $("body").on('click', '.btn_confirmar', function() {
+            $("#saleId_confirm").val( $(this).data('saleid') );
+        });
+
+        $("body").on('click', '.btn_devolucion', function() {
+            $("#saleId_devolucion").val( $(this).data('saleid') );
+        });
+
+        // función para cargar los departamentos por id de país
+        $(".sale-form").on('submit', function(){
+            var form = $(this);
+            var url = form.attr('action');
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: form.serialize(),
+                beforeSend: function() {
+                    toastr.info("Espere un momento...");
+                },
+                success: function(data) {
+                    console.log( data );
+                    if( data === 'true' )
+                    {
+                        toastr.success("Acción exitosa.");
+                        location.reload();
+                    }else
+                    {
+                        toastr.error("Ha ocurrido un error.");
+
+                    }
+                },
+                error: function(xhr) {
+                    toastr.error("Ha ocurrido un error.");
+                    console.log(xhr.statusText + xhr.responseText);
+                },
+            });
+            return false;
+        });
+    });
+</script>

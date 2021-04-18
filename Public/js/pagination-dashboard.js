@@ -20,9 +20,9 @@ $(document).ready(function() {
 	});
 
 	// función para cambiar de pagina según la página o botón que selecciona del render
-	$(".link_pagination").click(function(){
+	$("body").on('click', '.link_pagination', function(){
 		// obtenemos el formulario al que pertenece el botón
-		var form = $(this).parent('div').parent('td').parent('tr').parent('tfoot').parent('table').siblings('form');
+		var form = $(this).parent('div').parent('td').parent('tr').parent('tfoot').parent('table').parent('.table-responsive').parent('.card-body').parent('div').siblings('.card').children('form');
 		// obtenemos el action del formulario de para buscar y cargar los datos de la búsqueda
 		var url = form.attr('action');
 		// obtenemos el data del formulario para cambiar la ruta en la barra de navegación
@@ -57,7 +57,7 @@ function pagination( url, url_change, pagina = 1, input_whr = 'id', value_whr = 
 			// cargamos los datos
 			$(".content-pagination").append( response.list );
 			// cargamos los datos del render y el script para los botones
-			$(".render-pagination").append( response.render + '<script>$(document).ready(function() {$(".link_pagination").click(function(){var form = $(this).parent("div").parent("td").parent("tr").parent("tfoot").parent("table").siblings("form");var url = form.attr("action");var url_change = form.data("url-change");var pagina = $(this).data("pagina");pagination( url, url_change, pagina, input_whr(), value_whr() );});});</script>' );
+			$(".render-pagination").append( response.render );
 			// cambiamos la ruta de la barra de navegación a la que desemaos ver
 			history.pushState(null, "", url_change+"/"+pagina+"/"+input_whr+"/"+value_whr);
 		},

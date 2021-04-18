@@ -53,12 +53,12 @@
             <div class="container">
               <div class="row justify-content-around">
                 <select id="size" class="select-size browser-default custom-select form-control2 col-12 col-md-5 col-lg-12 mb-4 mb-md-5 mb-lg-4" 
-				 data-quantity="quantity" data-url="<?php echo URL; ?>/Client/ProductSize/find_quantity_by_size">
+				 data-quantity="quantity" data-url="<?php echo URL; ?>/Client/ProductSize/find_quantity_by_size" data-product-id="<?php echo $params['product']['productId']; ?>">
                   <option  value="" selected>Seleccione una talla</option>
                   		<?php 
 						foreach ( $params['sizes'] as $size ) 
 						{
-							echo '<option id="size" value="'.$size['productSizesId'].'">'.$size['sizeId'].'</option>';
+							echo '<option id="size" value="'.$size['sizeId'].'">'.$size['number'].'</option>';
 						}
 						?>
                 </select>
@@ -68,7 +68,7 @@
               </div>
             </div>
             <div>
-              <a data-url="<?php echo URL; ?>'Client/ShoppingCar/agregar_productos" data-id="<?php echo $params['product']['productId'];?>" data-cantidad="1" class="add_shopping_cart font-weight-bold white-text bg-naranja boton-ingresar2 p-3">Agregar al carrito</a>
+              <a data-url="<?php echo URL; ?>'Client/ShoppingCar/agregar_productos" data-id="<?php echo $params['product']['productId'];?>" data-cantidad="1" class="add_shopping_cart_details font-weight-bold white-text bg-naranja boton-ingresar2 p-3">Agregar al carrito</a>
             </div>
             <div class="color-gris mt-5 text-left">
               <div>Marca: <span><?php echo $params['product']['brand']; ?></span></div>

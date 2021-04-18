@@ -22,7 +22,7 @@ class ClientController extends Controller
 	}
 
 	// Función para mostrar la vista con el listado inicial
-	public function listing( $pagina = 1, $input_whr = 'role', $value_whr = 3 )
+	public function listing( $pagina = 1, $input_whr = 'name', $value_whr = '' )
 	{
 		// Obtiene de forma organizada los datos del cliente
 		$lista = $this->data( $pagina, $input_whr, $value_whr );
@@ -31,7 +31,7 @@ class ClientController extends Controller
 	}
 
 	// Función para consultar los datos sin recargar la página por medio de ajax
-	public function pagination( $pagina = 1, $input_whr = "id", $value_whr = null )
+	public function pagination( $pagina = 1, $input_whr = "name", $value_whr = null )
 	{
 		// Obtiene los datos del modelo
 		$jsondata = $this->data( $pagina, $input_whr, $value_whr );
@@ -45,7 +45,7 @@ class ClientController extends Controller
 	public function data( $pagina, $input_whr, $value_whr )
 	{
 		// Obtiene los datos del listado
-		$data = $this->UserModel->listing( $pagina, $input_whr, $value_whr );
+		$data = $this->UserModel->listing_clients( $pagina, $input_whr, $value_whr );
 		// Variable que contiene el listado
 		$list = "";
 		// Valida que hayan datos obtenidos
@@ -54,16 +54,14 @@ class ClientController extends Controller
 			// Recorre los datos existentes
 			foreach( $data['list'] as $user )
 			{
-				// Obtiene los datos del usuario
-				$userData = $this->UserDataModel->find_by_user_id( $user['id'] );
 				// Se concatena cada dato (Formato que se muestra en la vista)
 				$list .= '
 					<tr class="color-gris">
-						<td>'.$user['id'].'</td>
-						<td>'.$userData['firstName'].' '.$userData['secondName'].' '.$userData['lastName'].'</td>
-						<td>'.$userData['documentNumber'].'</td>
-						<td>'.$userData['cellphone'].'</td>
-						<td>'.$userData['address'].'</td>
+						<td>'.$user['userId'].'</td>
+						<td>'.$user['name'].'</td>
+						<td>'.$user['documentNumber'].'</td>
+						<td>'.$user['cellphone'].'</td>
+						<td>'.$user['address'].'</td>
 					</tr>
 				';	
 			};

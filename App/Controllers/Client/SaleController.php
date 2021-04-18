@@ -96,4 +96,52 @@ class SaleController extends Controller
 		return mysqli_fetch_assoc( $this->SaleModel->find_by_fecha_ped( $request['created_at'] ) );
         
     }
+
+    // funcion para guardar un registro
+    public function cancel()
+    {
+		$request = [
+			'saleId' => $_POST['saleId'],
+			'observations' => $_POST['observations'],
+            'statusSaleId' => 3,
+            'updated_at' => date('Y-m-d H:i:s')
+		];
+		$this->SaleModel->update( $request );
+
+		// Actualizar la cantidad que queda de cada producto
+		$data = $this->SaleDetailController->update_quantity_by_saleId( $_POST['saleId'] );
+		echo "true";
+        
+    }
+
+    // funcion para guardar un registro
+    public function confirm()
+    {
+		$request = [
+			'saleId' => $_POST['saleId'],
+			'observations' => $_POST['observations'],
+            'statusSaleId' => 5,
+            'updated_at' => date('Y-m-d H:i:s')
+		];
+		$this->SaleModel->update( $request );
+		echo "true";
+        
+    }
+
+    // funcion para guardar un registro
+    public function devolucion()
+    {
+		$request = [
+			'saleId' => $_POST['saleId'],
+			'observations' => $_POST['observations'],
+            'statusSaleId' => 4,
+            'updated_at' => date('Y-m-d H:i:s')
+		];
+		$this->SaleModel->update( $request );
+
+		// Actualizar la cantidad que queda de cada producto
+		$data = $this->SaleDetailController->update_quantity_by_saleId( $_POST['saleId'] );
+		echo "true";
+        
+    }
 }

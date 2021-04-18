@@ -30,7 +30,7 @@ class Config
 				'HOST' => 'localhost',
 				// usuario del servidor de base de datos
 				'USER' => 'root',
-				// contraseña del servidor de base de datos
+				// contraseña del servidor de base dwe datos
 				'PASSWORD' => '',
 				// nombre de la base de datos
 				'NAME' => 'shoeshop',
@@ -48,7 +48,7 @@ class Config
 				// contraseña del servidor de correos
 				'PASSWORD' => 'empresa2018',
 				// usuario de envio por defecto
-				'SENT_BY' => 'comercial@hyperlinkse.com',
+				'SENT_BY' => 'not-reply@shoeshop.com',
 			],
 			// datos para el sistema de encriptación
 			'ENCRYPTION' => [

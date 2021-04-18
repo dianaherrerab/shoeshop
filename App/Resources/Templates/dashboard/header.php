@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/welcome.css">
     <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/admin/header.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo CSS; ?>/pagination.css">
 	<link rel="icon" type="image/png" href="<?php echo URL; ?>/favicon.png">
 	<!-- etiquetas seo -->
 	<meta http-equiv="content-language" content="es-co">

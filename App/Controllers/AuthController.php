@@ -91,7 +91,6 @@ class AuthController extends Controller
 		$errors = $this->validate( $_POST, [
 			'name|nombre' => 'required',
 			'username|usuario' => 'required|unique:users',
-			'password|contraseña' => 'required',
 		] );
 
 		if( $errors )
@@ -101,8 +100,11 @@ class AuthController extends Controller
 		}
 		// validamos que sea una peticion por post
 		$this->__post();
+		// validamos si existe o le definimos un valor
+		$_POST['password'] = isset( $_POST['password'] ) ? $_POST['password'] : '';
+		$_POST['nameE'] = isset( $_POST['nameE'] ) ? $_POST['nameE'] : '';
 		// realizamos la peticion al modelo de cerrar sesion
-		$login = $this->auth->register( $_POST['name'], $_POST['username'], $_POST['password'] );
+		$login = $this->auth->register( $_POST['name'], $_POST['username'], $_POST['password'], $_POST['nameE'], $_POST['role'] );
 		// explotamos el resultado
 		$login = explode("|", $login);
 		// validamos si se logueo o no

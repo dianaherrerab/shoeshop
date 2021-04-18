@@ -2,6 +2,10 @@
 
 // requerimos el modelo de usuario
 require_once APP."/Models/User.php";
+// requerimos el modelo de usuario
+require_once APP."/Models/Store.php";
+// requerimos el modelo de usuario
+require_once APP."/Models/UserData.php";
 // requerimos el trait de slug
 require_once APP."/Traits/SlugTrait.php";
 
@@ -29,6 +33,10 @@ class Auth extends Model
 			@session_start();
 		// creamos la instancia de usuarios
 		$this->user = new User();
+		// creamos la instancia de usuarios
+		$this->store = new Store();
+		// creamos la instancia de usuarios
+		$this->userdata = new Userdata();
 	}
 
 
@@ -127,22 +135,36 @@ class Auth extends Model
 	}
 
 	// funcion para registrar un usuario en la base de datos
-	public function register( $name, $username, $password )
+	public function register( $name, $username, $password = '', $nameE = '', $role )
 	{
+		// validamos si es cliente
+		if( $role == 3 )
+		{
+			// capturamos la contraseña
+			$password_logueo = $password;
+		}
+		else
+		{
+			// capturamos la contraseña
+			$password_logueo = $this->generar_password_complejo( 15, 'without' );
+			// capturamos la contraseña
+			$password = $password_logueo;
+		}
 		// protegemos el valor inicial de las variables
 		$username_logueo = $username;
-		$password_logueo = $password;
 		// protegemos las variables para evitar el sql injection
 		$name = parent::__real_escape_string( $name );
 		$username = parent::__real_escape_string( $username );
 		// encriptamos y protegemos la variable del password
 		$password = password_hash( parent::__real_escape_string( $password ) , PASSWORD_BCRYPT );
+		// genermaos el slg del usuario
+		$slug = SlugTrait::generate( $username );
 		// array que pasara los datos a la vista
 		$request = [
 			'name' => $name,
 			'username' => $username,
-			'slug' => SlugTrait::generate( $username ),
-			'role' => 3,
+			'slug' => $slug,
+			'role' => $role,
 			'password' => $password,
 			'created_at' => date('Y-m-d h:i:s')
 		];
@@ -150,8 +172,48 @@ class Auth extends Model
 		$response = $this->user->store( $request );
 		// validamos si tenemos un error en la ejecución de la consulta
 		if( !$response )
+		{
 			// retornamos el mensaje de error
 			return $response;
+		}
+		// buscamos los datos del usuario registrado
+		$user = $this->user->find_by_slug( $slug );
+		// validamos si es empresa para realziar el registro
+		if( $role == 2 )
+		{
+			// array que pasara los datos a la vista
+			$request = [
+				'userId' => $user['id'],
+				'name' => $nameE,
+				'slug' => SlugTrait::generate( $nameE ),
+				'created_at' => date('Y-m-d h:i:s')
+			];
+			// registrmaos los datos de la empresa
+			$this->store->store( $request );
+			// requerimos los archivos para enviar el correo
+			require_once APP."/Traits/SendMailTrait.php";
+			require_once APP."/Helpers/EmailTemplates/SendpasswordTemplate.php";
+			// obtenemos la plantilla para enviar
+			$template = SendpasswordTemplate::template( $name, $password_logueo );
+			// enviamos el correo y lo capturamos
+			$send = SendMailTrait::send( SMTP['SENT_BY'], APP_NAME.': Sistema de envió de contraseña', $template, '', $username );
+			// validamos si el mensaje se envio
+			if( !$send )
+				// retornamos mensaje de error
+				return "Ha ocurrido un error al enviar su nueva contraseña a ".$email_recover;
+		}
+		else
+		{
+			// array que pasara los datos a la vista
+			$request = [
+				'userId' => $user['id'],
+				'firstName' => $name,
+				'typeDocumentId' => 1,
+				'created_at' => date('Y-m-d h:i:s')
+			];
+			// registrmaos los datos de la empresa
+			$this->userdata->store( $request );
+		}
 		// lo mandamos a loguearde si todo esta correcto
 		return $this->login( $username_logueo, $password_logueo );
 	}

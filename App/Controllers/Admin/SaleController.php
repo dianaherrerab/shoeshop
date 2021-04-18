@@ -121,6 +121,13 @@ class SaleController extends Controller
 							</a>
 							'.$modal.'
 						</td>
+						<td>
+							<div class="col-12 col-lg p-0 m-0">
+								<a class="btn btn-sm btn-success m-0" target="_new" href="'.URL.'/Admin/Sale/Print/'.$sale['saleId'].'" >
+									Imprimir
+								</a>
+							</div>
+						</td>
 					</tr>
 				';
 			};
@@ -190,5 +197,20 @@ class SaleController extends Controller
 			echo "true";
 		
     }
+
+	public function print( $saleId )
+	{
+		// incluimos la libreria para los pfds
+		require_once APP."/Traits/PdfTrait.php";                          
+		// incluimos la plantilla a usar
+		require_once APP."/Helpers/PdfTemplates/DefaultTemplate.php";
+		// obtenemos los datos de inspeccion
+		$sale = $this->SaleModel->find( $saleId );
+		// creamos la plantilla
+		$template = DefaultTemplate::template();
+		// mostramos el pdf
+		$pdf = PdfTrait::view( $template, "Legal", "P", "10", "10", "10", "10" );
+
+	}
 
 }

@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
     // funcion para agregar productos al carrito
-        // agregando la clase .add_shopping_cart al btn
-        $(".add_shopping_cart").click(function(){
+    // agregando la clase .add_shopping_cart al btn
+    $(".add_shopping_cart").click(function(){
             // obtenemos el id del producto
             var product_id = $(this).data("id");
             // obtenemos la cantidad
@@ -11,36 +11,28 @@ $(document).ready(function() {
             var url = $(this).data("url");
             // talla 
             var size = $(this).siblings("#size").val();
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: {
-                    'productId' : product_id,
-                    'cantidad' : cantidad,
-                    'size' : size
-                },
-                success: function(data) {
-                    console.log(data);
-                    // validamos si hay respuesta de exito
-                    if( data === 'true' )
-                    {
-                        // mostramos una notificacion de exito
-                        toastr.success("Producto agregado.");
-                    }
-                    else
-                    {
-                        toastr.error(data);	
-                    }
-                },
-                error: function(xhr) {
-                    toastr.error("Ha ocurrido un error.");
-                    //console.log(xhr.statusText + xhr.responseText);
-                },
-            });
+            // agregamos el producto al carrito
+            add_cart( url, product_id, cantidad, size );
+            return false;
+        });
+
+    // funcion para agregar productos al carrito
+    // agregando la clase .add_shopping_cart al btn
+    $(".add_shopping_cart_details").click(function(){
+            // obtenemos el id del producto
+            var product_id = $(this).data("id");
+            // obtenemos la cantidad
+            var cantidad = $(this).parent('div').siblings(".container").children('.row').children("#quantity").val();
+            // ruta del formulario
+            var url = $(this).data("url");
+            // talla 
+            var size = $(this).parent('div').siblings(".container").children('.row').children("#size").val();
+            // agregamos el producto al carrito
+            add_cart( url, product_id, cantidad, size );
             return false;
         });
     
-        $(".delete_shopping_cart").click(function(){
+    $(".delete_shopping_cart").click(function(){
             // capturamos el boton del evento
             var btn_delete = $(this);
             // obtenemos el id del producto
@@ -88,4 +80,34 @@ $(document).ready(function() {
             return false;
         });
     
+});
+
+
+function add_cart( url, product_id, cantidad, size )
+{
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: {
+            'productId' : product_id,
+            'cantidad' : cantidad,
+            'size' : size
+        },
+        success: function(data) {
+            // validamos si hay respuesta de exito
+            if( data === 'true' )
+            {
+                // mostramos una notificacion de exito
+                toastr.success("Producto agregado.");
+            }
+            else
+            {
+                toastr.error(data); 
+            }
+        },
+        error: function(xhr) {
+            toastr.error("Ha ocurrido un error.");
+            //console.log(xhr.statusText + xhr.responseText);
+        },
     });
+}

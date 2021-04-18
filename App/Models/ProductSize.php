@@ -59,13 +59,19 @@ class ProductSize extends Model
 	// función para buscar un producto por el slug
 	public function find_size( $productId )
 	{
-		return parent::customer( " SELECT * FROM ". $this->table ." WHERE productId = '".$productId."' ");
+		return parent::customer( " SELECT t1.*, t2.number FROM ". $this->table ." t1 INNER JOIN sizes t2 ON t1.sizeId = t2.sizeId WHERE t1.productId = '".$productId."' ");
 		
 	}
 	// función para buscar un producto por el slug
 	public function find_quantity( $productSizesId )
 	{
 		return parent::customer( " SELECT * FROM ". $this->table ." WHERE productSizesId = '".$productSizesId."' ", true);
+		
+	}
+	// función para buscar un producto por el slug
+	public function find_quantity_by_size_and_product_id( $productId, $sizeId )
+	{
+		return parent::customer( " SELECT * FROM ". $this->table ." WHERE productId = '".$productId."' and sizeId = '".$sizeId."' ", true);
 		
 	}
 

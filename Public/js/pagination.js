@@ -41,7 +41,7 @@ $(document).ready(function() {
 // pagina: número de la página a donde irea
 // input_whr: valor en el campo de tipo de dato
 // value_whr: valor escrito en el campo de busqueda
-function pagination( url, url_change, pagina = 1, input_whr, value_whr = 'null' )
+function pagination( url, url_change, pagina = 1, input_whr = 'id', value_whr = 'null' )
 {
 	$.ajax({
 		url: url+"/"+pagina+"/"+input_whr+"/"+value_whr,

@@ -2,13 +2,12 @@ $(document).ready(function(){
     // función para cargar los departamentos por id de país
 	$(".select-size").change(function(){
 		var url = $(this).data('url');
-		var productSizesId = $(this).val();
-		var quantity = $(this).data('quantity');
-		console.log(quantity);
+		var sizeId = $(this).val();
+		var product_id = $(this).data('product-id');
 		$.ajax({
 			url: url,
 			type: 'POST',
-			data: { 'productSizesId': productSizesId },
+			data: { 'product_id' : product_id, 'sizeId': sizeId },
 			beforeSend: function() {
 				toastr.info("Buscando cantidad...");
 			},
@@ -16,7 +15,7 @@ $(document).ready(function(){
 				data = data.split('|');
 				if( data[0] === 'true' )
 				{
-					$("#"+quantity).html( data[1] );
+					$("#quantity").html( data[1] );
 					toastr.success("Cantidad cargada con éxito.");
 				}else
 				{

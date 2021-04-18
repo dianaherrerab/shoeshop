@@ -96,9 +96,15 @@ class User extends Model
 	}
 
 	// función para listar los registros
-	public function listing_clients( $pagina = 1, $input_whr = 'role', $value_whr = 3 )
+	public function listing_clients( $pagina = 1, $input_whr = 'name', $value_whr = '' )
 	{
+		if( $input_whr == "name" )
+			$sql = 'SELECT t2.*, t1.name FROM ' . $this->table .' t1 INNER JOIN userdata t2 ON t2.userId = t1.id WHERE t1.role = 3 and t1.name LIKE "%' . $value_whr . '%"';
+		else
+			$sql = 'SELECT t2.*, t1.name FROM ' . $this->table .' t1 INNER JOIN userdata t2 ON t2.userId = t1.id WHERE t1.role = 3 and t2.documentNumber LIKE "%' . $value_whr . '%"';
+
+		#echo $sql; exit();
 		// ejecutamos la consulta
-		return parent::pagination( $pagina, $value_whr, $input_whr );
+		return parent::pagination( $pagina, $value_whr, $input_whr, LIMIT_PER_PAGE, $sql );
 	}
 }

@@ -8,10 +8,10 @@
                     <div class="row">
                         <div class="col-sm-9 col-12 mb-sm-0 mb-3">
                             <select id="input_whr" name="input_whr" class="browser-default form-control btn waves-effect">
-                                <option value="name" selected>Fecha</option>
+                                <option value="date" selected>Fecha</option>
                                 <option value="statusSaleId">Estado</option>
                             </select>
-                            <input id="value_whr" name="value_whr" value="" class="form-control form-control-lg" type="text" placeholder="¿Qué deseas buscar?">
+                            <input id="value_whr" name="value_whr" value="" class="form-control form-control-lg" type="date" placeholder="¿Qué deseas buscar?">
                         </div>
                         <div class="col-sm-3 col-12">
                             <button type="submit" id="btn-search" class="btn bg-naranja boton-ingresar font-weight-bold">Buscar</button>
@@ -76,3 +76,18 @@
     
 <!-- Fin del modal para cargar el estado de la venta -->
 <?php require_once RESOURCES."/Templates/dashboard/footer.php"; ?>
+<script>
+    
+    $(document).ready(function() {
+        
+        $("#input_whr").on('change', function() {
+            if( $(this).val() == 'date' )
+                $("#value_whr").prop('type', 'date');
+            else
+                $("#value_whr").prop('type', 'text');
+            $("#value_whr").val('');
+        });
+
+    });
+
+</script>
