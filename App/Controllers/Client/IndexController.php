@@ -31,54 +31,54 @@ class IndexController extends Controller
 		$this->redirect('Client/Index/Listing');
 	}
 
-	// función para mostrar la vista con el listado inicial
+	// Función para mostrar la vista con el listado inicial
 	public function listing( $pagina = 1, $input_whr = "productId", $value_whr = null )
 	{
-		// obtenemos los datos del modelo
+		// Obtiene los datos del modelo
 		$lista = $this->data( $pagina, $input_whr, $value_whr );
 		
-		// mostramos la vista al usuario
+		// Muestra la vista al usuario
 		echo $this->view( 'client/index', $lista );
 	}
 
-	// función para consultar por medio de ajax para estar cargando los datos sin recargar la página
+	// Función para consultar los datos sin recargar la página por medio de ajax
 	public function pagination( $pagina = 1, $input_whr = "productId", $value_whr = null )
 	{
-		// obtenemos los datos del modelo
+		// Obtiene los datos del modelo
 		$jsondata = $this->data( $pagina, $input_whr, $value_whr );
-		// agregamos la cabecera de json para evitar errores
+		// Agrega la cabecera de Json para evitar errores
 		header('Content-type: application/json; charset=utf-8');
-		// mostramos la vista al usuario
+		// Muestra la vista al usuario
 		echo json_encode( $jsondata, JSON_FORCE_OBJECT );
 	}
 
-	// función para obtener los datos del listado
+	// Función para obtener los datos del listado
 	public function data( $pagina, $input_whr, $value_whr )
 	{
-		// obtenemos obtenemos los datos del listado
+		// Obtiene los datos del listado
 		$data = $this->ProductModel->listing( $pagina, $input_whr, $value_whr );
 		
-		// variable que contendra el listado
+		// Variable que contiene el listado
 		$list = "";
-		// validamos que existan datos
+		// Valida que existan datos
 		if( $data['cant'] > 0 ) 
 		{
-			// recorremos los datos existentes
+			// Recorre los datos existentes
 			foreach( $data['list'] as $producto )
 			{
-				// Buscar las imagenes de un producto
+				// Busca las imagenes de un producto
 				$imagen = $this->ProductModel->find_portada( $producto['productId'] );
-				// capturar la portada
+				// Captura la portada del producto
 				$producto['imagen'] = $imagen['name'];
-				// buscar las tallas del produto
+				// Busca las tallas del produto
 				$sizes = $this->ProductSizeModel->find_size($producto['productId']);
-				// variable para guarda tallas
+				// Variable para guarda las opciones de talla disponible
 				$tallas = '<option selected>Talla</option>';
-				// concatenar las opciones de tallas
+				// Concatena las opciones de tallas
 				foreach ($sizes as $size){
 					$tallas .= '<option value="'.$size['sizeId'].'">'.$size['sizeId'].'</option>';			
 				} 
-				// vamos concatenando cada dato
+				// Concatena cada dato de los productos
 				$list .= '
 					<div class="col-12 col-sm-6 col-lg-4 py-4">
 						<div class="card text-center bordes-cards py-3">
