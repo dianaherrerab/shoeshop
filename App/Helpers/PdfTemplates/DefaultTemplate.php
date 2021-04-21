@@ -61,21 +61,19 @@ class DefaultTemplate
 												<hr style='background-color:#2d4d58; height:2px; margin-top:2px;'>
 												<div>
 													<div>
-														<div>
-															<h5>
-																".$products."
-															</h5>
-														</div>
-														<div>
-                                        					<h5>
-                                            				Total $ ".$sale['totalPrice']." COP
-                                        					</h5>
-                                    					</div>
-														<div>
-                                        					<h5>
-                                            				Estado de la compra $ ".$status['name']."
-                                        					</h5>
-                                    					</div>
+														
+														<h6>
+															".$products."
+														</h6>
+														
+														
+                                        				<h6>
+                                            				Total $ ".$sale['totalPrice']."COP
+                                        				</h6>
+                                    					
+                                        				<h6>
+                                            				Estado de la compra $ ".$statu['name']."
+                                        				</h6>
 													</div> 
 												</div>
 												<h5 style='font-size:17px; color:#ff5b16'>
