@@ -7,7 +7,7 @@
                     <i class="far fa-lg fa-edit pr-3"></i>
                     <h5 class="m-0">Editar productos</h5>
                 </div>
-                <form class="form-edit px-5 pb-5" method="post" action="<?php echo URL; ?>Admin/Product/Update">
+                <form enctype="multipart/form-data" class="form-edit px-5 pb-5" method="post" action="<?php echo URL; ?>Admin/Product/Update">
                     <input type="hidden" name="productId" value="<?php echo $params['product']['productId']; ?>">
                     <?php echo $this->__csrf_field(); ?>
                     <div class="errors-edit pt-2 text-center white-text"></div>
@@ -65,20 +65,13 @@
                         </div>
                     </div>
                     <div class="container mb-5 form-control form-control1 altura-galeria">
-                        <div class="d-flex align-items-center justify-content-end">
-                            <a href="" class="color-morado">
-                                <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="row">
+                        <input name="uploadedfile" id="uploadedfile" type="file" data-url="<?php echo URL; ?>Admin/Product/upload_image" />
+                        <div class="row content-images">
                             <?php
                             foreach ($params['images'] as $image) {
                                 echo '
                                 <div class="col-12 col-md-4  mb-4 mb-md-0 d-flex align-items-center justify-content-center position-relative">
                                     <img class="card-imagen" src="'.IMG.'/bd-products/'.$image['name'].'">
-                                    <a href="" class="position-absolute posicion-icono">
-                                        <i class="far fa-2x fa-times-circle color-morado"></i>
-                                    </a>
                                 </div>
                                 ';
                             }
@@ -98,7 +91,6 @@
                                         <tr class="color-morado text-center">
                                             <th class="font-weight-bold">Talla</th>
                                             <th class="font-weight-bold">Cantidad</th>
-                                            <th class="font-weight-bold">Eliminar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -106,15 +98,13 @@
                                         foreach ($params['sizes'] as $size) {
                                             echo '
                                             <tr>
-                                                <td class="pt-3-half" contenteditable="true">'.$size['sizeId'].'</td>
-                                                <td class="pt-3-half" contenteditable="true">'.$size['quantity'].'</td>
-                                                <td>
-                                                    <span class="table-remove">
-                                                        <button type="button" class="btn bg-naranja btn-rounded btn-sm my-0">
-                                                            Eliminar
-                                                        </button>
-                                                    </span>
+                                                <td class="pt-3-half" contenteditable="true">
+                                                    <input type="text" name="size" value="'.$size['sizeId'].'">     
                                                 </td>
+                                                <td class="pt-3-half" contenteditable="true">
+                                                    <input type="text" name="quantity" value="'.$size['quantity'].'">
+                                                </td>
+                                                
                                             </tr>
                                             ';
                                         }
@@ -135,3 +125,41 @@
     </div>
 
 <?php require_once RESOURCES."/Templates/dashboard/footer.php"; ?>
+<script>
+    $(document).ready(function(){
+
+        $("#uploadedfile").on('change', function(){
+            let url = $(this).data('url');
+            var form = $('.form-edit')[0]; // You need to use standard javascript object here
+            var formData = new FormData(form);
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: formData,
+                contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+                processData: false,
+                dataType: 'json',
+                success: function(data) {
+                    if( data.status == 'success' )
+                    {
+                        $(".content-images").append(`
+                            <div class="col-md-6 col-lg-4">
+                                <input type="hidden" name="images[]" value="`+data.name+`" />
+                                <img src="`+data.image+`" class="img-fluid" />
+                            </div>
+                        `);
+                    }
+                    else{
+                        toastr.error( data.message );
+                    }
+                },
+                error: function(xhr) {
+                    
+			   	    toastr.error("Ha ocurrido un error.");
+                    // console.log(xhr.statusText + xhr.responseText);
+                },
+            });
+        });
+
+    });
+</script>

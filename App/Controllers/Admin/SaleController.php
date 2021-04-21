@@ -15,6 +15,8 @@ class SaleController extends Controller
 		// instanciamos el modelo del controlador
 		$this->UserDataModel = $this->model('UserData');
 		// instanciamos el modelo del controlador
+		$this->UserModel = $this->model('User');
+		// instanciamos el modelo del controlador
 		$this->StatusSaleModel = $this->model('StatusSale');
 	}
 
@@ -76,7 +78,7 @@ class SaleController extends Controller
 				$modal="";
 
 				$modal='
-				<div class="modal fade" id="ModalSale" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade" id="ModalSale-'. $sale['saleId'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header bg-naranja">
@@ -116,7 +118,7 @@ class SaleController extends Controller
 						<td>'.$sale['totalPrice'].'</td>
 						<td>'.$dataCliente['address'].'</td>
 						<td>
-							<a href="" data-toggle="modal" data-target="#ModalSale" data-url="'.URL.'Admin/Sale/" data-status="'.$status['statusSaleId'].'" class="form-status-sale btn btn-sm btn-success m-0">
+							<a href="" data-toggle="modal" data-target="#ModalSale-'. $sale['saleId'].'" data-url="'.URL.'Admin/Sale/" data-status="'.$status['statusSaleId'].'" class="form-status-sale btn btn-sm btn-success m-0">
 							'.$status['name'].'
 							</a>
 							'.$modal.'
@@ -183,10 +185,10 @@ class SaleController extends Controller
 		];
 		$response = $this->SaleModel->update( $request );
 		// Valida si el resultado encontrado no es un array
-		if( isset( $response['status'] ) && !$response['status'] )
+		if( !$response )
 		{
 			// Crea un mensaje personalizado
-			array_push( $this->errors, $response['message'] );
+			// array_push( $this->errors, $response['message'] );
 			// Muestra los errores
 			echo $this->errors();
 			// Detiene la ejecuciónde la función
@@ -204,10 +206,26 @@ class SaleController extends Controller
 		require_once APP."/Traits/PdfTrait.php";                          
 		// incluimos la plantilla a usar
 		require_once APP."/Helpers/PdfTemplates/DefaultTemplate.php";
-		// obtenemos los datos de inspeccion
+		// obtenemos los datos de la venta
 		$sale = $this->SaleModel->find( $saleId );
+		// Obtenemos los datos del usuario
+		$user = $this->UserModel->find( $sale['userId'] );
+		// Busca los datos del usuario
+		$dataCliente = $this->UserDataModel->find_by_user_id( $sale['userId'] );
+		// variable que contendra el listado de productos
+		$products = "";
+		// Busca los detalles de cada venta
+		$details = $this->SaleDetailModel->find_all( $sale['saleId'] );
+		// Asigna el valor
+		foreach ($details as $detail) {
+			$products .= '
+			<div>'.$detail['name'].' Talla:'.$detail['size']. ' Precio: '.$detail['price']. ' Cantidad: '.$detail['quantity']. '</div>
+			';
+		}
+		// Obtenemos el estado de la venta
+		$status = $this->StatusSaleModel->find( $sale['statusSaleId'] );
 		// creamos la plantilla
-		$template = DefaultTemplate::template( $sale );
+		$template = DefaultTemplate::template( $sale, $user, $dataCliente , $products, $status );
 		// mostramos el pdf
 		$pdf = PdfTrait::view( $template, "Legal", "P", "10", "10", "10", "10" );
 

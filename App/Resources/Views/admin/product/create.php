@@ -83,19 +83,15 @@
                                         <tr class="color-morado text-center">
                                             <th class="font-weight-bold">Talla</th>
                                             <th class="font-weight-bold">Cantidad</th>
-                                            <th class="font-weight-bold">Eliminar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="pt-3-half" contenteditable="true"></td>
-                                            <td class="pt-3-half" contenteditable="true"></td>
-                                            <td>
-                                                <span class="table-remove">
-                                                    <button type="button" class="btn bg-naranja btn-rounded btn-sm my-0">
-                                                        Eliminar
-                                                    </button>
-                                                </span>
+                                            <td class="pt-3-half" contenteditable="true">
+                                                <input type="text" name="size">
+                                            </td>
+                                            <td class="pt-3-half" contenteditable="true">
+                                                <input type="text" name="quantity">
                                             </td>
                                         </tr>
                                     </tbody>

@@ -150,8 +150,14 @@ class ProductController extends Controller
 			echo $this->errors();
 		}
 		else
+		{
+			// Guarda la imagen en su tabla
+			$result = $this->store_image( $_POST['productId'], $_POST['images'] );
+			// Busca el id de la talla
+			$size = $this->store_size( $product['productId'],  $_POST['size'], $_POST['quantity']);
 			// Muestra el mensaje de éxito al usuario
 			echo "true";
+		}
 	}
 
 	public function store()
@@ -174,7 +180,7 @@ class ProductController extends Controller
 			'material|nombre' => 'required',
 			'color|categoria' => 'required',
 			'description|nombre' => 'required',
-			'price|categoria' => 'required'
+			'price|categoria' => 'required',
 		] );
 		// Valida si existe un error
 		if( $errors )
@@ -249,17 +255,31 @@ class ProductController extends Controller
 	}
 
 	// funcion para guardar imagenes
-	public function store_size( $productId, $size, $quantity ){
-		
+	public function update_image( $productId, $images ){
+		$i = 0;
 		foreach ($images as $image) {
+			$portada = ($i==0) ? '1' : '0';
 			$request = [
 				'productId' => $productId,
-				'sizeId' => $image,
+				'name' => $image,
+				'portada' => $portada,
+				'created_at' => date("Y-m-d H:i:s")
+			];
+			$this->ImageModel->update($request);
+			$i++;
+		}
+	}
+
+	// funcion para guardar imagenes
+	public function store_size( $productId, $size, $quantity ){
+		
+			$request = [
+				'productId' => $productId,
+				'sizeId' => $size,
 				'quantity' => $quantity,
 				'created_at' => date("Y-m-d H:i:s")
 			];
 			$this->ProductSizeModel->store($request);
-		}
 	}
 
 	// Función para mostrar la vista de crear un registro

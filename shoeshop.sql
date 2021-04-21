@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-04-2021 a las 00:18:59
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 7.3.26
+-- Tiempo de generación: 21-04-2021 a las 22:40:34
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,16 +40,12 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Adidasa', 'adidas', '2021-03-15 08:30:03', '2021-03-15 13:35:13'),
+(1, 'Fila', 'fila', '2021-03-15 08:30:03', '2021-03-15 13:35:13'),
 (2, 'Nike', 'nike', '2021-03-15 08:30:03', '2021-03-15 13:35:13'),
-(3, 'Reebok', 'reebok', '2021-03-15 08:35:16', '2021-03-15 13:35:37'),
-(4, 'Puma', 'puma', '2021-03-15 08:35:39', '2021-03-15 13:36:08'),
+(3, 'Velez', 'Velez', '2021-03-15 08:35:16', '2021-03-15 13:35:37'),
+(4, 'Under Armour', 'under-armour', '2021-03-15 08:35:39', '2021-03-15 13:36:08'),
 (5, 'Skechers', 'skechers', '2021-03-15 08:35:39', '2021-03-15 13:36:08'),
-(6, 'New Balance', 'new-balance', '2021-03-15 08:37:05', '2021-03-15 13:37:48'),
-(7, 'Le Coq Sportif', 'le-coq-sportif', '2021-03-15 08:37:05', '2021-03-15 13:37:48'),
-(8, 'Converse', 'converse', '2021-03-15 08:38:00', '2021-03-15 13:38:14'),
-(9, 'Kappa', 'kappa', '2021-03-15 08:38:17', '2021-03-15 13:38:30'),
-(10, 'Alpha Tauri', 'alpha-tauri', '2021-03-15 08:38:33', '2021-03-15 13:38:52');
+(8, 'Converse', 'converse', '2021-03-15 08:38:00', '2021-03-15 13:38:14');
 
 -- --------------------------------------------------------
 
@@ -130,7 +126,8 @@ INSERT INTO `images` (`imagesId`, `productId`, `name`, `portada`, `created_at`, 
 (8, 1, '/tenis-running2.jpg', '0', '2021-03-23 19:57:57', NULL),
 (9, 1, '/tenis-running3.jpg', '0', '2021-03-23 19:57:59', NULL),
 (10, 1, '/tenis-running4.jpg', '0', '2021-03-23 19:58:01', NULL),
-(11, 29, '/mocasines-cuero.jpg', '1', '2021-03-29 14:33:19', NULL);
+(11, 29, '/mocasines-cuero.jpg', '1', '2021-03-29 14:33:19', NULL),
+(18, 48, '48-18-botas-hombre.jpg', '1', '2021-04-21 14:48:23', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -161,14 +158,14 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`productId`, `name`, `slug`, `material`, `price`, `description`, `color`, `brand`, `brandId`, `categoryId`, `genderId`, `statusProductId`, `storeId`, `created_at`, `updated_at`) VALUES
-(1, 'Tenis Runningvvv', 'tenis-running', 'Tela', 100, '                                                                                                                Lorem ipsum dolor, elit.                                                                                                                 ', 'Azul', 'Running', 1, 1, 1, 2, 1, '2021-04-13 04:09:19', '2020-11-25 15:37:52'),
-(2, 'Botas Altas', 'botas-altas', 'Cuero', 200, '                                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint impedit nisi ipsam, temporibus quod blanditiis dolorum non ipsum tempora accusantium quidem molestiae, facere et aut quam corrupti! Quia, deleniti nobis?                                                        ', 'Café', 'Bata', 9, 2, 1, 1, 1, '2021-03-29 13:17:04', '2020-11-25 15:39:57'),
-(3, 'Sandalias planas', 'sandalias-planas', 'Cuero', 50, 'Sandalia plana', 'Rosa', 'Velez', 8, 3, 1, 1, 1, '2021-03-26 05:13:25', '2020-11-25 15:37:52'),
-(4, 'Sandalias altas 2020', 'sandalias-altas', 'Cuero', 50, '                            Sandalia tacon                            ', 'Rosa', 'Velez', 8, 2, 1, 1, 1, '2021-03-28 22:15:00', '2020-11-25 15:37:52'),
-(5, 'Sandalias', 'sandalias', 'Cuero', 50, '                            Sandalia                            ', 'Rosa', 'Velez', 3, 3, 1, 2, 1, '2021-04-13 04:09:45', '2020-11-25 15:37:52'),
-(6, 'Tenis', 'tenis', 'Tela', 100, 'Lorem ipsum dolor, elit. ', 'Azul', 'Running', 2, 1, 2, 1, 1, '2021-03-25 20:44:56', '2020-11-25 15:37:52'),
-(7, 'Tenis Training', 'tenis-training', 'Tela', 100, 'Lorem ipsum dolor, elit. ', 'Blanco', 'Running', 2, 1, 2, 1, 1, '2021-03-25 20:44:52', '2020-11-25 15:37:52'),
-(29, 'Mocasines Cuero', 'mocasines-cuero', 'Cuero', 200, '                            lkmjnhfgbvd                            ', 'Negro', 'Velez', 1, 7, 2, 1, 1, '2021-03-29 14:33:58', '0000-00-00 00:00:00');
+(1, 'Tenis Running', 'tenis-running', 'Tela', 100, '                                                                                                                Lorem ipsum dolor, elit.                                                                                                                 ', 'Azul', 'Running', 2, 1, 1, 1, 1, '2021-04-19 14:50:42', '2020-11-25 15:37:52'),
+(2, 'Botas Altas', 'botas-altas', 'Cuero', 200, '                                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint impedit nisi ipsam, temporibus quod blanditiis dolorum non ipsum tempora accusantium quidem molestiae, facere et aut quam corrupti! Quia, deleniti nobis?                                                        ', 'Café', 'Bata', 3, 2, 1, 1, 1, '2021-04-19 13:20:04', '2020-11-25 15:39:57'),
+(3, 'Sandalias planas', 'sandalias-planas', 'Cuero', 50, 'Sandalia plana', 'Rosa', 'Velez', 3, 3, 1, 1, 1, '2021-04-19 13:18:45', '2020-11-25 15:37:52'),
+(4, 'Sandalias altas 2020', 'sandalias-altas', 'Cuero', 50, '                            Sandalia tacon                            ', 'Rosa', 'Velez', 3, 4, 1, 1, 1, '2021-04-19 13:20:23', '2020-11-25 15:37:52'),
+(5, 'Sandalias', 'sandalias', 'Cuero', 50, '                            Sandalia                            ', 'Rosa', 'Velez', 3, 3, 1, 1, 1, '2021-04-19 14:51:38', '2020-11-25 15:37:52'),
+(6, 'Tenis', 'tenis', 'Tela', 100, 'Lorem ipsum dolor, elit. ', 'Azul', 'Running', 1, 1, 2, 1, 1, '2021-04-19 13:19:32', '2020-11-25 15:37:52'),
+(7, 'Tenis Training', 'tenis-training', 'Tela', 100, 'Lorem ipsum dolor, elit. ', 'Blanco', 'Running', 4, 1, 2, 1, 1, '2021-04-19 13:19:45', '2020-11-25 15:37:52'),
+(48, 'Botas Brahma', 'botas-brahma', 'Sintetico', 200, '                                                                                    Botas negras                                                                                    ', 'Negro', 'Brahma', 1, 2, 2, 1, 1, '2021-04-21 15:40:13', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -191,14 +188,15 @@ CREATE TABLE `productssize` (
 
 INSERT INTO `productssize` (`productSizesId`, `sizeId`, `productId`, `quantity`, `created_at`, `updated_at`) VALUES
 (5, 35, 1, 1, '2021-03-09 15:02:32', '2021-03-09 15:02:32'),
-(6, 37, 2, 1, '2021-03-09 15:02:32', '2021-03-09 15:02:32'),
-(7, 36, 3, 4, '2021-04-18 19:38:44', '2021-04-18 19:38:44'),
-(8, 37, 4, 4, '2021-04-18 19:38:44', '2021-04-18 19:38:44'),
-(9, 37, 5, 3, '2021-03-09 15:03:23', '2021-03-09 15:03:23'),
+(6, 37, 2, 2, '2021-04-19 01:02:44', '2021-04-19 01:02:44'),
+(7, 36, 3, 3, '2021-04-18 19:38:44', '2021-04-18 19:38:44'),
+(8, 37, 4, 3, '2021-04-18 19:38:44', '2021-04-18 19:38:44'),
+(9, 37, 5, 2, '2021-03-09 15:03:23', '2021-03-09 15:03:23'),
 (10, 33, 6, 1, '2021-03-09 15:04:00', '2021-03-09 15:04:00'),
-(11, 38, 7, 1, '2021-03-09 15:04:00', '2021-03-09 15:04:00'),
+(11, 38, 7, 4, '2021-04-21 12:46:15', '2021-04-21 12:46:15'),
 (12, 38, 1, 1, '2021-03-11 21:40:16', '2021-03-11 21:40:16'),
-(13, 35, 2, 1, '2021-03-09 15:02:32', '2021-03-09 15:02:32');
+(13, 35, 2, 1, '2021-03-09 15:02:32', '2021-03-09 15:02:32'),
+(14, 40, 48, 1, '2021-04-21 14:48:23', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -247,7 +245,17 @@ CREATE TABLE `saledetails` (
 INSERT INTO `saledetails` (`saleDetailsId`, `saleId`, `productId`, `price`, `size`, `quantity`, `created_at`, `updated_at`) VALUES
 (1, 1, 4, 50, 37, 1, '2021-04-18 19:09:37', '0000-00-00 00:00:00'),
 (2, 1, 3, 50, 36, 1, '2021-04-18 19:09:37', '0000-00-00 00:00:00'),
-(3, 2, 2, 200, 37, 1, '2021-04-18 19:51:14', '0000-00-00 00:00:00');
+(3, 2, 2, 200, 37, 1, '2021-04-18 19:51:14', '0000-00-00 00:00:00'),
+(4, 3, 7, 100, 38, 1, '2021-04-19 01:03:29', '0000-00-00 00:00:00'),
+(5, 3, 6, 100, 33, 1, '2021-04-19 01:03:29', '0000-00-00 00:00:00'),
+(6, 4, 7, 100, 38, 1, '2021-04-19 04:17:43', '0000-00-00 00:00:00'),
+(7, 5, 7, 100, 38, 1, '2021-04-19 14:11:56', '0000-00-00 00:00:00'),
+(8, 6, 7, 100, 38, 1, '2021-04-19 16:12:22', '0000-00-00 00:00:00'),
+(9, 7, 5, 50, 37, 1, '2021-04-21 12:51:10', '0000-00-00 00:00:00'),
+(10, 8, 4, 50, 37, 1, '2021-04-21 12:51:22', '0000-00-00 00:00:00'),
+(11, 9, 2, 200, 35, 1, '2021-04-21 12:51:36', '0000-00-00 00:00:00'),
+(12, 10, 3, 50, 36, 1, '2021-04-21 12:51:49', '0000-00-00 00:00:00'),
+(13, 11, 6, 100, 33, 1, '2021-04-21 12:52:04', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -272,8 +280,17 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`saleId`, `date`, `totalPrice`, `userId`, `storeId`, `statusSaleId`, `observations`, `created_at`, `updated_at`) VALUES
-(1, '2021-04-18 19:09:37', 100, 39, 1, 4, 'Efectivo', '2021-04-18 19:09:37', '2021-04-18 19:38:43'),
-(2, '2021-04-18 19:51:14', 200, 39, 1, 1, 'NULL', '2021-04-18 19:51:14', '0000-00-00 00:00:00');
+(1, '2021-04-18 19:09:37', 100, 2, 1, 4, 'Efectivo', '2021-04-18 19:09:37', '2021-04-21 12:45:05'),
+(2, '2021-04-18 19:51:14', 200, 4, 1, 3, 'Ya no los quiero', '2021-04-18 19:51:14', '2021-04-21 12:45:11'),
+(3, '2021-04-19 01:03:29', 200, 2, 1, 1, 'NULL', '2021-04-19 01:03:29', '2021-04-21 12:45:16'),
+(4, '2021-04-19 04:17:43', 100, 4, 1, 4, 'Mercancia', '2021-04-19 04:17:43', '2021-04-21 14:30:56'),
+(5, '2021-04-19 14:11:56', 100, 4, 1, 1, 'Porque ya no quiero esto', '2021-04-19 14:11:56', '2021-04-21 14:30:28'),
+(6, '2021-04-19 16:12:22', 100, 4, 1, 1, 'Muy bonitos los zapatos', '2021-04-19 16:12:22', '2021-04-21 14:31:47'),
+(7, '2021-03-21 12:51:10', 50, 2, 1, 5, 'NULL', '2021-04-21 12:51:10', '2021-04-21 12:53:44'),
+(8, '2021-03-15 12:51:22', 50, 2, 1, 5, 'NULL', '2021-04-21 12:51:22', '2021-04-21 12:53:40'),
+(9, '2021-03-10 12:51:36', 200, 2, 1, 5, 'NULL', '2021-04-21 12:51:36', '2021-04-21 12:53:48'),
+(10, '2021-02-10 12:51:49', 50, 2, 1, 5, 'NULL', '2021-04-21 12:51:49', '2021-04-21 12:53:51'),
+(11, '2021-02-21 12:52:04', 100, 2, 1, 5, 'NULL', '2021-04-21 12:52:04', '2021-04-21 12:53:55');
 
 -- --------------------------------------------------------
 
@@ -387,7 +404,7 @@ INSERT INTO `statussale` (`statusSaleId`, `name`, `slug`, `created_at`, `updated
 (2, 'Enviado', 'enviado', '2021-02-09 15:43:16', '2020-11-28 14:45:45'),
 (3, 'Cancelado', 'cancelado', '2021-02-09 15:43:24', '2020-11-28 14:45:48'),
 (4, 'Anulado', 'anulado', '2021-02-09 15:43:28', '2020-11-28 14:45:53'),
-(5, 'confirmado', 'confirmado', '2021-04-18 19:32:15', NULL);
+(5, 'Confirmado', 'confirmado', '2021-04-21 12:44:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -414,8 +431,7 @@ CREATE TABLE `stores` (
 --
 
 INSERT INTO `stores` (`storeId`, `userId`, `name`, `slug`, `nit`, `image`, `description`, `cellphone`, `address`, `created_at`, `updated_at`) VALUES
-(1, 1, 'El Mundo Del Deporte', 'el-mundo-del-deporte', '90555623', '/shoes.png', '						Desde BD Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint impedit nisi ipsam, temporibus quod blanditiis dolorum non ipsum tempora accusantium quidem molestiae, facere et aut quam corrupti! Quia, deleniti nobis?					', '3128919343', 'Calle 34 BE 55A barrio La UIS', '2021-04-07 14:47:30', '2021-04-07 14:47:30'),
-(8, 36, 'hse', 'hse', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', '2021-04-18 06:06:49', '0000-00-00 00:00:00');
+(1, 1, 'El Mundo Del Deporte', 'el-mundo-del-deporte', '90555623', '/shoes.png', '						Desde BD Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint impedit nisi ipsam, temporibus quod blanditiis dolorum non ipsum tempora accusantium quidem molestiae, facere et aut quam corrupti! Quia, deleniti nobis?					', '3128919343', 'Calle 34 BE 55A barrio La UIS', '2021-04-07 14:47:30', '2021-04-07 14:47:30');
 
 -- --------------------------------------------------------
 
@@ -467,9 +483,8 @@ CREATE TABLE `userdata` (
 --
 
 INSERT INTO `userdata` (`userDataId`, `userId`, `firstName`, `secondName`, `lastName`, `secondLastName`, `documentNumber`, `cellphone`, `birthDate`, `address`, `typeDocumentId`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Maria', 'Isabel', 'Herrera', 'Blanco', '1116040087', '3212563239', '2004-04-30', 'Calle 22 A # 30 - 81', 1, '2021-03-11 20:10:16', '2021-02-23 02:50:41'),
-(2, 4, 'Patricia', 'Dina', 'Teheran', 'Altamar', '123456', '12345', '2020-05-14', 'Calle 22 A # 30 -75', 1, '2021-04-13 04:36:01', '2021-04-13 04:36:01'),
-(28, 39, 'emilse palomares', 'NULL', 'NULL', 'NULL', '1099214218', 'NULL', '0000-00-00', 'NULL', 1, '2021-04-18 20:06:51', '0000-00-00 00:00:00');
+(1, 2, 'Paula', 'Maria', 'Perez', NULL, '1116040087', '3212563239', '2004-04-30', 'Calle 22 A # 30 - 81', 1, '2021-04-21 12:47:54', '2021-02-23 02:50:41'),
+(2, 4, 'Diana', 'Alejandra', 'Herrera', 'Blanco', '1118563320', '615132', '2020-05-14', 'Calle 105 # 36', 1, '2021-04-21 12:48:21', '2021-04-19 14:40:27');
 
 -- --------------------------------------------------------
 
@@ -495,12 +510,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `role`, `slug`, `password`, `blocked`, `_token`, `created_at`, `updated_at`) VALUES
-(1, 'El mundo del deporte', 'mundo@deporte', 2, 'mundo-deporte', '$2y$10$yODMvAyKUdu.oCaSpKG2oO.y4sq5i/rpmZH8NxUDYHDy90dacFdku', 0, 'arCZGSzZP/unGZP;Z;3FZg9dGgsAiE&K/L3bKkLcbn7Xw6.#:vNOK95*Vbcf#Mi.*;rzQ,l;C#V7o_xP_O4X|HBR5F5r,SGrNvN&', '2020-11-27 20:30:43', '2020-11-27 20:30:43'),
-(2, 'Cliente', 'cliente@cliente', 3, 'cliente', '$2y$10$wG9Z57jugVoFCOmSiWBfiecGb.DKH9GJOtlE//3ZO6jXkiKg9tfPq', 0, NULL, '2020-11-27 20:36:40', '2020-11-27 20:36:40'),
-(4, 'Diana', 'dalejandra402@gmail.com', 3, 'dalejandra402-gmail.com', '$2y$10$yODMvAyKUdu.oCaSpKG2oO.y4sq5i/rpmZH8NxUDYHDy90dacFdku', 0, 'yvk=f+K%8_Fth@o/KRIqqO:cRUf3DApTqEp8yzPBDFqp4Un\\mr4EEP@whFV8aQVN#=SM\\+P|t*5ZCNZHy.UZNi#,:3tahD54%J^H', '2021-03-10 14:20:31', '2021-04-13 04:36:01'),
-(33, 'otis', 'otis@gatito', 3, 'otis-gatito', '$2y$10$cKfvLK8LMGZYyu7DoQKOQeRZyeG5GPyP4YCjSnTgqzn2o/kn3RSUC', 0, 'QQRWP+t\\!r3s_##ASzFvA9LBs&MOC.v?Jw\\dH+DC2+&OUwY5A&IZJf?JX?U,2RsatB#NNmzgBUc||SSp2SW*lI5CG++P\\.7U8IaS', '2021-04-18 17:09:56', '0000-00-00 00:00:00'),
-(36, 'Johan David Castro Palomares', 'johanca965@gmail.com', 2, 'johanca965-gmail.com', '$2y$10$5aHVRqcGoQIlKn6FLShk5.CXmaDNirdXpgoMFRIPSwnsYfDO6AZ1u', 0, 'iGJOrxNI\\Q+|*hk7o*WF&W\\+9!TmS%Be0aZt&OP/XvV.XGcT!3aqO9Caq|^Y:7AXtB63xRj.TpyxHKPG3f\\%4tJC_p0VmKnwwBMq', '2021-04-18 06:06:49', '0000-00-00 00:00:00'),
-(39, 'emilse palomares', 'test-user@hyperlinkse.com', 3, 'test-user-hyperlinkse.com', '$2y$10$8RzPKRTQQHedrCUXwwOvPu/zHZ0zZE7pf2G92cTLQBa42CJ3k4P2C', 0, ',X_izq/DvAXo\\@?_HXi6gIb.tK/fSL!w8lgwXEQE,^0Xl+6U,H?:PlIOBEthp+S\\K?8mN06m2MZ4D/J|aOiSt6;Mo7iTeN,GPvGZ', '2021-04-18 06:09:50', '0000-00-00 00:00:00');
+(1, 'El mundo del deporte', 'mundo@deporte', 2, 'mundo-deporte', '$2y$10$yODMvAyKUdu.oCaSpKG2oO.y4sq5i/rpmZH8NxUDYHDy90dacFdku', 0, ';5RlV/6AN5xFle4yMYzI;W37*J;1jTrM2L/QOy?c,zo.3\\j&r%s%+*:IuF1PzgAk@AEG0KOZx&XLw83Vh;_9;xln%M\\PL6+iI7!t', '2020-11-27 20:30:43', '2020-11-27 20:30:43'),
+(2, 'Paula Perez', 'test-user@hyperlinkse.com', 3, 'cliente', '$2y$10$yODMvAyKUdu.oCaSpKG2oO.y4sq5i/rpmZH8NxUDYHDy90dacFdku', 0, 'RnvjqkT8?%k9?W6X1D.Iw9nY_mO%/XyHZ+GP7Gi/thivI9%cKUmIGZsL0Hk^D6yn/A^h8njBO,@qoi3EHBT;uPxOqcW!3/T.qZuY', '2020-11-27 20:36:40', '2020-11-27 20:36:40'),
+(4, 'Diana Herrera', 'dalejandra402@gmail.com', 3, 'dalejandra402-gmail.com', '$2y$10$yODMvAyKUdu.oCaSpKG2oO.y4sq5i/rpmZH8NxUDYHDy90dacFdku', 0, 'BrSuN:F/A\\ee7m|FxBwz!*9NPQCgs#X6tRe/?St%bjBZ2hY5H%Z6|l3LPXils!Mu:8iho.XKauF?0\\ZtXqn@+1Slo_EnRgeSeMie', '2021-03-10 14:20:31', '2021-04-19 14:21:00');
 
 --
 -- Índices para tablas volcadas
@@ -646,19 +658,19 @@ ALTER TABLE `genders`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `imagesId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `imagesId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `productssize`
 --
 ALTER TABLE `productssize`
-  MODIFY `productSizesId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `productSizesId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -670,13 +682,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `saledetails`
 --
 ALTER TABLE `saledetails`
-  MODIFY `saleDetailsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `saleDetailsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `saleId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `saleId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `sizes`
@@ -700,7 +712,7 @@ ALTER TABLE `statussale`
 -- AUTO_INCREMENT de la tabla `stores`
 --
 ALTER TABLE `stores`
-  MODIFY `storeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `storeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `typedocuments`
@@ -712,13 +724,13 @@ ALTER TABLE `typedocuments`
 -- AUTO_INCREMENT de la tabla `userdata`
 --
 ALTER TABLE `userdata`
-  MODIFY `userDataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `userDataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Restricciones para tablas volcadas

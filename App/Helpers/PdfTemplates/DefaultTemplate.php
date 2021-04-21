@@ -4,7 +4,7 @@ class DefaultTemplate
 {
 	// funcion para crear el contenido de la pagina
 	// los parametros son los datos basicos que contendra el mensaje
-	public static function template( $sale )
+	public static function template( $sale, $user, $dataCliente, $products, $status )
 	{
 		$css = "<?php require_once RESOURCES.'/Templates/client/header.php'; ?>";
 		$body = "
@@ -28,31 +28,31 @@ class DefaultTemplate
 												<div>
 													<h6>
 														<span>Nombre: </span>
-														".$sale['userId']."
+														".$user['name']."
 													</h6>
 													<h6>
 														<span>
 															Teléfono: 
 														</span>
-														".$sale['userId']."
+														".$dataCliente['cellphone']."
 													</h6>
 													<h6>
 														<span>
 															Dirección: 
 														</span>
-														".$sale['userId']."
+														".$dataCliente['address']."
 													</h6>
 													<h6>
 														<span>
 															Tipo de documento: 
 														</span>
-														".$sale['userId']."
+														Cédula
 													</h6>
 													<h6>
 														<span>
 															Número de documento:
 														</span>
-														".$sale['userId']."
+														".$dataCliente['documentNumber']."
 													</h6>	
 												</div>
 												<h5 style='font-size:17px; color:#ff5b16'>
@@ -63,9 +63,19 @@ class DefaultTemplate
 													<div>
 														<div>
 															<h5>
-																".$sale['total']."
+																".$products."
 															</h5>
 														</div>
+														<div>
+                                        					<h5>
+                                            				Total $ ".$sale['totalPrice']." COP
+                                        					</h5>
+                                    					</div>
+														<div>
+                                        					<h5>
+                                            				Estado de la compra $ ".$status['name']."
+                                        					</h5>
+                                    					</div>
 													</div> 
 												</div>
 												<h5 style='font-size:17px; color:#ff5b16'>

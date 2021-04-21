@@ -17,6 +17,7 @@ $(document).ready(function() {
 				if( data === 'true' )
 				{
 					toastr.success("Registro actualizado con exito.");
+					location.reload();
 				}else
 				{
 
