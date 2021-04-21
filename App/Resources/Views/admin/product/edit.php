@@ -7,7 +7,7 @@
                     <i class="far fa-lg fa-edit pr-3"></i>
                     <h5 class="m-0">Editar productos</h5>
                 </div>
-                <form class="form-edit" method="post" action="<?php echo URL; ?>Admin/Product/Update" class="form-edit px-5 pb-5">
+                <form class="form-edit px-5 pb-5" method="post" action="<?php echo URL; ?>Admin/Product/Update">
                     <input type="hidden" name="productId" value="<?php echo $params['product']['productId']; ?>">
                     <?php echo $this->__csrf_field(); ?>
                     <div class="errors-edit pt-2 text-center white-text"></div>

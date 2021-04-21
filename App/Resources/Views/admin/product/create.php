@@ -62,12 +62,12 @@
                     </div>
                     <div class="container mb-5 form-control form-control1 altura-galeria">
                         <div class="d-flex align-items-center justify-content-end">
-                            <a href="" class="color-morado">
+                            <a href="" class="color-morado pb-3">
                                 <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
                             </a>
                         </div>
-                        <div class="row content-images">
-                            <input name="uploadedfile" id="uploadedfile" type="file" class="form-control" data-url="<?php echo URL; ?>Admin/Product/upload_image" />
+                        <div class="row content-images px-3 pb-3">
+                            <input name="uploadedfile" id="uploadedfile" type="file" data-url="<?php echo URL; ?>Admin/Product/upload_image" />
                         </div>
                     </div>
                     <div class=" col-12 p-0 mb-5">

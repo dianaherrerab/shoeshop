@@ -6,11 +6,13 @@
             <form class="form-search" method="get" action="<?php echo URL; ?>Admin/Sale/Pagination" data-url-change="<?php echo URL; ?>Admin/Sale/Listing">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-9 col-12 mb-sm-0 mb-3">
+                        <div class="col-12 mb-sm-0 mb-3 pl-2 pr-4">
                             <select id="input_whr" name="input_whr" class="browser-default form-control btn waves-effect">
-                                <option value="date" selected>Fecha</option>
-                                <option value="statusSaleId">Estado</option>
+                                <option value="name" selected>Nombre</option>
+                                <option value="documentNumber" selected>Documento</option>
                             </select>
+                        </div>
+                        <div class="col-sm-9 col-12 mb-sm-0 mb-3">
                             <input id="value_whr" name="value_whr" value="" class="form-control form-control-lg" type="date" placeholder="¿Qué deseas buscar?">
                         </div>
                         <div class="col-sm-3 col-12">
@@ -50,6 +52,9 @@
                                 </th>
                                 <th class="th-sm font-weight-bold">
                                     Estado
+                                </th>
+                                <th class="th-sm font-weight-bold">
+                                    Descargar
                                 </th>
                             </tr>
                         </thead>

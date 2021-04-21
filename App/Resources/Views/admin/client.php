@@ -6,10 +6,12 @@
             <form class="form-search" method="get" action="<?php echo URL; ?>Admin/Client/Pagination" data-url-change="<?php echo URL; ?>Admin/Client/Listing">
                 <div class="container">
                     <div class="row">
-                        <select id="input_whr" name="input_whr" class="browser-default form-control btn waves-effect">
-                            <option value="name" selected>Nombre</option>
-                            <option value="documentNumber" selected>Documento</option>
-                        </select>
+                        <div class="col-12 mb-sm-0 mb-3 pl-2 pr-4">
+                            <select id="input_whr" name="input_whr" class="browser-default form-control btn waves-effect">
+                                <option value="name" selected>Nombre</option>
+                                <option value="documentNumber" selected>Documento</option>
+                            </select>
+                        </div>
                         <div class="col-sm-9 col-12 mb-sm-0 mb-3">
                             <input type="text" id="value_whr" name="value_whr" value="" class="form-control form-control-lg" placeholder="¿Qué deseas buscar?">
                         </div>

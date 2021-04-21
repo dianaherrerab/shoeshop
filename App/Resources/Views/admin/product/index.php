@@ -6,11 +6,13 @@
             <form class="form-search" method="get" action="<?php echo URL; ?>Admin/Product/Pagination" data-url-change="<?php echo URL; ?>Admin/Product/Listing">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-9 col-12 mb-sm-0 mb-3">
-                            <select id="input_whr" name="input_whr" class="browser-default form-control">
+                        <div class="col-12 mb-sm-0 mb-3 pl-2 pr-4">
+                            <select id="input_whr" name="input_whr" class="browser-default form-control btn waves-effect">
                                 <option value="name" selected>Nombre</option>
-                                <option value="statusProductId">Estado</option>
+                                <option value="documentNumber" selected>Estado</option>
                             </select>
+                        </div>
+                        <div class="col-sm-9 col-12 mb-sm-0 mb-3">
                             <input id="value_whr" name="value_whr" value="" class="form-control form-control-lg" type="text" placeholder="¿Qué deseas buscar?">
                         </div>
                         <div class="col-sm-3 col-12">
@@ -22,12 +24,18 @@
         </div>
         <div class="card">
             <div class="card-body p-0"> 
-                <div class="letra-subti borde-hist font-weight-bold white-text m-0 d-flex align-items-center azul-oscuro p-3">
-                    <i class="fas fa-lg fa-address-card pr-3"></i>
-                    <h5 class="m-0">Listado de productos</h5>
-                    <a type="button" href="<?php echo URL;?>Admin/Product/Create" class="btn btn-sm">
-						Nuevo
-					</a>
+                <div class="container">
+                    <div class="row justify-content-between azul-oscuro">
+                        <div class="letra-subti borde-hist font-weight-bold white-text m-0 d-flex align-items-center azul-oscuro p-3">
+                            <i class="fas fa-lg fa-address-card pr-3"></i>
+                            <h5 class="m-0">Listado de productos</h5>
+                        </div>
+                        <div class="letra-subti borde-hist font-weight-bold white-text m-0 d-flex align-items-center azul-oscuro p-3">
+                            <a type="button" href="<?php echo URL;?>Admin/Product/Create" class="btn btn-sm bg-naranja">
+						        Nuevo
+					        </a>
+                        </div>
+                    </div>
                 </div>
                 <div class=" table-responsive text-nowrap">
                     <table id="dtBasicExample" class="table" width="100%">
