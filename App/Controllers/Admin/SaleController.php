@@ -207,7 +207,7 @@ class SaleController extends Controller
 		// obtenemos los datos de inspeccion
 		$sale = $this->SaleModel->find( $saleId );
 		// creamos la plantilla
-		$template = DefaultTemplate::template();
+		$template = DefaultTemplate::template( $sale );
 		// mostramos el pdf
 		$pdf = PdfTrait::view( $template, "Legal", "P", "10", "10", "10", "10" );
 

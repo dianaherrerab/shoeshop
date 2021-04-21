@@ -41,13 +41,6 @@ class UserDataController extends Controller
 	{
 		// retornamos los datos encontrados
 		$result = $this->userDataModel->update( $request );
-		// validamos si tenemos un error
-		// if( !$response['status'] )
-		// 	// retornamos el error
-		// 	return $response;
-		// else
-		// 	// retornamos los datos
-		// 	return $response['data'];
 		// Validamos si existe un error
 		if( !$result )
 		{

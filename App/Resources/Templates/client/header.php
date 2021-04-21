@@ -180,7 +180,7 @@
               </div>
             </li>
 			<li>
-              <a class="collapsible-header waves-effect arrow-r mt-5">
+              <a class="collapsible-header waves-effect arrow-r mt-5" href="<?php echo URL; ?>/auth/logout">
                 <i class="sv-slim-icon fas fa-sign-out-alt mr-2"></i>
                   Cerrar sesión
               </a>
@@ -207,26 +207,6 @@
               </a>
               <div class="collapsible-body">
                 <ul>
-                  <li>
-                    <a href="#" class="waves-effect active">
-                      <span class="sv-slim">Femeninos</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="waves-effect">
-                      <span class="sv-normal">Masculinos</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="waves-effect">
-                      <span class="sv-normal">Niños</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="waves-effect">
-                      <span class="sv-normal">Deportivos</span>
-                    </a>
-                  </li>
                     <?php
                     $categorias = $this->CategoryModel->getCategories();
 											foreach ($categorias as $categoria) {

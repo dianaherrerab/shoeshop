@@ -5,7 +5,7 @@ class DefaultTemplate
 {
 	// funcion para crear el contenido de la pagina
 	// los parametros son los datos basicos que contendra el mensaje
-	public static function template()
+	public static function template( $sale )
 	{
 		$body = "
 			<html> 
@@ -14,6 +14,7 @@ class DefaultTemplate
 						<h2>".APP_NAME."</h2>
 					</div>
 					<div style='padding: 30px;'>
+						".$sale['date']."
 						<h3 style='text-align:center'>Ejemplo de pdf</h3>
 						<p>Este es un ejemplo de una plantilla para generar pdf's.</p>
 					</div>

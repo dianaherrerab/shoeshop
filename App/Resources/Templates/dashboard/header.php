@@ -164,37 +164,37 @@
                     <li>
                         <ul class="collapsible collapsible-accordion py-3">
                             <li>
-                                <a class="collapsible-header waves-effect arrow-r">
+                                <a class="collapsible-header waves-effect arrow-r" href="<?php echo URL; ?>/Admin/Store/profile">
                                     <i class="sv-slim-icon fas fa-user mr-2"></i>
                                     Mi perfil
                                 </a>
                             </li>
                             <li>
-                                <a class="collapsible-header waves-effect arrow-r mt-3">
+                                <a class="collapsible-header waves-effect arrow-r mt-3 " href="<?php echo URL?>Admin/">
                                     <i class="sv-slim-icon fas fa-home mr-2"></i>
                                     Inicio
                                 </a>
                             </li>
                             <li>
-                                <a class="collapsible-header waves-effect arrow-r mt-3">
+                                <a class="collapsible-header waves-effect arrow-r mt-3" href="<?php echo URL?>Admin/Client">
                                     <i class="sv-slim-icon fas fa-users mr-2"></i>
                                     Clientes
                                 </a>
                             </li>
                             <li>
-                                <a class="collapsible-header waves-effect arrow-r mt-3">
+                                <a class="collapsible-header waves-effect arrow-r mt-3" href="<?php echo URL?>Admin/Product">
                                     <i class="sv-slim-icon fas fa-shopping-cart mr-2"></i>
                                     Productos
                                 </a>
                             </li>
                             <li>
-                                <a class="collapsible-header waves-effect arrow-r mt-3">
+                                <a class="collapsible-header waves-effect arrow-r mt-3" href="<?php echo URL?>Admin/Sale">
                                     <i class="sv-slim-icon fas fa-clipboard-list mr-2"></i>
                                     Ventas
                                 </a>
                             </li>
                             <li>
-                                <a class="collapsible-header waves-effect arrow-r mt-4">
+                                <a class="collapsible-header waves-effect arrow-r mt-4" href="<?php echo URL; ?>/Auth/logout">
                                     <i class="sv-slim-icon fas fa-sign-out-alt mr-2"></i>
                                     Cerrar sesión
                                 </a>

@@ -24,17 +24,16 @@ class IndexController extends Controller
 	}
 
 	// Función para mostrar la vista principal
-	public function cargar_productos()
+	public function cargar_productos_categorias()
 	{	
-		$products = $this->ProductModel->all();
-		
+		$products = $this->ProductModel->bycategories();
 		$arreglo = array();
 		foreach ($products as $product) {
 			array_push($arreglo, $product);
 		}
 		header('Content-type: application/json; charset=utf-8');
 		// mostramos la vista al usuario
-		echo json_encode( $arreglo);
+		echo json_encode( $arreglo );
 	}
 
 	// Función para mostrar la vista principal

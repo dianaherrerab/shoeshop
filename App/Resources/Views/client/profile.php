@@ -13,7 +13,7 @@
               Datos personales
             </div>
           </div>
-          <form action="<?php echo URL; ?>/Client/client/Update-profile" class="form-edit" method="post">
+          <form action="<?php echo URL; ?>/Client/client/update_profile" class="form-edit" method="post">
             <?php echo $this->__csrf_field(); ?>
 	        <div class="errors-edit"></div>
 	        <input type="hidden" name="user_id" value="<?php echo $this->auth->user->__get('id'); ?>">

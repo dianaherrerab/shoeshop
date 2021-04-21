@@ -15,7 +15,7 @@
                         </div>
                         <div class="col-12 col-lg-6">
                             <div class="card">
-                                <h4 class="color-morado font-weight-bold text-center m-0">Productos</h4>
+                                <h4 class="color-morado font-weight-bold text-center m-0">Productos por Categorías</h4>
                                 <hr class="hr-cards my-1">
                                 <div class="card body p-3">
                                     <canvas id="pieChart"></canvas>

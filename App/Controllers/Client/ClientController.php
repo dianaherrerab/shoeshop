@@ -131,16 +131,16 @@ class ClientController extends Controller
 		// Invierte la posición del array para que el id quede al inicio
 		$user_data = array_reverse( $_POST );
 		// Hace la petición de actualización
-		$user_data_response = $this->UserDataController->update( $user_data );
+		$result = $this->UserDataController->update( $user_data );
 		// Valida si el resultado encontrado no es un array
-		if( isset( $user_data_response['status'] ) && !$user_data_response['status'] )
+		if( !$result )
 		{
-			// Crea un mensaje personalizado
-			array_push( $this->errors, $user_data_response['message'] );
-			// Muestra los errores
-			echo $this->errors();
-			// Detiene la ejecuciónde la función
-			return;
+			// // Agregamos el mensaje a la variable para ser mostrada
+			// array_push( $this->errors, $result );
+			// // Mostramos el mensaje de error al usuario
+			// echo $this->errors();
+			// // detiene la ejecucion de la consulta
+			// return;
 		}
 		else
 		{
@@ -149,14 +149,14 @@ class ClientController extends Controller
 			// Hace la petición de actualización
 			$response = $this->UserModel->update( $_POST );
 			// Valida si el resultado encontrado no es un array
-			if( isset( $response['status'] ) && !$response['status'] )
+			if( !$response )
 			{
-				// Crea un mensaje personalizado
-				array_push( $this->errors, $response['message'] );
-				// Muestra los errores
-				echo $this->errors();
-				// Detiene la ejecuciónde la función
-				return;
+				// // Agregamos el mensaje a la variable para ser mostrada
+				// array_push( $this->errors, $response );
+				// // Mostramos el mensaje de error al usuario
+				// echo $this->errors();
+				// // Detiene la ejecuciónde la función
+				// return;
 			}
 			else
 				// Retorna mensaje de exito

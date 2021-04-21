@@ -169,21 +169,21 @@ $(document).ready(function() {
 				toastr.info("Actualizando registro, espere un momento...");
 			},
 			success: function(data) {
+				console.log(data);
 				if( data === 'true' )
 				{
 					toastr.success("Registro actualizado con exito.");
 				}else
 				{
-
 					toastr.error("Ha ocurrido un error.");
 					errors_edit.append( data );
 					// validamos si es una ventana modal
-					if( modal == undefined )
-					{
-						$('.scroll').animate({
-							scrollTop: errors_edit.offset().top
-						});
-					}
+					// if( modal == undefined )
+					// {
+					// 	$('.scroll').animate({
+					// 		scrollTop: errors_edit.offset().top
+					// 	});
+					// }
 				}
 			},
 			error: function(xhr) {

@@ -18,7 +18,7 @@
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-12 col-lg-3 p-0">
-                                        <img class="d-block w-100" src="'.IMG.'/bd-products/'.$product['imagen'].'" alt="Third slide">
+                                        <img class="d-block w-100" src="'.IMG.'/bd-products/'.$product['imagen'].'" alt="No hay">
                                     </div>
                                     <div class="col-12 col-lg-6 text-center text-lg-left">
                                         <div class="letra-descrip font-weight-bold color-morado mb-3 mb-lg-0">

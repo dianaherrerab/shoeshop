@@ -62,7 +62,7 @@ class Sale extends Model
 	// función para buscar un usuario por el slug
 	public function findByUserId( $userId )
 	{
-		return parent::customer( " SELECT s.*, t.name as store, st.name as status FROM ". $this->table ." as s INNER JOIN stores as t on t.storeId=s.storeId INNER JOIN statussale as st on st.statusSaleId=s.statusSaleId WHERE s.userId = '".$userId."' " );
+		return parent::customer( " SELECT s.*, t.name as store, st.name as status FROM ". $this->table ." as s INNER JOIN stores as t on t.storeId=s.storeId INNER JOIN statussale as st on st.statusSaleId=s.statusSaleId WHERE s.userId = '".$userId."' order by s.date desc " );
 	}
 
 	public function find_by_fecha_ped( $created_at )

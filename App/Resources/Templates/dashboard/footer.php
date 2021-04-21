@@ -86,7 +86,7 @@
             })
 
             // CARGAR PRODUCTOS
-            var url = "<?php echo URL;?>Admin/Index/cargar_productos";
+            var url = "<?php echo URL;?>Admin/Index/cargar_productos_categorias";
             $.ajax({
                 url: url,
                 type:'POST',
@@ -96,7 +96,7 @@
                 var data = JSON.parse(JSON.stringify(resp));
                 for (let i = 0; i < data.length; i++) {
                     titulo.push(data[i]["name"]);
-                    cantidad.push(parseInt(data[i]["productId"]));
+                    cantidad.push(data[i]["cantidad"]);
                 }
                 console.log(titulo);
 

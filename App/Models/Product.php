@@ -67,6 +67,12 @@ class Product extends Model
 		return parent::customer( " SELECT p.*, c.name as category, g.name as gender FROM ". $this->table ." as p INNER JOIN categories as c on c.categoryId=p.categoryId INNER JOIN genders as g ON g.genderId=p.genderId WHERE p.slug = '".$slug."' " , true );
 	}
 
+	// función para buscar la cantidad de productos por categoria
+	public function bycategories()
+	{
+		return parent::customer( " SELECT c.name, COUNT(*) as cantidad FROM ". $this->table ." as p INNER JOIN categories as c ON c.categoryId=p.categoryId group by c.categoryId " );
+	}
+
 	// función para buscar un producto por el slug
 	public function find_all_by_slug( $slug )
 	{
